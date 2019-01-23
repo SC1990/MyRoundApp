@@ -16,7 +16,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="80dp"
         android:layout_marginLeft="80dp"
-        android:layout_marginTop="164dp"
+        android:layout_marginTop="73dp"
         android:ems="10"
         android:hint="email"
         android:inputType="textEmailAddress" />
@@ -27,11 +27,13 @@
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/userEmail"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="266dp"
+        android:layout_marginEnd="-2dp"
+        android:layout_marginBottom="364dp"
         android:ems="10"
         android:hint="password"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:layout_alignRight="@+id/userEmail"
+        android:layout_marginRight="-2dp" />
 
     <EditText
         android:id="@+id/verifyPassword"
@@ -40,10 +42,12 @@
         android:layout_alignEnd="@+id/userEmail"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="-2dp"
-        android:layout_marginBottom="167dp"
+        android:layout_marginBottom="285dp"
         android:ems="10"
         android:hint="confirm password"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:layout_alignRight="@+id/userEmail"
+        android:layout_marginRight="-2dp" />
 
     <Button
         android:id="@+id/signUpBtn"
@@ -51,7 +55,27 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="220dp"
         android:onClick="onSignUpBtnClick"
         android:text="sign up" />
+
+    <Button
+        android:id="@+id/logInLinkBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="91dp"
+        android:onClick="onLogInLinkBtnClick"
+        android:text="log in" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="157dp"
+        android:text="or"
+        android:textSize="30sp" />
 </RelativeLayout>
