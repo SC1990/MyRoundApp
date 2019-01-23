@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "272570984278",
+    "firebase_url": "https://myroundapp-925fa.firebaseio.com",
+    "project_id": "myroundapp-925fa",
+    "storage_bucket": "myroundapp-925fa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:272570984278:android:5fb645be0d65bb59",
+        "android_client_info": {
+          "package_name": "com.example.stuar.myroundapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "272570984278-03ddfgu4up9kgtg9kn21fkha2i9giog6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.stuar.myroundapp",
+            "certificate_hash": "172294c20b94a03d6545ddf11e69f166dbb980f3"
+          }
+        },
+        {
+          "client_id": "272570984278-jbb31j1fa8bv5i1aua8s8gqaaiurcico.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC25H9c0tjeag4uvVMWHUrTYKcqjRck2hw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "272570984278-jbb31j1fa8bv5i1aua8s8gqaaiurcico.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
