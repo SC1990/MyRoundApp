@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/background_light"
-    tools:context=".Profile">
+    tools:context=".MyDetails">
 
 
 
@@ -27,9 +27,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="-127dp"
-        android:layout_marginLeft="-127dp"
-        android:layout_marginBottom="42dp"
+        android:layout_marginStart="-184dp"
+        android:layout_marginLeft="-184dp"
+        android:layout_marginBottom="74dp"
         android:layout_toEndOf="@+id/profileEmail"
         android:layout_toRightOf="@+id/profileEmail"
         android:onClick="onLogOutBtnClick"
@@ -42,9 +42,9 @@
         android:layout_alignStart="@+id/logOutBtn"
         android:layout_alignLeft="@+id/logOutBtn"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="91dp"
-        android:layout_marginLeft="91dp"
-        android:layout_marginBottom="91dp"
+        android:layout_marginStart="232dp"
+        android:layout_marginLeft="232dp"
+        android:layout_marginBottom="79dp"
         android:onClick="onSaveInfoBtnClick"
         android:text="save" />
 

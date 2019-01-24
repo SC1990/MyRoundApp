@@ -40,7 +40,7 @@ public class LogIn extends AppCompatActivity {
 
         if(firebaseAuth.getCurrentUser() != null){
             finish();
-            startActivity(new Intent(getApplicationContext(), Profile.class));
+            startActivity(new Intent(getApplicationContext(), UserHome.class));
         }
     }
 
@@ -64,11 +64,11 @@ public class LogIn extends AppCompatActivity {
 
                     if(task.isSuccessful()){
                         finish();
-                        startActivity(new Intent(getApplicationContext(), Profile.class));
+                        startActivity(new Intent(getApplicationContext(), UserHome.class));
                         Toast.makeText(LogIn.this, "logged in", Toast.LENGTH_SHORT).show();
                     }
                     else{
-                        Toast.makeText(LogIn.this, "not logged in", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LogIn.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                     progressDialog.dismiss();
                 }

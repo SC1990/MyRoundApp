@@ -18,8 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Profile" />
-        <activity android:name=".LogIn"></activity>
+        <activity android:name=".MyDetails" />
+        <activity android:name=".LogIn" />
+        <activity android:name=".UserHome"></activity>
     </application>
 
 </manifest>
