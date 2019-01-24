@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -26,8 +27,9 @@ public class SignUp extends AppCompatActivity {
     private EditText verifyPassword;
 
     private ProgressDialog progressDialog;
+    DatabaseReference databaseReferenceUsers;
 
-    //DatabaseReference databaseReferenceUsers;
+
 
 
     @Override
@@ -49,7 +51,9 @@ public class SignUp extends AppCompatActivity {
 
         progressDialog = new ProgressDialog(this);
 
-        //databaseReferenceUsers = FirebaseDatabase.getInstance().getReference("users");
+        databaseReferenceUsers = FirebaseDatabase.getInstance().getReference("customers");
+
+
     }
 
 
@@ -65,11 +69,56 @@ public class SignUp extends AppCompatActivity {
 
         String email = userEmail.getText().toString().trim();
         String password = userPassword.getText().toString().trim();
+        String confirmPassword = verifyPassword.getText().toString().trim();
 
-        if(!TextUtils.isEmpty(email) || !TextUtils.isEmpty(password )){
-            //String id = databaseReferenceUsers.push().getKey();
-            //User user = new User(email, password);
-            //databaseReferenceUsers.child(id).setValue(user);
+        User user = new User(email, password);
+        //String id = databaseReferenceUsers.push().getKey();
+
+        if(email.isEmpty()){
+            userEmail.setError("Email Required!");
+            userEmail.requestFocus();
+            return;
+        }
+        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            userEmail.setError("Please Enter a Valid Email!");
+            userEmail.requestFocus();
+            return;
+        }
+
+
+        if(password.isEmpty()){
+            userPassword.setError("Password Required!");
+            userPassword.requestFocus();
+            return;
+        }
+        if(password.length() < 6){
+            userPassword.setError("Password Must be at Least 6 characters!");
+            userPassword.requestFocus();
+            return;
+        }
+
+
+        if(confirmPassword.isEmpty()){
+            verifyPassword.setError("Please Confirm Password!");
+            verifyPassword.requestFocus();
+            return;
+        }
+        //if password does not contain a number
+        if(!password.matches(".*\\d+.*")){
+            Toast toast = Toast.makeText(SignUp.this, "Password must contain a number", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+
+
+        //password and password confirmation must be identical
+        if(!password.equals(confirmPassword)){
+                Toast passwordMsg = Toast.makeText(SignUp.this, "Passwords don't match", Toast.LENGTH_SHORT);
+                passwordMsg.show();
+        }
+
+
+
+        else{
 
             firebaseAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -92,8 +141,6 @@ public class SignUp extends AppCompatActivity {
 
 
 
-        }else{
-            Toast.makeText(this, "Please enter all details", Toast.LENGTH_LONG).show();
         }
     }
 

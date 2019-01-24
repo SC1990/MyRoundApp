@@ -8,6 +8,7 @@
     tools:context=".Profile">
 
 
+
     <TextView
         android:id="@+id/profileEmail"
         android:layout_width="wrap_content"
@@ -15,9 +16,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="143dp"
-        android:layout_marginLeft="143dp"
-        android:layout_marginTop="145dp"
+        android:layout_marginStart="188dp"
+        android:layout_marginLeft="188dp"
+        android:layout_marginTop="38dp"
         android:textColor="@color/common_google_signin_btn_text_light_pressed"
         android:textSize="30sp" />
 
@@ -25,7 +26,76 @@
         android:id="@+id/logOutBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="-127dp"
+        android:layout_marginLeft="-127dp"
+        android:layout_marginBottom="42dp"
+        android:layout_toEndOf="@+id/profileEmail"
+        android:layout_toRightOf="@+id/profileEmail"
         android:onClick="onLogOutBtnClick"
         android:text="log out" />
+
+    <Button
+        android:id="@+id/saveInfoBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/logOutBtn"
+        android:layout_alignLeft="@+id/logOutBtn"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="91dp"
+        android:layout_marginLeft="91dp"
+        android:layout_marginBottom="91dp"
+        android:onClick="onSaveInfoBtnClick"
+        android:text="save" />
+
+    <EditText
+        android:id="@+id/fullNameET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/addressET"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="134dp"
+        android:ems="10"
+        android:hint="Full Name"
+        android:inputType="textPersonName"
+        android:layout_alignLeft="@+id/addressET" />
+
+    <EditText
+        android:id="@+id/addressET"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="212dp"
+        android:ems="10"
+        android:hint="House number and street"
+        android:inputType="textPostalAddress" />
+
+    <EditText
+        android:id="@+id/townET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/fullNameET"
+        android:layout_alignRight="@+id/fullNameET"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="-4dp"
+        android:layout_marginRight="-4dp"
+        android:layout_marginBottom="200dp"
+        android:ems="10"
+        android:hint="Town"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/mobileNumET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/fullNameET"
+        android:layout_alignRight="@+id/fullNameET"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="-2dp"
+        android:layout_marginRight="-2dp"
+        android:layout_marginBottom="131dp"
+        android:ems="10"
+        android:hint="Mobile Number"
+        android:inputType="phone" />
 </RelativeLayout>
