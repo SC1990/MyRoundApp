@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/grp_Read">
+
+    <item
+        android:id="@+id/item_a"
+        android:checkable="true"
+        android:icon="@android:drawable/ic_dialog_email"
+        android:title="Action A" />
+
+    <item
+        android:id="@+id/item_b"
+        android:checkable="true"
+        android:icon="@android:drawable/ic_delete"
+        android:title="Action B" />
+
+    <item
+        android:id="@+id/item_c"
+        android:checkable="true"
+        android:icon="@android:drawable/ic_notification_overlay"
+        android:title="Action C" />
+    </group>
+
+    <group android:id="@+id/grp_Watch">
+    <item
+        android:id="@+id/item_d"
+        android:checkable="true"
+        android:icon="@android:drawable/ic_search_category_default"
+        android:title="Action D" />
+    <item
+        android:id="@+id/item_e"
+        android:checkable="true"
+        android:icon="@android:drawable/ic_lock_silent_mode"
+        android:title="Action E" />
+    </group>
+
+
+    <item
+        android:id="@+id/item_f"
+        android:checkable="true"
+        android:icon="@android:drawable/ic_input_add"
+        android:title="Action F" />
+
+
+</menu>

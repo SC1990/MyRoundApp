@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,6 +7,27 @@
     android:background="@android:color/background_light"
     tools:context=".MyDetails">
 
+    <android.support.v7.widget.Toolbar
+
+        android:id="@+id/toolbar"
+        android:layout_width="420dp"
+        android:layout_height="100dp"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="140dp"
+        android:layout_height="120dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="3dp"
+        android:src="@drawable/logo"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
@@ -20,20 +41,25 @@
         android:layout_marginLeft="188dp"
         android:layout_marginTop="38dp"
         android:textColor="@color/common_google_signin_btn_text_light_pressed"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/logOutBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="-184dp"
-        android:layout_marginLeft="-184dp"
-        android:layout_marginBottom="74dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="21dp"
         android:layout_toEndOf="@+id/profileEmail"
         android:layout_toRightOf="@+id/profileEmail"
         android:onClick="onLogOutBtnClick"
-        android:text="log out" />
+        android:text="log out"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addressET" />
 
     <Button
         android:id="@+id/saveInfoBtn"
@@ -42,34 +68,47 @@
         android:layout_alignStart="@+id/logOutBtn"
         android:layout_alignLeft="@+id/logOutBtn"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="232dp"
-        android:layout_marginLeft="232dp"
-        android:layout_marginBottom="79dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
         android:onClick="onSaveInfoBtnClick"
-        android:text="save" />
+        android:text="save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addressET" />
 
     <EditText
         android:id="@+id/fullNameET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/addressET"
+        android:layout_alignLeft="@+id/addressET"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="134dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="131dp"
         android:ems="10"
         android:hint="Full Name"
         android:inputType="textPersonName"
-        android:layout_alignLeft="@+id/addressET" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/addressET"
-        android:layout_width="340dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="212dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:ems="10"
         android:hint="House number and street"
-        android:inputType="textPostalAddress" />
+        android:inputType="textPostalAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mobileNumET" />
 
     <EditText
         android:id="@+id/townET"
@@ -78,12 +117,14 @@
         android:layout_alignEnd="@+id/fullNameET"
         android:layout_alignRight="@+id/fullNameET"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="-4dp"
-        android:layout_marginRight="-4dp"
-        android:layout_marginBottom="200dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="Town"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fullNameET" />
 
     <EditText
         android:id="@+id/mobileNumET"
@@ -92,10 +133,12 @@
         android:layout_alignEnd="@+id/fullNameET"
         android:layout_alignRight="@+id/fullNameET"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="-2dp"
-        android:layout_marginRight="-2dp"
-        android:layout_marginBottom="131dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="14dp"
         android:ems="10"
         android:hint="Mobile Number"
-        android:inputType="phone" />
-</RelativeLayout>
+        android:inputType="phone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/townET" />
+</android.support.constraint.ConstraintLayout>

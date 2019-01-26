@@ -42,7 +42,7 @@ public class SignUp extends AppCompatActivity {
 
         if(firebaseAuth.getCurrentUser() != null){
             finish();
-            startActivity(new Intent(getApplicationContext(), MyDetails.class));
+            startActivity(new Intent(getApplicationContext(), UserHome.class));
         }
 
         userEmail = findViewById(R.id.userEmail);
