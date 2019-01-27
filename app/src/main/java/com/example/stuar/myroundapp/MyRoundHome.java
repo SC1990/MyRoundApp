@@ -101,13 +101,7 @@ public class MyRoundHome extends AppCompatActivity implements NavigationView.OnN
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if(id == R.id.action_settings){
-            return true;
-        }
-        else if(id == R.id.action_search){
-            return true;
-        }
-        else if(id == R.id.action_user){
+        if(id == R.id.action_user){
             return true;
         }
 
