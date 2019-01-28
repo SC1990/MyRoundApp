@@ -57,22 +57,22 @@ public class LogIn extends AppCompatActivity {
         }
         else{
             firebaseAuth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    progressDialog.dismiss();
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            progressDialog.dismiss();
 
-                    if(task.isSuccessful()){
-                        finish();
-                        startActivity(new Intent(getApplicationContext(), UserHome.class));
-                        Toast.makeText(LogIn.this, "logged in", Toast.LENGTH_SHORT).show();
-                    }
-                    else{
-                        Toast.makeText(LogIn.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                    progressDialog.dismiss();
-                }
-            });
+                            if(task.isSuccessful()){
+                                finish();
+                                startActivity(new Intent(getApplicationContext(), UserHome.class));
+                                Toast.makeText(LogIn.this, "logged in", Toast.LENGTH_SHORT).show();
+                            }
+                            else{
+                                Toast.makeText(LogIn.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                            progressDialog.dismiss();
+                        }
+                    });
 
 
 

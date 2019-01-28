@@ -129,7 +129,7 @@ public class RetailerSU extends AppCompatActivity {
 
                                 databaseReferenceUsers.child(id).setValue(user);
                                 finish();
-                                startActivity(new Intent(getApplicationContext(), UserHome.class));
+                                startActivity(new Intent(getApplicationContext(), RetailerHome.class));
                                 Toast.makeText(RetailerSU.this, "Account created", Toast.LENGTH_SHORT).show();
 
                             }

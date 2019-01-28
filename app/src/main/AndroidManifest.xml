@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".PreSignUpPage">
+        <activity android:name=".LogIn">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,11 +20,12 @@
         </activity>
         <activity android:name=".CustSignUp" />
         <activity android:name=".MyDetails" />
-        <activity android:name=".LogIn" />
+        <activity android:name=".PreSignUpPage" />
         <activity android:name=".MyRoundHome" />
         <activity android:name=".UserHome" />
         <activity android:name=".RetailerSU" />
-        <activity android:name=".RetailerList"></activity>
+        <activity android:name=".RetailerList" />
+        <activity android:name=".RetailerHome"></activity>
     </application>
 
 </manifest>

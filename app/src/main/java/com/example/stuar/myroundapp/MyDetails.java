@@ -64,10 +64,6 @@ public class MyDetails extends AppCompatActivity {
 
 
 
-
-
-
-
     }
 
     private void loadDetails() {
