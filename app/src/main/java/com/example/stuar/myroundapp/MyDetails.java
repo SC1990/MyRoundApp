@@ -33,7 +33,7 @@ public class MyDetails extends AppCompatActivity {
     DatabaseReference databaseReferenceUsers;
     FirebaseUser firebaseUser;
 
-    Query query;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
