@@ -140,5 +140,15 @@ public class UserHome extends AppCompatActivity implements NavigationView.OnNavi
         return super.onOptionsItemSelected(item);
     }
 
+    public void onViewRetailersBtnClick(View view){
+        if(view.getId() == R.id.viewRetailersBtn){
+            fetchRetailers();
+        }
+    }
+
+    private void fetchRetailers() {
+        startActivity(new Intent(getApplicationContext(), RetailerList.class));
+    }
+
 
 }

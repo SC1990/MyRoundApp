@@ -55,7 +55,7 @@ public class MyDetails extends AppCompatActivity {
 
         loadDetails();
 
-        databaseReferenceUsers = FirebaseDatabase.getInstance().getReference("customers");
+        databaseReferenceUsers = FirebaseDatabase.getInstance().getReference("users");
 
         if(firebaseAuth.getCurrentUser() == null){
             finish();
@@ -72,16 +72,25 @@ public class MyDetails extends AppCompatActivity {
 
     private void loadDetails() {
 
-        databaseReferenceUsers = FirebaseDatabase.getInstance().getReference("customers").child(userId);
+        databaseReferenceUsers = FirebaseDatabase.getInstance().getReference("users").child(userId);
         // Attach a listener to read the data at your profile reference
         databaseReferenceUsers.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-                nameET.setText(user.getName());
-                addressET.setText(user.getAddress());
-                townET.setText(user.getTown());
-                mobileNumET.setText(user.getMobileNum());
+                try{
+                    nameET.setText(user.getName());
+                    addressET.setText(user.getAddress());
+                    townET.setText(user.getTown());
+                    mobileNumET.setText(user.getMobileNum());
+                }catch (Exception e){
+                    NullPointerException nullPointerException;
+                    nameET.setText("");
+                    addressET.setText("");
+                    townET.setText("");
+                    mobileNumET.setText("");
+                }
+
             }
 
 
@@ -112,6 +121,7 @@ public class MyDetails extends AppCompatActivity {
 
             String id = firebaseUser.getUid();
             User user = new User(name, address, town, num, id);
+            user.setUserType("cust");
 
             databaseReferenceUsers.child(id).setValue(user);
 

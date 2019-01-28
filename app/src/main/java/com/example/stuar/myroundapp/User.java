@@ -11,6 +11,7 @@ public class User {
     private String eircode;
     private String city;
     private String mobileNum;
+    private String userType;
 
     public User() {
     }
@@ -101,5 +102,11 @@ public class User {
         this.password = password;
     }
 
+    public String getUserType() {
+        return userType;
+    }
 
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
 }

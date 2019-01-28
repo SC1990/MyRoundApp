@@ -53,7 +53,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="20dp"
         android:layout_toEndOf="@+id/profileEmail"
         android:layout_toRightOf="@+id/profileEmail"
         android:onClick="onLogOutBtnClick"

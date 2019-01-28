@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LogIn">
+    tools:context=".LogIn"
+    >
 
     <android.support.v7.widget.Toolbar
 
@@ -39,6 +40,7 @@
         android:background="@drawable/button_border"
         android:onClick="onLogInBtnClick"
         android:text="Log in"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -46,13 +48,13 @@
     <EditText
         android:id="@+id/logInEmail"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="168dp"
         android:background="@drawable/edittext_border"
         android:ems="10"
-        android:hint="email"
+        android:hint=" email"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
@@ -62,14 +64,14 @@
     <EditText
         android:id="@+id/logInPassword"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:layout_alignStart="@+id/logInEmail"
         android:layout_alignLeft="@id/logInEmail"
         android:layout_alignParentTop="true"
         android:layout_marginTop="52dp"
         android:background="@drawable/edittext_border"
         android:ems="10"
-        android:hint="password"
+        android:hint=" password"
         android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="@+id/logInEmail"
         app:layout_constraintTop_toBottomOf="@+id/logInEmail" />
@@ -90,14 +92,15 @@
 
     <Button
         android:id="@+id/signUpLinkBtn"
-        android:background="@drawable/button_border"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="57dp"
+        android:background="@drawable/button_border"
         android:onClick="onSignUpLinkBtnClick"
         android:text="Sign up"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

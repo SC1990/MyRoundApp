@@ -89,7 +89,7 @@ public class LogIn extends AppCompatActivity {
     public void onSignUpLinkBtnClick(View view){
         if(view.getId() == R.id.signUpLinkBtn){
             finish();
-            startActivity(new Intent(LogIn.this, SignUp.class));
+            startActivity(new Intent(LogIn.this, CustSignUp.class));
         }
     }
 }
