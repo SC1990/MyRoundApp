@@ -25,7 +25,8 @@
         <activity android:name=".UserHome" />
         <activity android:name=".RetailerSU" />
         <activity android:name=".RetailerList" />
-        <activity android:name=".RetailerHome"></activity>
+        <activity android:name=".RetailerHome" />
+        <activity android:name=".ret_details"></activity>
     </application>
 
 </manifest>

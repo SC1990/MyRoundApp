@@ -5,14 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/background_light"
-    tools:context=".MyDetails">
+    tools:context=".ret_details">
 
     <android.support.v7.widget.Toolbar
 
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbar1"
         android:layout_width="420dp"
-        android:layout_height="100dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="270dp"
         android:background="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toTopOf="@+id/hoursET"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,12 +26,10 @@
         android:layout_alignParentRight="true"
         android:layout_marginBottom="3dp"
         android:src="@drawable/logo"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-
 
 
     <Button
@@ -39,23 +39,23 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="20dp"
-        android:onClick="onLogOutBtnClick"
+        android:layout_marginTop="96dp"
+        android:onClick="onLogOutBtnClick1"
         android:text="log out"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addressET" />
 
     <Button
-        android:id="@+id/saveInfoBtn"
+        android:id="@+id/saveInfoBtn1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/logOutBtn"
         android:layout_alignLeft="@+id/logOutBtn"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="21dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginRight="28dp"
-        android:onClick="onSaveInfoBtnClick"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:onClick="onSaveInfoBtnClick1"
         android:text="save"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addressET" />
@@ -71,7 +71,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="131dp"
         android:ems="10"
-        android:hint="Full Name"
+        android:hint="Name"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -88,7 +88,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:ems="10"
-        android:hint="House number and street"
+        android:hint="Address"
         android:inputType="textPostalAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -103,7 +103,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="11dp"
         android:ems="10"
         android:hint="Town"
         android:inputType="textPersonName"
@@ -125,4 +125,18 @@
         android:inputType="phone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/townET" />
+
+    <EditText
+        android:id="@+id/hoursET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="146dp"
+        android:ems="10"
+        android:hint="Delivery Hours"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar1" />
 </android.support.constraint.ConstraintLayout>

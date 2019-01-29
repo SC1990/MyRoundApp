@@ -142,5 +142,11 @@ public class RetailerHome extends AppCompatActivity implements NavigationView.On
     private void retrieveUserInfo() {
         startActivity(new Intent(RetailerHome.this, MyDetails.class));
     }
+
+    public void onRetOrdersBtnClick(View view) {
+        if(view.getId() == R.id.retOrdersBtn){
+            retrieveUserInfo();
+        }
+    }
 }
 
