@@ -23,7 +23,8 @@ public class RetailerList extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private RetailerListAdapter adapter;
-    private List<Retailer> retailers;
+    private ArrayList<Retailer> retailers;
+    private ArrayList<String> retailerImages;
 
     DatabaseReference dbRets;
 
@@ -36,6 +37,7 @@ public class RetailerList extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         retailers = new ArrayList<>();
+        retailerImages = new ArrayList<>();
         adapter = new RetailerListAdapter(this, retailers);
         recyclerView.setAdapter(adapter);
 

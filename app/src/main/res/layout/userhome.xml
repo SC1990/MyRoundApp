@@ -33,6 +33,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:layout_marginRight="16dp"
+            android:visibility="invisible"
             android:layout_marginBottom="16dp"
             app:backgroundTint="@color/colorPrimary"
             android:src="@drawable/icon_cart"

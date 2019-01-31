@@ -3,13 +3,17 @@ package com.example.stuar.myroundapp;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
 import java.util.List;
+
+import static android.support.constraint.Constraints.TAG;
 
 public class RetailerListAdapter extends RecyclerView.Adapter<RetailerListAdapter.RetailerViewHolder> {
 
@@ -30,11 +34,9 @@ public class RetailerListAdapter extends RecyclerView.Adapter<RetailerListAdapte
 
     @Override
     public void onBindViewHolder(@NonNull RetailerViewHolder holder, int position) {
+        Log.d(TAG, "onClick: clicked on: " + retailerList.get(position));
         Retailer retailer = retailerList.get(position);
         holder.textViewName.setText(retailer.getName());
-        holder.textViewGenre.setText("Genre: ");
-        holder.textViewAge.setText("Age: ");
-        holder.textViewCountry.setText("Country: ");
     }
 
     @Override
@@ -45,14 +47,14 @@ public class RetailerListAdapter extends RecyclerView.Adapter<RetailerListAdapte
     class RetailerViewHolder extends RecyclerView.ViewHolder {
 
         TextView textViewName, textViewGenre, textViewAge, textViewCountry;
+        RelativeLayout parent;
 
         public RetailerViewHolder(@NonNull View itemView) {
             super(itemView);
 
             textViewName = itemView.findViewById(R.id.retname);
-            textViewGenre = itemView.findViewById(R.id.text_view_genre);
-            textViewAge = itemView.findViewById(R.id.text_view_age);
-            textViewCountry = itemView.findViewById(R.id.text_view_country);
+            parent = itemView.findViewById(R.id.parent);
+
 
         }
     }

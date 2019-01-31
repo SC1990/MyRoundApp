@@ -21,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 public class MyDetails extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
-    private TextView userEmail;
+
 
     private EditText nameET;
     private EditText addressET;
@@ -40,11 +40,10 @@ public class MyDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mydetails);
 
-        userEmail = findViewById(R.id.profileEmail);
+
         firebaseAuth = FirebaseAuth.getInstance();
 
         firebaseUser = firebaseAuth.getCurrentUser();
-        userEmail.setText("Welcome " + firebaseUser.getEmail());
 
         nameET = findViewById(R.id.fullNameET);
         addressET = findViewById(R.id.addressET);

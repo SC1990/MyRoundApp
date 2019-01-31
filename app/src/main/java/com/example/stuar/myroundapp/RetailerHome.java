@@ -31,22 +31,6 @@ public class RetailerHome extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retailer_home);
 
-        FloatingActionButton floatingActionButton = (FloatingActionButton)findViewById(R.id.fab);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Snackbar snackbar = Snackbar.make(v, "Send message?", Snackbar.LENGTH_INDEFINITE);
-                snackbar.setAction("Yes", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Snackbar.make(v, "Done!", Snackbar.LENGTH_SHORT).show();
-                    }
-                });
-
-                snackbar.show();;
-            }
-        });
-
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

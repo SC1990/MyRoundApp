@@ -9,6 +9,7 @@
         android:orderInCategory="200"
         android:title="My Details"
         app:showAsAction="always"
+        android:visible="false"
         android:icon="@drawable/refresh_icon"/>
 
 
@@ -19,6 +20,7 @@
         android:orderInCategory="200"
         android:title="My Details"
         app:showAsAction="always"
+        android:visible="false"
         android:icon="@android:drawable/ic_menu_info_details"/>
 
 
