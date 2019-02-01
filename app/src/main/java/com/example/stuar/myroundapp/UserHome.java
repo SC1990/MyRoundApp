@@ -31,21 +31,7 @@ public class UserHome extends AppCompatActivity implements NavigationView.OnNavi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.userhome);
 
-        FloatingActionButton floatingActionButton = (FloatingActionButton)findViewById(R.id.fab);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Snackbar snackbar = Snackbar.make(v, "Send message?", Snackbar.LENGTH_INDEFINITE);
-                snackbar.setAction("Yes", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Snackbar.make(v, "Done!", Snackbar.LENGTH_SHORT).show();
-                    }
-                });
 
-                snackbar.show();;
-            }
-        });
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -95,7 +81,7 @@ public class UserHome extends AppCompatActivity implements NavigationView.OnNavi
         closeDrawer();
 
         switch (item.getItemId()){
-            case R.id.item_a:
+            case R.id.item_login:
                 break;
 
             case R.id.item_b:

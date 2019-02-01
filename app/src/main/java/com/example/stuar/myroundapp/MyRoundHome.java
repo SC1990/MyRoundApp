@@ -1,5 +1,6 @@
 package com.example.stuar.myroundapp;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -15,6 +16,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+
+
+
 public class MyRoundHome extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
 
@@ -25,21 +29,7 @@ public class MyRoundHome extends AppCompatActivity implements NavigationView.OnN
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_round_home);
 
-        FloatingActionButton floatingActionButton = (FloatingActionButton)findViewById(R.id.fab);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Snackbar snackbar = Snackbar.make(v, "Send message?", Snackbar.LENGTH_INDEFINITE);
-                snackbar.setAction("Yes", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Snackbar.make(v, "Done!", Snackbar.LENGTH_SHORT).show();
-                    }
-                });
 
-                snackbar.show();;
-            }
-        });
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -64,7 +54,8 @@ public class MyRoundHome extends AppCompatActivity implements NavigationView.OnN
         closeDrawer();
 
         switch (item.getItemId()){
-            case R.id.item_a:
+            case R.id.item_login:
+                startActivity(new Intent(getApplicationContext(), LogIn.class));
                 break;
 
             case R.id.item_b:
@@ -93,7 +84,7 @@ public class MyRoundHome extends AppCompatActivity implements NavigationView.OnN
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.right_menu, menu);
+        //getMenuInflater().inflate(R.menu.right_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -109,8 +100,12 @@ public class MyRoundHome extends AppCompatActivity implements NavigationView.OnN
     }
 
     public void onFindBeerClick(View view) {
-        if (view.getId() == R.id.findBeerBtn){
-
+        if (view.getId() == R.id.findBeerBtn) {
+                fetchRetailers();
         }
     }
+
+        private void fetchRetailers() {
+            startActivity(new Intent(getApplicationContext(), RetailerList.class));
+        }
 }

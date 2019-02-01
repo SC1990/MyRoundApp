@@ -1,18 +1,55 @@
 <resources>
-    <string name="app_name"></string>
+    <string name="app_name">a</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_closed">Close</string>
+    <string name="e_g_walkinstown">e.g. Walkinstown</string>
+    <string name="find_beer_in">Find beer in…</string>
+    <string name="find_beer">Find beer</string>
+    <string name="i_am_over_18">I am over 18</string>
+    <string name="please_drink_responsibly">Please drink responsibly</string>
+    <string name="log_in">Log in</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="sign_up">Sign up</string>
+    <string name="logo">logo</string>
+    <string name="retailer">Retailer</string>
+    <string name="customer">Customer</string>
+    <string name="log_out">log out</string>
+    <string name="save">save</string>
+    <string name="name">Name</string>
+    <string name="address">Address</string>
+    <string name="town">Town</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="delivery_hours">Delivery Hours</string>
+    <string name="my_details">my details</string>
+    <string name="customer_orders">Customer Orders</string>
+    <string name="sales_analysis">Sales Analysis</string>
+    <string name="email1">email</string>
+    <string name="password1">password</string>
+    <string name="confirm_password1">confirm password</string>
+    <string name="sign_up1">sign up</string>
+    <string name="log_in1">log in</string>
+    <string name="enter_code">enter code</string>
+    <string name="email3">email</string>
+    <string name="password3">password</string>
+    <string name="confirm_password3">confirm password</string>
+    <string name="sign_up3">sign up</string>
+    <string name="log_in3">log in</string>
+    <string name="log_out1">log out</string>
+    <string name="save1">save</string>
+    <string name="full_name">Full Name</string>
+    <string name="house_number_and_street">House number and street</string>
+    <string name="town1">Town</string>
+    <string name="mobile_number1">Mobile Number</string>
+    <string name="my_detailsss">my details</string>
+    <string name="view_retailers1">View Retailers</string>
+    <string name="log_innn">Log in</string>
+    <string name="find_beer1">Find beer</string>
+    <string name="orders">Orders</string>
+    <string name="settings">Settings</string>
+    <string name="help">Help</string>
+    <string name="my_details_">My Details</string>
+    <string name="my_details6">My Details</string>
 
 
-    <string-array name="drawer_list">
-        <item>Item 1</item>
-        <item>Item 2</item>
-        <item>Item 3</item>
-        <item>Item 4</item>
-        <item>Item 5</item>
-        <item>Item 6</item>
-        <item>Item 7</item>
-        <item>Item 8</item>
-        <item>Item 9</item>
-    </string-array>
 </resources>

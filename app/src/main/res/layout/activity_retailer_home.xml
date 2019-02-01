@@ -36,7 +36,7 @@
             android:layout_marginLeft="140dp"
             android:layout_marginTop="216dp"
             android:onClick="onDetailsBtnClick1"
-            android:text="my details"
+            android:text="@string/my_details"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -52,8 +52,8 @@
             android:layout_marginEnd="50dp"
             android:layout_marginRight="50dp"
             android:layout_marginBottom="77dp"
-            app:layout_constraintBottom_toTopOf="@+id/myDetailsBtn"
-            app:layout_constraintEnd_toEndOf="@+id/myDetailsBtn" />
+            app:layout_constraintBottom_toTopOf="@+id/myDetailsBtn1"
+            app:layout_constraintEnd_toEndOf="@+id/myDetailsBtn1" />
 
         <Button
             android:id="@+id/retOrdersBtn"
@@ -63,7 +63,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:onClick="onRetOrdersBtnClick"
-            android:text="Customer Orders"
+            android:text="@string/customer_orders"
             app:layout_constraintStart_toStartOf="@+id/myDetailsBtn1"
             app:layout_constraintTop_toBottomOf="@+id/myDetailsBtn1" />
 
@@ -71,7 +71,7 @@
             android:id="@+id/button2"
             android:layout_width="155dp"
             android:layout_height="wrap_content"
-            android:text="Sales Analysis"
+            android:text="@string/sales_analysis"
             tools:layout_editor_absoluteX="141dp"
             tools:layout_editor_absoluteY="314dp"
             app:layout_constraintStart_toStartOf="@+id/retOrdersBtn"

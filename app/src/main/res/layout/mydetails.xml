@@ -16,20 +16,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="140dp"
-        android:layout_height="120dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="3dp"
-        android:src="@drawable/da"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
 
 
     <Button
@@ -41,7 +27,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="20dp"
         android:onClick="onLogOutBtnClick"
-        android:text="log out"
+        android:text="@string/log_out1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addressET" />
 
@@ -56,7 +42,7 @@
         android:layout_marginEnd="28dp"
         android:layout_marginRight="28dp"
         android:onClick="onSaveInfoBtnClick"
-        android:text="save"
+        android:text="@string/save1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addressET" />
 
@@ -71,7 +57,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="131dp"
         android:ems="10"
-        android:hint="Full Name"
+        android:hint="@string/full_name"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -88,7 +74,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:ems="10"
-        android:hint="House number and street"
+        android:hint="@string/house_number_and_street"
         android:inputType="textPostalAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -105,7 +91,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="12dp"
         android:ems="10"
-        android:hint="Town"
+        android:hint="@string/town1"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fullNameET" />
@@ -121,7 +107,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="14dp"
         android:ems="10"
-        android:hint="Mobile Number"
+        android:hint="@string/mobile_number1"
         android:inputType="phone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/townET" />

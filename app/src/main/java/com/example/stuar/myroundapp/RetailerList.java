@@ -1,10 +1,19 @@
 package com.example.stuar.myroundapp;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -19,7 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RetailerList extends AppCompatActivity {
+public class RetailerList extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private RecyclerView recyclerView;
     private RetailerListAdapter adapter;
@@ -27,6 +36,7 @@ public class RetailerList extends AppCompatActivity {
     private ArrayList<String> retailerImages;
 
     DatabaseReference dbRets;
+    DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +51,27 @@ public class RetailerList extends AppCompatActivity {
         adapter = new RetailerListAdapter(this, retailers);
         recyclerView.setAdapter(adapter);
 
-
         dbRets = FirebaseDatabase.getInstance().getReference("users/retailers");
         dbRets.addListenerForSingleValueEvent(valueEventListener);
 
+
+        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar1);
+        setSupportActionBar(toolbar);
+
+        drawerLayout = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = (NavigationView)findViewById(R.id.drawer2);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
+                toolbar, R.string.drawer_open, R.string.drawer_closed);
+
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+
+
     }
+
+
 
     ValueEventListener valueEventListener = new ValueEventListener() {
         @Override
@@ -65,4 +91,61 @@ public class RetailerList extends AppCompatActivity {
 
         }
     };
+
+
+
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+
+        //String itemName = (String)item.getTitle();
+
+        closeDrawer();
+
+        switch (item.getItemId()){
+            case R.id.item_login:
+                break;
+
+            case R.id.item_b:
+                break;
+        }
+
+        return true;
+    }
+
+    private void closeDrawer() {
+        drawerLayout.closeDrawer(GravityCompat.START);
+    }
+
+    private void openDrawer() {
+        drawerLayout.openDrawer(GravityCompat.START);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+            closeDrawer();
+        }
+
+        super.onBackPressed();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.right_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if(id == R.id.action_user){
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
 }

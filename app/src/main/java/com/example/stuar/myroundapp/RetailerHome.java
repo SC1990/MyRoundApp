@@ -71,7 +71,7 @@ public class RetailerHome extends AppCompatActivity implements NavigationView.On
         closeDrawer();
 
         switch (item.getItemId()){
-            case R.id.item_a:
+            case R.id.item_login:
                 break;
 
             case R.id.item_b:

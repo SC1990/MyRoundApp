@@ -25,19 +25,6 @@
 
             />
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginRight="16dp"
-            android:visibility="invisible"
-            android:layout_marginBottom="16dp"
-            app:backgroundTint="@color/colorPrimary"
-            android:src="@drawable/icon_cart"
-             />
 
         <Button
             android:id="@+id/myDetailsBtn"
@@ -49,7 +36,7 @@
             android:layout_marginLeft="128dp"
             android:layout_marginTop="330dp"
             android:onClick="onDetailsBtnClick"
-            android:text="my details"
+            android:text="@string/my_detailsss"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -79,7 +66,7 @@
             android:layout_marginLeft="141dp"
             android:layout_marginBottom="259dp"
             android:onClick="onViewRetailersBtnClick"
-            android:text="View Retailers" />
+            android:text="@string/view_retailers1" />
 
     </RelativeLayout>
 
