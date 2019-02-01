@@ -107,4 +107,10 @@ public class MyRoundHome extends AppCompatActivity implements NavigationView.OnN
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void onFindBeerClick(View view) {
+        if (view.getId() == R.id.findBeerBtn){
+
+        }
+    }
 }

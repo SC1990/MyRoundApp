@@ -6,41 +6,37 @@
     <item
         android:id="@+id/item_a"
         android:checkable="true"
-        android:icon="@android:drawable/ic_dialog_email"
-        android:title="Action A" />
+        android:icon="@drawable/profile_icon"
+        android:title="Log in" />
 
     <item
         android:id="@+id/item_b"
         android:checkable="true"
-        android:icon="@android:drawable/ic_delete"
-        android:title="Action B" />
+        android:icon="@android:drawable/ic_search_category_default"
+        android:title="Find beer" />
 
     <item
         android:id="@+id/item_c"
         android:checkable="true"
-        android:icon="@android:drawable/ic_notification_overlay"
-        android:title="Action C" />
+        android:icon="@drawable/order"
+        android:title="Orders" />
     </group>
 
     <group android:id="@+id/grp_Watch">
     <item
         android:id="@+id/item_d"
         android:checkable="true"
-        android:icon="@android:drawable/ic_search_category_default"
-        android:title="Action D" />
+        android:icon="@drawable/settings"
+        android:title="Settings" />
     <item
         android:id="@+id/item_e"
         android:checkable="true"
-        android:icon="@android:drawable/ic_lock_silent_mode"
-        android:title="Action E" />
+        android:icon="@drawable/help"
+        android:title="Help" />
     </group>
 
 
-    <item
-        android:id="@+id/item_f"
-        android:checkable="true"
-        android:icon="@android:drawable/ic_input_add"
-        android:title="Action F" />
+
 
 
 </menu>
