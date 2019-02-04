@@ -1,5 +1,6 @@
 package com.example.stuar.myroundapp;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -37,11 +38,17 @@ public class RetailerList extends AppCompatActivity implements NavigationView.On
 
     DatabaseReference dbRets;
     DrawerLayout drawerLayout;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retailer_list);
+
+        progressDialog = new ProgressDialog(this);
+
+        progressDialog.setMessage("Loading..");
+        progressDialog.show();
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
@@ -84,6 +91,7 @@ public class RetailerList extends AppCompatActivity implements NavigationView.On
                 }
                     adapter.notifyDataSetChanged();
             }
+            progressDialog.dismiss();
         }
 
         @Override

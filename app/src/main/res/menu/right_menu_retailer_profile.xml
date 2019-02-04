@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:Context = ".RetailerProfile"
+    >
+
+
+    <item
+        android:id="@+id/action_user2"
+        android:orderInCategory="300"
+        android:title="@string/my_details_"
+        app:showAsAction="always"
+        android:visible="true"
+        android:icon="@drawable/icon_cart"/>
+
+
+    <item
+        android:id="@+id/action_user"
+        android:orderInCategory="100"
+        android:title="@string/my_details6"
+        app:showAsAction="always"
+        android:visible="true"
+        android:icon="@android:drawable/ic_search_category_default"/>
+
+
+
+</menu>
