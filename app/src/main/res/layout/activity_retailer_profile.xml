@@ -38,13 +38,49 @@
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="0dp" />
 
-        <ImageView
-            android:id="@+id/imageView8"
-            android:layout_width="105dp"
-            android:layout_height="84dp"
-            android:layout_marginLeft="-10dp"
-            android:layout_marginTop="71dp"
-            app:srcCompat="@mipmap/ic_launcher_round" />
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/food_img"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginBottom="8dp"
+            android:layout_toEndOf="@+id/food_img"
+            android:layout_toRightOf="@+id/food_img"
+            android:background="@drawable/toolbar_layout"
+            app:tabIndicatorColor="@color/common_google_signin_btn_text_dark_focused">
+
+        </android.support.design.widget.TabLayout>
+
+        <GridView
+            android:id="@+id/gridview_android_example"
+            android:layout_width="match_parent"
+            android:layout_height="305dp"
+            android:layout_alignBottom="@id/tab"
+            android:layout_gravity="center"
+            android:layout_marginBottom="-310dp"
+            android:columnWidth="100dp"
+            android:gravity="center"
+            android:minHeight="90dp"
+            android:numColumns="auto_fit"
+            android:stretchMode="columnWidth" />
+
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile_image"
+            android:layout_width="115dp"
+            android:layout_height="93dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="62dp"
+            android:layout_marginEnd="-2dp"
+            android:layout_toStartOf="@+id/textView2"
+            android:src="@drawable/company_logo"
+            app:civ_border_color="@color/colorAccent"
+            app:civ_border_width="3dp"
+            android:layout_marginRight="-2dp"
+            android:layout_toLeftOf="@+id/textView2" />
 
         <TextView
             android:id="@+id/textView"
@@ -75,7 +111,14 @@
             android:layout_alignLeft="@+id/textView"
             android:layout_marginLeft="2dp" />
 
+
+
+
+
+
     </RelativeLayout>
+
+
 
     <android.support.design.widget.NavigationView
         android:id="@+id/drawer2"
