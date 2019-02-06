@@ -1,19 +1,24 @@
 package com.example.stuar.myroundapp;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 
@@ -29,6 +34,9 @@ public class RetailerProfile extends AppCompatActivity implements NavigationView
             R.drawable.bbottle, R.drawable.bbottle, R.drawable.bbottle,
             R.drawable.bbottle, R.drawable.bbottle, R.drawable.bbottle};
 
+    final Context context = this;
+    private Button mbutton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +51,7 @@ public class RetailerProfile extends AppCompatActivity implements NavigationView
         NavigationView navigationView = (NavigationView)findViewById(R.id.drawer2);
         navigationView.setNavigationItemSelectedListener(this);
 
+
         TabLayout tabLayout = findViewById(R.id.tab);
         tabLayout.addTab(tabLayout.newTab().setText("Drinks"));
         tabLayout.addTab(tabLayout.newTab().setText("Reviews"));
@@ -51,7 +60,39 @@ public class RetailerProfile extends AppCompatActivity implements NavigationView
         gridView.setAdapter(new ImageAdapterGridView(this));
 
 
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // custom dialog
+                final AlertDialog dialog = new AlertDialog.Builder(context)
+                        .setTitle("Goose IPA 355ml")
+                        .setView(R.layout.prod_popup)
+                        .create();
 
+                dialog.show();
+
+                Button dialogButtonCancel = (Button) dialog.findViewById(R.id.customDialogCancel);
+                Button dialogButtonOk = (Button) dialog.findViewById(R.id.customDialogOk);
+                // Click cancel to dismiss android custom dialog box
+                dialogButtonCancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+
+                // Your android custom dialog ok action
+                // Action for custom dialog ok button click
+                dialogButtonOk.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.show();
+            }
+        });
 
 
     }
