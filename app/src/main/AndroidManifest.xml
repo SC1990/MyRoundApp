@@ -27,7 +27,8 @@
         <activity android:name=".RetailerList" />
         <activity android:name=".RetailerHome" />
         <activity android:name=".RetailerDetails" />
-        <activity android:name=".RetailerProfile"/>
+        <activity android:name=".RetailerProfile" />
+        <activity android:name=".RetailerReviewList" />
     </application>
 
 </manifest>

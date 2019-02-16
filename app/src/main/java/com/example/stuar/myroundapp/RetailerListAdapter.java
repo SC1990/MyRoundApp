@@ -24,9 +24,9 @@ public class RetailerListAdapter extends RecyclerView.Adapter<RetailerListAdapte
     private List<Retailer> retailerList;
     View view;
 
-    public RetailerListAdapter(Context mCtx, List<Retailer> artistList) {
+    public RetailerListAdapter(Context mCtx, List<Retailer> retailerList) {
         this.mCtx = mCtx;
-        this.retailerList = artistList;
+        this.retailerList = retailerList;
     }
 
     @NonNull

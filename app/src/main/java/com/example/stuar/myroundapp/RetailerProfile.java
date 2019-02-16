@@ -1,17 +1,14 @@
 package com.example.stuar.myroundapp;
 
-import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,9 +17,8 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class RetailerProfile extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -35,7 +31,6 @@ public class RetailerProfile extends AppCompatActivity implements NavigationView
             R.drawable.bbottle, R.drawable.bbottle, R.drawable.bbottle};
 
     final Context context = this;
-    private Button mbutton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +51,26 @@ public class RetailerProfile extends AppCompatActivity implements NavigationView
         tabLayout.addTab(tabLayout.newTab().setText("Drinks"));
         tabLayout.addTab(tabLayout.newTab().setText("Reviews"));
 
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+
+                if (tab.getPosition() == 1) {
+                    startActivity(new Intent(RetailerProfile.this, RetailerReviewList.class));
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
         gridView = findViewById(R.id.gridview_android_example);
         gridView.setAdapter(new ImageAdapterGridView(this));
 
@@ -65,34 +80,41 @@ public class RetailerProfile extends AppCompatActivity implements NavigationView
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // custom dialog
                 final AlertDialog dialog = new AlertDialog.Builder(context)
-                        .setTitle("Goose IPA 355ml")
+                        //.setTitle("Goose IPA 355ml")
                         .setView(R.layout.prod_popup)
                         .create();
 
                 dialog.show();
 
-                Button dialogButtonCancel = (Button) dialog.findViewById(R.id.customDialogCancel);
-                Button dialogButtonOk = (Button) dialog.findViewById(R.id.customDialogOk);
-                // Click cancel to dismiss android custom dialog box
-                dialogButtonCancel.setOnClickListener(new View.OnClickListener() {
+                ImageButton closeDialog = (ImageButton) dialog.findViewById(R.id.x_butt);
+                Button increment = (Button) dialog.findViewById(R.id.incrementQuantity);
+                Button decrement = (Button) dialog.findViewById(R.id.decrementQuantity);
+
+                closeDialog.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         dialog.dismiss();
                     }
                 });
 
-                // Your android custom dialog ok action
-                // Action for custom dialog ok button click
-                dialogButtonOk.setOnClickListener(new View.OnClickListener() {
+                increment.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        dialog.dismiss();
+
+                    }
+                });
+
+                decrement.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
                     }
                 });
 
                 dialog.show();
             }
         });
+
 
 
     }

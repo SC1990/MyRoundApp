@@ -1,6 +1,7 @@
 package com.example.stuar.myroundapp;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -9,6 +10,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -16,20 +18,47 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
-
+import android.widget.Button;
+import android.widget.ImageButton;
 
 
 public class MyRoundHome extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
 
     DrawerLayout drawerLayout;
+    final Context context = this;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_round_home);
+
+
+        final AlertDialog dialog = new AlertDialog.Builder(context)
+                .setView(R.layout.activity_age_confirmation)
+                .create();
+        dialog.setCancelable(false);
+        dialog.show();
+
+        Button dialogButtonCancel = (Button) dialog.findViewById(R.id.noBtn);
+        Button dialogButtonOk = (Button) dialog.findViewById(R.id.yesBtn);
+        // Click cancel to dismiss android custom dialog box
+        dialogButtonCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        dialogButtonOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
 
 
 

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".RetailerReviewList">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@id/toolbar1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/toolbar_layout"
+            app:layout_constraintTop_toTopOf="@id/food_img"
+            android:minHeight="?attr/actionBarSize"
+            >
+        </android.support.v7.widget.Toolbar>
+
+        <ImageView
+            android:id="@+id/food_img"
+            android:layout_width="match_parent"
+            android:layout_height="254dp"
+            android:layout_alignTop="@+id/toolbar1"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            app:srcCompat="@drawable/beer"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="0dp" />
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/food_img"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginBottom="8dp"
+            android:layout_toEndOf="@+id/food_img"
+            android:layout_toRightOf="@+id/food_img"
+            android:background="@drawable/toolbar_layout"
+            app:tabIndicatorColor="@color/common_google_signin_btn_text_dark_focused">
+
+        </android.support.design.widget.TabLayout>
+
+
+
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile_image"
+            android:layout_width="115dp"
+            android:layout_height="93dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="62dp"
+            android:layout_marginEnd="-2dp"
+            android:layout_toStartOf="@+id/textView2"
+            android:src="@drawable/company_logo"
+            app:civ_border_color="@color/colorAccent"
+            app:civ_border_width="3dp"
+            android:layout_marginRight="-2dp"
+            android:layout_toLeftOf="@+id/textView2" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="116dp"
+            android:layout_marginLeft="116dp"
+            android:layout_marginTop="62dp"
+            android:text="Pedro's Beers"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textView"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="90dp"
+            android:text="Craft Beers"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+            android:textStyle="bold"
+            android:layout_alignLeft="@+id/textView"
+            android:layout_marginLeft="2dp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/review_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="305dp"
+            android:layout_alignBottom="@id/tab"
+            android:layout_gravity="center"
+            android:layout_marginBottom="-310dp"
+            android:columnWidth="100dp"
+            android:gravity="center"
+            android:minHeight="90dp"
+            android:numColumns="auto_fit"
+            android:stretchMode="columnWidth"
+            android:orientation="horizontal" >
+        </android.support.v7.widget.RecyclerView>
+
+    </RelativeLayout>
+
+
+
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/drawer2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:pointerIcon="arrow"
+        app:itemIconTint="#8c000000"
+        app:itemTextColor="#E6000000"
+        />
+
+</android.support.v4.widget.DrawerLayout>
