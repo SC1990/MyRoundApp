@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">a</string>
+    <string name="app_name">MyRound</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_closed">Close</string>
     <string name="e_g_walkinstown">e.g. Walkinstown</string>

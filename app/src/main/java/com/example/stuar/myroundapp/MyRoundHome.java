@@ -35,11 +35,14 @@ public class MyRoundHome extends AppCompatActivity implements NavigationView.OnN
         setContentView(R.layout.activity_my_round_home);
 
 
-        final AlertDialog dialog = new AlertDialog.Builder(context)
+       /*
+
+       final AlertDialog dialog = new AlertDialog.Builder(context)
                 .setView(R.layout.activity_age_confirmation)
                 .create();
         dialog.setCancelable(false);
         dialog.show();
+
 
         Button dialogButtonCancel = (Button) dialog.findViewById(R.id.noBtn);
         Button dialogButtonOk = (Button) dialog.findViewById(R.id.yesBtn);
@@ -60,7 +63,7 @@ public class MyRoundHome extends AppCompatActivity implements NavigationView.OnN
 
         dialog.show();
 
-
+        */
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

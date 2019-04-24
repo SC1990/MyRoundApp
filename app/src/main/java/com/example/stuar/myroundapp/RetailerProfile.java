@@ -20,6 +20,12 @@ import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+
+
 public class RetailerProfile extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     GridView gridView;
@@ -75,6 +81,7 @@ public class RetailerProfile extends AppCompatActivity implements NavigationView
         gridView.setAdapter(new ImageAdapterGridView(this));
 
 
+        //product view
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -89,6 +96,7 @@ public class RetailerProfile extends AppCompatActivity implements NavigationView
                 ImageButton closeDialog = (ImageButton) dialog.findViewById(R.id.x_butt);
                 Button increment = (Button) dialog.findViewById(R.id.incrementQuantity);
                 Button decrement = (Button) dialog.findViewById(R.id.decrementQuantity);
+                Button addToCart = (Button) dialog.findViewById(R.id.add_to_cart_button);
 
                 closeDialog.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -111,6 +119,13 @@ public class RetailerProfile extends AppCompatActivity implements NavigationView
                     }
                 });
 
+                addToCart.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        addToCart();
+                    }
+                });
+
                 dialog.show();
             }
         });
@@ -118,6 +133,15 @@ public class RetailerProfile extends AppCompatActivity implements NavigationView
 
 
     }
+
+    private void addToCart(){
+        //new table in db
+        DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
+
+        final HashMap<String, Object> cartHmap = new HashMap<>();
+        //cartHmap.put("")
+    }
+
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -130,6 +154,25 @@ public class RetailerProfile extends AppCompatActivity implements NavigationView
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.right_menu_retailer_profile, menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    //cart icon
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId())
+        {
+            case R.id.cart_icon:
+                startActivity(new Intent(getApplicationContext(), Cart.class));
+                break;
+
+        /*    case R.id.search_products_icon:
+                startActivity(new Intent(getApplicationContext(), LogIn.class));
+                break;*/
+
+        }
+
+        return true;
     }
 
 

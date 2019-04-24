@@ -76,6 +76,7 @@ public class RetailerList extends AppCompatActivity implements NavigationView.On
         actionBarDrawerToggle.syncState();
 
 
+
     }
 
 

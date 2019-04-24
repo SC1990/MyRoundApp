@@ -14,6 +14,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/gridView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numColumns="auto_fit"
+            android:gravity="center"
+            android:columnWidth="150dp"
+            android:stretchMode="columnWidth"
+            android:layout_marginTop="110dp"
+            android:layout_marginBottom="45dp">
+
+        </GridView>
+
         <android.support.v7.widget.Toolbar
             android:id="@id/toolbar"
             android:layout_width="match_parent"
@@ -26,7 +39,7 @@
             />
 
 
-        <Button
+       <!-- <Button
             android:id="@+id/myDetailsBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,9 +53,9 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.535" />
+            app:layout_constraintVertical_bias="0.535" />-->
 
-        <TextView
+     <!--   <TextView
             android:id="@+id/userEmailET"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,9 +66,9 @@
             android:layout_marginRight="50dp"
             android:layout_marginBottom="77dp"
             app:layout_constraintBottom_toTopOf="@+id/myDetailsBtn"
-            app:layout_constraintEnd_toEndOf="@+id/myDetailsBtn" />
+            app:layout_constraintEnd_toEndOf="@+id/myDetailsBtn" />-->
 
-        <Button
+        <!--<Button
             android:id="@+id/viewRetailersBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -66,7 +79,7 @@
             android:layout_marginLeft="141dp"
             android:layout_marginBottom="259dp"
             android:onClick="onViewRetailersBtnClick"
-            android:text="@string/view_retailers1" />
+            android:text="@string/view_retailers1" />-->
 
     </RelativeLayout>
 

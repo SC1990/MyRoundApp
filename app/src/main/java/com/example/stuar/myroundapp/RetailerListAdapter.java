@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import java.util.List;
@@ -39,9 +40,12 @@ public class RetailerListAdapter extends RecyclerView.Adapter<RetailerListAdapte
 
     @Override
     public void onBindViewHolder(@NonNull RetailerViewHolder holder, int position) {
+
+
         //Log.d(TAG, "onClick: clicked on: " + retailerList.get(position));
         //Retailer retailer = retailerList.get(position);
         //holder.textViewName.setText(retailer.getName());
+
 
     }
 
@@ -66,8 +70,11 @@ public class RetailerListAdapter extends RecyclerView.Adapter<RetailerListAdapte
                 @Override
                 public void onClick(View v) {
 
-                    mCtx.startActivity(new Intent(mCtx.getApplicationContext(), RetailerProfile.class));
-                    /*final int position = getAdapterPosition();
+                    //mCtx.startActivity(new Intent(mCtx.getApplicationContext(), RetailerProfile.class));
+
+
+
+                     /*final int position = getAdapterPosition();
                     if (null != listener) {
                         listener.onListFragmentInteraction(mValues.get(position));
                     }*/

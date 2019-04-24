@@ -6,7 +6,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo2"
         android:label=""
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -29,6 +29,8 @@
         <activity android:name=".RetailerDetails" />
         <activity android:name=".RetailerProfile" />
         <activity android:name=".RetailerReviewList" />
+        <activity android:name=".Checkout" />
+        <activity android:name=".Cart"></activity>
     </application>
 
 </manifest>
