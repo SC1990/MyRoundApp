@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -76,8 +77,15 @@ public class RetailerList extends AppCompatActivity implements NavigationView.On
         actionBarDrawerToggle.syncState();
 
 
+       /* adapter.view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "click " , Toast.LENGTH_SHORT).show();
+            }
+        });*/
 
     }
+
 
 
 
@@ -95,6 +103,7 @@ public class RetailerList extends AppCompatActivity implements NavigationView.On
             progressDialog.dismiss();
         }
 
+
         @Override
         public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -103,6 +112,11 @@ public class RetailerList extends AppCompatActivity implements NavigationView.On
 
 
 
+
+
+
+
+    //drawer
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {

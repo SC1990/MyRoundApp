@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -38,10 +39,22 @@ public class RetailerProfile extends AppCompatActivity implements NavigationView
 
     final Context context = this;
 
+    private TextView tvName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retailer_profile);
+
+        tvName = (TextView)findViewById(R.id.prof_name);
+        Intent i = getIntent();
+        Bundle b = i.getExtras();
+
+        if(b!=null)
+        {
+            String name =(String) b.get("name");
+            tvName.setText(name);
+        }
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar1);
         setSupportActionBar(toolbar);

@@ -8,7 +8,7 @@
     android:paddingBottom="8dp"
     android:paddingStart="16dp"
     android:paddingEnd="16dp"
-    android:background="@drawable/edittext_border"
+    android:background="@drawable/ret_row_layout"
     android:paddingLeft="16dp"
     android:gravity="center_vertical"
     android:orientation="horizontal">
@@ -80,14 +80,13 @@
 
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/r_name"
         android:layout_width="179dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="-158dp"
         android:layout_marginTop="-55dp"
         android:layout_marginRight="40dp"
         android:layout_toRightOf="@+id/imageView8"
-        android:text="Pedro's Beers"
         android:textStyle="bold" />
 
     <TextView

@@ -15,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.google.firebase.database.DatabaseReference;
+
 import java.util.List;
 
 import static android.support.constraint.Constraints.TAG;
@@ -24,6 +26,7 @@ public class RetailerListAdapter extends RecyclerView.Adapter<RetailerListAdapte
     private Context mCtx;
     private List<Retailer> retailerList;
     View view;
+    DatabaseReference dbRef;
 
     public RetailerListAdapter(Context mCtx, List<Retailer> retailerList) {
         this.mCtx = mCtx;
@@ -39,12 +42,24 @@ public class RetailerListAdapter extends RecyclerView.Adapter<RetailerListAdapte
 
 
     @Override
-    public void onBindViewHolder(@NonNull RetailerViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull RetailerViewHolder holder, final int position) {
 
         //Log.d(TAG, "onClick: clicked on: " + retailerList.get(position));
         //Retailer retailer = retailerList.get(position);
         //holder.textViewName.setText(retailer.getName());
+        ;
+
+
+        holder.textName = (TextView) view.findViewById(R.id.r_name);
+            /*this.textStyle = (TextView) row.findViewById(R.id.tvCategory);
+            this.textMin = (TextView) row.findViewById(R.id.tvTown);
+            this.textDelFee = (TextView) row.findViewById(R.id.tvHours);*/
+
+        //current retailer
+        Retailer retailer = retailerList.get(position);
+
+        //set retailer details
+        holder.textName.setText(retailer.getName());
 
 
     }
@@ -54,9 +69,12 @@ public class RetailerListAdapter extends RecyclerView.Adapter<RetailerListAdapte
         return retailerList.size();
     }
 
+
+
+
     class RetailerViewHolder extends RecyclerView.ViewHolder {
 
-        TextView textViewName, textViewGenre, textViewAge, textViewCountry;
+        TextView textName, textStyle, textMin, textDelFee;
         LinearLayout parent;
 
         public RetailerViewHolder(@NonNull View itemView) {
@@ -70,16 +88,13 @@ public class RetailerListAdapter extends RecyclerView.Adapter<RetailerListAdapte
                 @Override
                 public void onClick(View v) {
 
-                    //mCtx.startActivity(new Intent(mCtx.getApplicationContext(), RetailerProfile.class));
+                    Intent i = new Intent(mCtx, RetailerProfile.class);
+                    i.putExtra("name", retailerList.get(getAdapterPosition()).getName());
+                    mCtx.startActivity(i);
 
-
-
-                     /*final int position = getAdapterPosition();
-                    if (null != listener) {
-                        listener.onListFragmentInteraction(mValues.get(position));
-                    }*/
                 }
             });
+
 
 
         }

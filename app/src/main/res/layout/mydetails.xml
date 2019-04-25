@@ -11,11 +11,12 @@
 
         android:id="@+id/toolbar"
         android:layout_width="420dp"
-        android:layout_height="100dp"
-        android:background="@color/colorPrimaryDark"
+        android:layout_height="66dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/toolbar_layout"
+        app:layout_constraintBottom_toTopOf="@+id/imageView3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 
     <Button
@@ -23,92 +24,120 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="32dp"
         android:onClick="onLogOutBtnClick"
         android:text="@string/log_out1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addressET" />
+        app:layout_constraintTop_toBottomOf="@+id/saveInfoBtn" />
 
     <Button
         android:id="@+id/saveInfoBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/logOutBtn"
         android:layout_alignLeft="@+id/logOutBtn"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="21dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="28dp"
         android:layout_marginRight="28dp"
+        android:background="@drawable/button_border"
         android:onClick="onSaveInfoBtnClick"
         android:text="@string/save1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addressET" />
-
-    <EditText
-        android:id="@+id/fullNameET"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/addressET"
-        android:layout_alignLeft="@+id/addressET"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="131dp"
-        android:ems="10"
-        android:hint="@string/full_name"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/addressET"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:ems="10"
-        android:hint="@string/house_number_and_street"
-        android:inputType="textPostalAddress"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mobileNumET" />
 
+
+    <EditText
+        android:id="@+id/fullNameET"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:layout_alignStart="@+id/addressET"
+        android:layout_alignLeft="@+id/addressET"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/edittext_border"
+        android:ems="10"
+        android:hint="@string/full_name"
+        android:inputType="textPersonName"
+        android:paddingLeft="10dp"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
     <EditText
         android:id="@+id/townET"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:background="@drawable/edittext_border"
+        android:ems="10"
+        android:hint="@string/town"
+        android:inputType="textPostalAddress"
+        android:paddingLeft="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addressET" />
+
+    <EditText
+        android:id="@+id/addressET"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
         android:layout_alignEnd="@+id/fullNameET"
         android:layout_alignRight="@+id/fullNameET"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/edittext_border"
         android:ems="10"
-        android:hint="@string/town1"
+        android:hint="@string/house_number_and_street"
         android:inputType="textPersonName"
+        android:paddingLeft="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fullNameET" />
 
     <EditText
         android:id="@+id/mobileNumET"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
         android:layout_alignEnd="@+id/fullNameET"
         android:layout_alignRight="@+id/fullNameET"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/edittext_border"
         android:ems="10"
         android:hint="@string/mobile_number1"
         android:inputType="phone"
+        android:paddingLeft="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/townET" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="148dp"
+        android:layout_height="92dp"
+        android:layout_below="@+id/toolbar"
+        android:layout_centerInParent="true"
+        app:layout_constraintBottom_toTopOf="@+id/fullNameET"
+        app:layout_constraintEnd_toEndOf="@+id/fullNameET"
+        app:layout_constraintStart_toStartOf="@+id/fullNameET"
+        android:src="@drawable/logo" />
 </android.support.constraint.ConstraintLayout>

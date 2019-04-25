@@ -79,11 +79,11 @@ public class UserHome extends AppCompatActivity implements NavigationView.OnNavi
 
     }
 
-    /*public void onDetailsBtnClick(View view){
-        if(view.getId() == R.id.myDetailsBtn){
+    public void onDetailsBtnClick(View view){
+        if(view.getId() == R.id.myDetailsBtn1){
             retrieveUserInfo();
         }
-    }*/
+    }
 
     private void retrieveUserInfo() {
         startActivity(new Intent(UserHome.this, MyDetails.class));
@@ -124,7 +124,7 @@ public class UserHome extends AppCompatActivity implements NavigationView.OnNavi
         super.onBackPressed();
     }
 
-    
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -138,11 +138,11 @@ public class UserHome extends AppCompatActivity implements NavigationView.OnNavi
         return super.onOptionsItemSelected(item);
     }
 
-   /* public void onViewRetailersBtnClick(View view){
-        if(view.getId() == R.id.viewRetailersBtn){
+    public void onViewRetailersBtnClick(View view){
+        if(view.getId() == R.id.viewRetailersBtn1){
             fetchRetailers();
         }
-    }*/
+    }
 
     private void fetchRetailers() {
         startActivity(new Intent(getApplicationContext(), RetailerList.class));

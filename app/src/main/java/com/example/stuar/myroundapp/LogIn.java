@@ -24,6 +24,18 @@ import com.google.firebase.database.ValueEventListener;
 
 public class LogIn extends AppCompatActivity {
 
+    /*
+    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = firebaseDatabase.getReference().child("Post").push();
+
+    Map<String, Object> map = new HashMap<>();
+    map.put("Title", "dummy title");
+    map.put("Address", "dummy address");
+    map.put("PostID", myRef.getKey());
+    myRef.setValue(map);
+
+     */
+
 
     private EditText userEmail;
     private EditText userPassword;
