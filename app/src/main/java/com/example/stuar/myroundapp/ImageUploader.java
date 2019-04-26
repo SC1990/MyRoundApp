@@ -93,12 +93,17 @@ public class ImageUploader extends AppCompatActivity {
 
             Toast.makeText(ImageUploader.this, "uploading..", Toast.LENGTH_SHORT).show();
 
-            StorageReference ref = mStorageRef.child(FB_STORAGE_PATH + System.currentTimeMillis() + "." + getImgExtension(uri));
+            final StorageReference ref = mStorageRef.child(FB_STORAGE_PATH + System.currentTimeMillis() + "." + getImgExtension(uri));
 
             ref.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         Toast.makeText(ImageUploader.this, "success", Toast.LENGTH_SHORT).show();
+                        //ref.getDownloadUrl may not work..?
+                        ImageUpload imageUpload = new ImageUpload(editText.getText().toString(), ref.getDownloadUrl().toString());
+
+                        String uploadId = databaseReference.push().getKey();
+                        databaseReference.child(uploadId).setValue(imageUpload);
 
                     }
                 })
@@ -109,6 +114,11 @@ public class ImageUploader extends AppCompatActivity {
                      }
                  });
 
+
+        }
+
+        else{
+            Toast.makeText(ImageUploader.this, "select image", Toast.LENGTH_SHORT).show();
 
         }
     }
