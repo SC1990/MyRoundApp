@@ -15,10 +15,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -37,13 +37,23 @@ public class ImageUploader extends AppCompatActivity {
     private Uri uri;
 
     public static final String FB_STORAGE_PATH = "image/";
-    public static final String FB_DB_PATH = "image";
+    public static final String FB_DB_PATH = "prod_image";
     public static final int REQUEST_CODE = 1234;
+
+    String retId;
+    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_uploader);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+
+        if(firebaseAuth.getCurrentUser() != null){
+            retId = firebaseUser.getUid();
+        }
 
         mStorageRef = FirebaseStorage.getInstance().getReference();
         databaseReference = FirebaseDatabase.getInstance().getReference(FB_DB_PATH);
@@ -100,10 +110,12 @@ public class ImageUploader extends AppCompatActivity {
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         Toast.makeText(ImageUploader.this, "success", Toast.LENGTH_SHORT).show();
                         //ref.getDownloadUrl may not work..?
-                        ImageUpload imageUpload = new ImageUpload(editText.getText().toString(), ref.getDownloadUrl().toString());
+                        ImageUpload imageUpload = new ImageUpload(editText.getText().toString(), ref.getDownloadUrl().toString(), retId);
 
                         String uploadId = databaseReference.push().getKey();
                         databaseReference.child(uploadId).setValue(imageUpload);
+
+                        startActivity(new Intent(getApplicationContext(), RetailerProductsActivity.class));
 
                     }
                 })

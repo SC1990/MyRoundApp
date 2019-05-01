@@ -4,10 +4,23 @@ public class ImageUpload {
 
     public String name;
     public String url;
+    public String retId;
 
-    public ImageUpload(String name, String url) {
+    public ImageUpload() {
+    }
+
+    public ImageUpload(String name, String url, String retId) {
         this.name = name;
         this.url = url;
+        this.retId = retId;
+    }
+
+    public String getRetId() {
+        return retId;
+    }
+
+    public void setRetId(String retId) {
+        this.retId = retId;
     }
 
     public String getName() {
