@@ -110,7 +110,7 @@ public class ImageUploader extends AppCompatActivity {
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         Toast.makeText(ImageUploader.this, "success", Toast.LENGTH_SHORT).show();
                         //ref.getDownloadUrl may not work..?
-                        ImageUpload imageUpload = new ImageUpload(editText.getText().toString(), ref.getDownloadUrl().toString(), retId);
+                        ImageUpload imageUpload = new ImageUpload(editText.getText().toString(), uri.toString(), retId);
 
                         String uploadId = databaseReference.push().getKey();
                         databaseReference.child(uploadId).setValue(imageUpload);

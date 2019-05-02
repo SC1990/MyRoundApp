@@ -2,7 +2,10 @@ package com.example.stuar.myroundapp;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -77,9 +80,9 @@ public class RetailerProductsActivity extends AppCompatActivity  {
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar2);
         setSupportActionBar(toolbar);
 
-      /*  drawerLayout = findViewById(R.id.drawer_layout);
-       *//* NavigationView navigationView = findViewById(R.id.drawer5);
-        navigationView.setNavigationItemSelectedListener(this);*//*
+     /*   drawerLayout = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.drawer5);
+        navigationView.setNavigationItemSelectedListener(this);
 
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
                 toolbar, R.string.drawer_open, R.string.drawer_closed);
@@ -89,8 +92,7 @@ public class RetailerProductsActivity extends AppCompatActivity  {
     }
 
 
-/*
-    @Override
+   /* @Override
     public boolean onNavigationItemSelected(MenuItem item) {
 
         closeDrawer();
@@ -104,9 +106,9 @@ public class RetailerProductsActivity extends AppCompatActivity  {
         }
 
         return true;
-    }*/
+    }
 
-  /*  private void closeDrawer() {
+    private void closeDrawer() {
         drawerLayout.closeDrawer(GravityCompat.START);
     }
 
@@ -121,7 +123,7 @@ public class RetailerProductsActivity extends AppCompatActivity  {
         }
 
         super.onBackPressed();
-    }*/
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -133,7 +135,7 @@ public class RetailerProductsActivity extends AppCompatActivity  {
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
     public void onAddProdClick(View view) {
         if(view.getId() == R.id.floatingActionButton2){

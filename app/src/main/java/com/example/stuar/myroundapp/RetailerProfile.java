@@ -12,49 +12,104 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.GridView;
 import android.widget.ImageButton;
-import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 
 public class RetailerProfile extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    GridView gridView;
-    Integer imgIds[] = {R.drawable.bbottle, R.drawable.bbottle, R.drawable.bbottle,
+    ListView listView;
+  /*  Integer imgIds[] = {R.drawable.bbottle, R.drawable.bbottle, R.drawable.bbottle,
             R.drawable.bbottle, R.drawable.bbottle, R.drawable.bbottle,
             R.drawable.bbottle, R.drawable.bbottle, R.drawable.bbottle,
             R.drawable.bbottle, R.drawable.bbottle, R.drawable.bbottle,
             R.drawable.bbottle, R.drawable.bbottle, R.drawable.bbottle,
-            R.drawable.bbottle, R.drawable.bbottle, R.drawable.bbottle};
+            R.drawable.bbottle, R.drawable.bbottle, R.drawable.bbottle};*/
 
     final Context context = this;
 
     private TextView tvName;
+
+    ArrayList<ImageUpload> rProds;
+    DatabaseReference databaseReference;
+
+    ProdListCustViewAdapter adapter;
+
+    String rID;
+    String name;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retailer_profile);
 
+        listView = findViewById(R.id.listview_prods);
+
         tvName = (TextView)findViewById(R.id.prof_name);
         Intent i = getIntent();
         Bundle b = i.getExtras();
 
-        if(b!=null)
-        {
-            String name =(String) b.get("name");
+        if(b!=null) {
+            name =(String) b.get("name");
             tvName.setText(name);
         }
+
+        Retailer retailer = new Retailer();
+        retailer.setName(name);
+
+        rID = "PgHZpAq8tygO4wfNzTgtlrWEccD3";
+
+        if(rID == null){
+            Toast.makeText(RetailerProfile.this, "nope", Toast.LENGTH_SHORT).show();
+        }
+
+        rProds = new ArrayList<>();
+
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("prod_image");
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren()){
+
+                    ImageUpload imageUpload = dataSnapshot1.getValue(ImageUpload.class);
+
+                    if(imageUpload.getRetId().equalsIgnoreCase(rID)){
+                        rProds.add(imageUpload);
+                    }else{
+                        Toast.makeText(RetailerProfile.this, "nope", Toast.LENGTH_SHORT).show();
+                    }
+
+
+
+                }
+                adapter = new ProdListCustViewAdapter(RetailerProfile.this, R.layout.grid_img, rProds );
+                listView.setAdapter(adapter);
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar1);
         setSupportActionBar(toolbar);
@@ -90,12 +145,11 @@ public class RetailerProfile extends AppCompatActivity implements NavigationView
             }
         });
 
-        gridView = findViewById(R.id.gridview_android_example);
-        gridView.setAdapter(new ImageAdapterGridView(this));
+
 
 
         //product view
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // custom dialog
@@ -194,7 +248,7 @@ public class RetailerProfile extends AppCompatActivity implements NavigationView
         return false;
     }
 
-    public class ImageAdapterGridView extends BaseAdapter {
+    /*public class ImageAdapterGridView extends BaseAdapter {
         private Context mContext;
 
         public ImageAdapterGridView(Context context) {
@@ -203,7 +257,7 @@ public class RetailerProfile extends AppCompatActivity implements NavigationView
 
         @Override
         public int getCount() {
-            return imgIds.length;
+            return rProds.size();
         }
 
         @Override
@@ -232,5 +286,5 @@ public class RetailerProfile extends AppCompatActivity implements NavigationView
             return mImageView;
         }
 
-    }
+    }*/
 }
