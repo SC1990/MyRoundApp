@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.stuar.myroundapp.RetailerActivities.RetailerProductsActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -53,6 +54,7 @@ public class ImageUploader extends AppCompatActivity {
 
         if(firebaseAuth.getCurrentUser() != null){
             retId = firebaseUser.getUid();
+
         }
 
         mStorageRef = FirebaseStorage.getInstance().getReference();
@@ -110,8 +112,9 @@ public class ImageUploader extends AppCompatActivity {
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         Toast.makeText(ImageUploader.this, "success", Toast.LENGTH_SHORT).show();
                         //ref.getDownloadUrl may not work..?
-                        ImageUpload imageUpload = new ImageUpload(editText.getText().toString(), uri.toString(), retId);
 
+                        ImageUpload imageUpload = new ImageUpload(editText.getText().toString(), uri.toString(), retId);
+                        Toast.makeText(ImageUploader.this, ref.getDownloadUrl().toString(), Toast.LENGTH_SHORT).show();
                         String uploadId = databaseReference.push().getKey();
                         databaseReference.child(uploadId).setValue(imageUpload);
 

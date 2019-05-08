@@ -1,4 +1,6 @@
-package com.example.stuar.myroundapp;
+package com.example.stuar.myroundapp.Models;
+
+import com.example.stuar.myroundapp.ProductList;
 
 import java.util.ArrayList;
 

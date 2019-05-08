@@ -1,13 +1,14 @@
 package com.example.stuar.myroundapp;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+
+import com.example.stuar.myroundapp.Models.Review;
 
 import java.util.List;
 

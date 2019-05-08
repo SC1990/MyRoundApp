@@ -1,4 +1,4 @@
-package com.example.stuar.myroundapp;
+package com.example.stuar.myroundapp.Models;
 
 public class CartItem {
 

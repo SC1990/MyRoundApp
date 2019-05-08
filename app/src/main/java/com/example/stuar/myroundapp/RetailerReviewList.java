@@ -12,6 +12,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.stuar.myroundapp.CustomerActivities.RetailerProfileCustView;
+import com.example.stuar.myroundapp.Models.Review;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -52,7 +54,7 @@ public class RetailerReviewList extends AppCompatActivity implements NavigationV
             public void onTabSelected(TabLayout.Tab tab) {
 
                 if (tab.getPosition() == 0) {
-                    startActivity(new Intent(RetailerReviewList.this, RetailerProfile.class));
+                    startActivity(new Intent(RetailerReviewList.this, RetailerProfileCustView.class));
                 }
             }
 

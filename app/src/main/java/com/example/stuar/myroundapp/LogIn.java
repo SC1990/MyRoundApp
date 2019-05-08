@@ -2,16 +2,17 @@ package com.example.stuar.myroundapp;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.nfc.Tag;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.stuar.myroundapp.CustomerActivities.CustSignUp;
+import com.example.stuar.myroundapp.CustomerActivities.CustomerHome;
+import com.example.stuar.myroundapp.Models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -23,18 +24,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class LogIn extends AppCompatActivity {
-
-    /*
-    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = firebaseDatabase.getReference().child("Post").push();
-
-    Map<String, Object> map = new HashMap<>();
-    map.put("Title", "dummy title");
-    map.put("Address", "dummy address");
-    map.put("PostID", myRef.getKey());
-    myRef.setValue(map);
-
-     */
 
 
     private EditText userEmail;
@@ -73,7 +62,7 @@ public class LogIn extends AppCompatActivity {
 
                         if (user.getUserType().equals("cust")){
                             finish();
-                            startActivity(new Intent(getApplicationContext(), UserHome.class));
+                            startActivity(new Intent(getApplicationContext(), CustomerHome.class));
                             Toast.makeText(LogIn.this, "Logged in", Toast.LENGTH_SHORT).show();
                         }
 
@@ -130,7 +119,7 @@ public class LogIn extends AppCompatActivity {
 
                                         if (user.getUserType().equals("cust")){
                                             finish();
-                                            startActivity(new Intent(getApplicationContext(), UserHome.class));
+                                            startActivity(new Intent(getApplicationContext(), CustomerHome.class));
                                             Toast.makeText(LogIn.this, "Logged in", Toast.LENGTH_SHORT).show();
                                         }
 
@@ -161,7 +150,7 @@ public class LogIn extends AppCompatActivity {
 
     public void linkUserToAppropriatePage(String userType){
         if(userType.equals("cust")){
-            startActivity(new Intent(getApplicationContext(), UserHome.class));
+            startActivity(new Intent(getApplicationContext(), CustomerHome.class));
         }
         else if(userType.equals("ret")){
             startActivity(new Intent(getApplicationContext(), RetailerHome.class));

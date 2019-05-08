@@ -1,4 +1,4 @@
-package com.example.stuar.myroundapp;
+package com.example.stuar.myroundapp.CustomerActivities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,17 +19,23 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.stuar.myroundapp.Cart;
+import com.example.stuar.myroundapp.ImageUpload;
+import com.example.stuar.myroundapp.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.security.Permission;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION;
 
-public class RetailerProfile extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+public class RetailerProfileCustView extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     ListView listView;
   /*  Integer imgIds[] = {R.drawable.bbottle, R.drawable.bbottle, R.drawable.bbottle,
@@ -46,7 +52,7 @@ public class RetailerProfile extends AppCompatActivity implements NavigationView
     ArrayList<ImageUpload> rProds;
     DatabaseReference databaseReference;
 
-    ProdListCustViewAdapter adapter;
+    //ProdListCustViewAdapter adapter;
 
     String rID;
     String name;
@@ -66,21 +72,25 @@ public class RetailerProfile extends AppCompatActivity implements NavigationView
         if(b!=null) {
             name =(String) b.get("name");
             tvName.setText(name);
+
+            //rID = (String) b.get("id");
         }
 
-        Retailer retailer = new Retailer();
+      /*  Retailer retailer = new Retailer();
         retailer.setName(name);
 
-        rID = "PgHZpAq8tygO4wfNzTgtlrWEccD3";
 
         if(rID == null){
-            Toast.makeText(RetailerProfile.this, "nope", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RetailerProfileCustView.this, "nope", Toast.LENGTH_SHORT).show();
         }
 
         rProds = new ArrayList<>();
 
+        i.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        i.setAction(Intent.ACTION_OPEN_DOCUMENT);*/
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("prod_image");
+
+       /* databaseReference = FirebaseDatabase.getInstance().getReference("prod_image");
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -93,13 +103,13 @@ public class RetailerProfile extends AppCompatActivity implements NavigationView
                     if(imageUpload.getRetId().equalsIgnoreCase(rID)){
                         rProds.add(imageUpload);
                     }else{
-                        Toast.makeText(RetailerProfile.this, "nope", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RetailerProfileCustView.this, "nope", Toast.LENGTH_SHORT).show();
                     }
 
 
 
                 }
-                adapter = new ProdListCustViewAdapter(RetailerProfile.this, R.layout.grid_img, rProds );
+                adapter = new ProdListCustViewAdapter(RetailerProfileCustView.this, R.layout.grid_img, rProds );
                 listView.setAdapter(adapter);
 
 
@@ -109,7 +119,7 @@ public class RetailerProfile extends AppCompatActivity implements NavigationView
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });
+        });*/
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar1);
         setSupportActionBar(toolbar);
@@ -125,12 +135,12 @@ public class RetailerProfile extends AppCompatActivity implements NavigationView
         tabLayout.addTab(tabLayout.newTab().setText("Drinks"));
         tabLayout.addTab(tabLayout.newTab().setText("Reviews"));
 
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+    /*    tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
 
                 if (tab.getPosition() == 1) {
-                    startActivity(new Intent(RetailerProfile.this, RetailerReviewList.class));
+                    startActivity(new Intent(RetailerProfileCustView.this, RetailerReviewList.class));
                 }
             }
 
@@ -143,7 +153,7 @@ public class RetailerProfile extends AppCompatActivity implements NavigationView
             public void onTabReselected(TabLayout.Tab tab) {
 
             }
-        });
+        });*/
 
 
 

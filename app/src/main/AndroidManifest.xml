@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.stuar.myroundapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -20,19 +20,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CustSignUp" />
+        <activity android:name=".CustomerActivities.CustSignUp" />
         <activity android:name=".MyDetails" />
-        <activity android:name=".PreSignUpPage" />
-        <activity android:name=".UserHome" />
-        <activity android:name=".RetailerSU" />
-        <activity android:name=".RetailerList" />
+        <activity android:name=".CustomerActivities.PreSignUpPage" />
+        <activity android:name=".CustomerActivities.CustomerHome" />
+        <activity android:name=".RetailerActivities.RetailerSU" />
+        <activity android:name=".CustomerActivities.RetailerList" />
         <activity android:name=".RetailerHome" />
-        <activity android:name=".RetailerDetails" />
-        <activity android:name=".RetailerProfile" />
+        <activity android:name=".CustomerActivities.RetailerProfileCustView" />
         <activity android:name=".RetailerReviewList" />
         <activity android:name=".Checkout" />
         <activity android:name=".ImageUploader" />
-        <activity android:name=".RetailerProductsActivity"></activity>
+        <activity android:name=".RetailerActivities.RetailerProductsActivity" />
+        <activity android:name=".RetailerActivities.AddNewProductActivity"></activity>
     </application>
 
 </manifest>

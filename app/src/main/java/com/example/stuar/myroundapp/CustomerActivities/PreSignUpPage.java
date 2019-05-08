@@ -1,9 +1,12 @@
-package com.example.stuar.myroundapp;
+package com.example.stuar.myroundapp.CustomerActivities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.stuar.myroundapp.R;
+import com.example.stuar.myroundapp.RetailerActivities.RetailerSU;
 
 public class PreSignUpPage extends AppCompatActivity {
 

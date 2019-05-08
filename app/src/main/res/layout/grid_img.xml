@@ -5,10 +5,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
+        android:id="@+id/grid_img_view"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:scaleType="fitXY"
-        android:id="@+id/grid_img_view"/>
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="21dp"
+        android:layout_marginLeft="21dp"
+        android:layout_marginTop="18dp"
+        android:scaleType="fitXY" />
 
     <TextView
         android:id="@+id/tv_prod"
