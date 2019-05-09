@@ -1,6 +1,6 @@
 package com.example.stuar.myroundapp.Models;
 
-public class User {
+public class Customer {
 
     private String userId;
     private String email;
@@ -10,23 +10,24 @@ public class User {
     private String town;
     private String eircode;
     private String city;
-    private String mobileNum;
+    private String phone;
     private String userType;
 
-    public User() {
+    public Customer() {
     }
 
-    public User(String email, String password) {
+    public Customer(String email, String password) {
         this.email = email;
         this.password = password;
     }
 
-    public User(String name, String address, String town, String mobileNum, String userId) {
+    public Customer(String name, String address, String town, String phone, String userId, String password) {
         this.name = name;
         this.address = address;
         this.town = town;
-        this.mobileNum = mobileNum;
+        this.phone = phone;
         this.userId = userId;
+        this.password = password;
     }
 
     public String getUserId() {
@@ -77,12 +78,12 @@ public class User {
         this.city = city;
     }
 
-    public String getMobileNum() {
-        return mobileNum;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setMobileNum(String mobileNum) {
-        this.mobileNum = mobileNum;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
 

@@ -1,129 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CustomerActivities.CustSignUp"
-    android:background="@drawable/beer_back">
+    android:background="@drawable/beer_back"
+    tools:context=".CustomerActivities.CustSignUp">
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_centerInParent="true"
-        android:layout_width="355dp"
-        android:layout_height="104dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="56dp"
-        android:layout_marginLeft="56dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginBottom="220dp"
-        app:srcCompat="@drawable/logo2" />
-
-
-    <EditText
-        android:id="@+id/userEmail"
-        android:paddingLeft="10dp"
+        android:id="@+id/register_applogo"
         android:layout_width="300dp"
-        android:layout_height="45dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="29dp"
-        android:layout_marginLeft="29dp"
-        android:layout_marginTop="167dp"
-        android:background="@drawable/edittext_border"
-        android:ems="10"
-        android:hint="@string/email3"
-        android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/userPassword"
-        android:paddingLeft="10dp"
-        android:layout_width="300dp"
-        android:layout_height="45dp"
-        android:layout_alignEnd="@+id/userEmail"
-        android:layout_alignRight="@+id/userEmail"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="-1dp"
-        android:layout_marginRight="-1dp"
-        android:layout_marginBottom="292dp"
-        android:background="@drawable/edittext_border"
-        android:ems="10"
-        android:hint="@string/password3"
-        android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="@+id/userEmail"
-        app:layout_constraintTop_toBottomOf="@+id/userEmail" />
-
-    <EditText
-        android:id="@+id/verifyPassword"
-        android:paddingLeft="10dp"
-        android:layout_width="300dp"
-        android:layout_height="45dp"
-        android:layout_alignEnd="@+id/userEmail"
-        android:layout_alignRight="@+id/userEmail"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginBottom="230dp"
-        android:background="@drawable/edittext_border"
-        android:ems="10"
-        android:hint="@string/confirm_password3"
-        android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="@+id/userPassword"
-        app:layout_constraintTop_toBottomOf="@+id/userPassword" />
-
-    <Button
-        android:id="@+id/signUpBtn"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:layout_alignEnd="@+id/userEmail"
-        android:layout_alignRight="@+id/userEmail"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="-1dp"
-        android:layout_marginRight="-1dp"
-        android:layout_marginBottom="172dp"
-        android:background="@drawable/button_border"
-        android:onClick="onSignUpBtnClick"
-        android:text="@string/sign_up3"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/logInLinkBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.591"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-
-        android:id="@+id/logInLinkBtn"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="101dp"
-        android:layout_marginLeft="101dp"
-        android:layout_marginBottom="22dp"
-        android:background="@drawable/button_border"
-        android:onClick="onLogInLinkBtnClick"
-        android:text="@string/log_in3"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/verifyPassword"
-        app:layout_constraintBottom_toTopOf="@+id/signUpBtn" />
-
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_height="100dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="73dp"
-        android:text="Already Registered?"
-        android:textColor="@color/colorAccent" />
+        android:layout_marginTop="60dp"
+        android:src="@drawable/logo2" />
 
+    <EditText
+        android:id="@+id/user_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/register_applogo"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/edittext_border"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:padding="20dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:textSize="19sp" />
+
+    <EditText
+        android:id="@+id/register_phone_number_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_email"
+        android:background="@drawable/edittext_border"
+        android:padding="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:hint="Phone Number"
+        android:inputType="number"
+        android:textColor="@color/colorPrimaryDark"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:textSize="19sp"
+        android:layout_marginTop="6dp"
+        />
+
+
+    <EditText
+        android:id="@+id/register_password_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/register_phone_number_input"
+        android:background="@drawable/edittext_border"
+        android:padding="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="6dp"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColor="@color/colorPrimaryDark"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:textSize="19sp"
+        />
+
+    <EditText
+        android:id="@+id/verify_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/register_password_input"
+        android:background="@drawable/edittext_border"
+        android:padding="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="6dp"
+        android:hint="Confirm Password"
+        android:inputType="textPassword"
+        android:textColor="@color/colorPrimaryDark"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:textSize="19sp"
+        />
+
+
+    <Button
+        android:id="@+id/register_btn"
+        android:onClick="onSignUpBtnClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/verify_password"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/button_border"
+        android:padding="17dp"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:text="Create Account"
+        android:textColor="@android:color/white"
+        />
 
 </RelativeLayout>

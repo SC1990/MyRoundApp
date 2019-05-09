@@ -7,99 +7,266 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.stuar.myroundapp.CustomerActivities.CustSignUp;
 import com.example.stuar.myroundapp.CustomerActivities.CustomerHome;
-import com.example.stuar.myroundapp.Models.User;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
+import com.example.stuar.myroundapp.DataRetrieval.RememberMe;
+import com.example.stuar.myroundapp.Models.Customer;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+
+import io.paperdb.Paper;
+
 public class LogIn extends AppCompatActivity {
 
 
-    private EditText userEmail;
-    private EditText userPassword;
+    private EditText InputPhoneNumber, InputPassword;
+    private Button LoginButton;
+    private ProgressDialog loadingBar;
+    private TextView AdminLink, NotAdminLink;
 
-    private ProgressDialog progressDialog;
-
-    private FirebaseAuth firebaseAuth;
-    private DatabaseReference databaseReference;
-
-    private String userType;
-    private User user;
+    private String parentDbName = "users/customers";
+    private CheckBox checkBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
 
-        userEmail = findViewById(R.id.logInEmail);
-        userPassword = findViewById(R.id.logInPassword);
 
-        progressDialog = new ProgressDialog(this);
+        LoginButton = (Button) findViewById(R.id.login_btn);
+        InputPassword = (EditText) findViewById(R.id.login_password_input);
+        InputPhoneNumber = (EditText) findViewById(R.id.login_phone_number_input);
+        AdminLink = (TextView) findViewById(R.id.admin_panel_link);
+        NotAdminLink = (TextView) findViewById(R.id.not_admin_panel_link);
+        loadingBar = new ProgressDialog(this);
 
-        // Initialize Firebase Auth
-        firebaseAuth = FirebaseAuth.getInstance();
 
-        if(firebaseAuth.getCurrentUser() != null){
-            databaseReference = FirebaseDatabase.getInstance().getReference("users/customers").child(firebaseAuth.getUid());
-            databaseReference.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+        checkBox = findViewById(R.id.remember_me_checkbox);
+        Paper.init(this);
 
-                    User user = dataSnapshot.getValue(User.class);
-                    try{
-                        userType = user.getUserType();
 
-                        if (user.getUserType().equals("cust")){
-                            finish();
-                            startActivity(new Intent(getApplicationContext(), CustomerHome.class));
-                            Toast.makeText(LogIn.this, "Logged in", Toast.LENGTH_SHORT).show();
-                        }
+        LoginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                LoginUser();
+            }
+        });
 
-                    }catch(Exception e){
-                        NullPointerException nullPointerException;
+       /* AdminLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                LoginButton.setText("Login Admin");
+                AdminLink.setVisibility(View.INVISIBLE);
+                NotAdminLink.setVisibility(View.VISIBLE);
+                parentDbName = "Admins";
+            }
+        });
 
-                        finish();
-                        startActivity(new Intent(getApplicationContext(), RetailerHome.class));
-                        Toast.makeText(LogIn.this, "Logged in", Toast.LENGTH_SHORT).show();
-                    }
+        NotAdminLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                LoginButton.setText("Login");
+                AdminLink.setVisibility(View.VISIBLE);
+                NotAdminLink.setVisibility(View.INVISIBLE);
+                parentDbName = "Users";
+            }
+        });*/
 
-                }
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
-
-        }
-
-        user = new User();
 
     }
 
-    private void userLogin(){
-        progressDialog.setMessage("Logging in..");
-        progressDialog.show();
+    private void LoginUser()
+    {
+        String phone = InputPhoneNumber.getText().toString();
+        String password = InputPassword.getText().toString();
 
-        String email = userEmail.getText().toString().trim();
+        if (TextUtils.isEmpty(phone))
+        {
+            Toast.makeText(this, "Please write your phone number...", Toast.LENGTH_SHORT).show();
+        }
+        else if (TextUtils.isEmpty(password))
+        {
+            Toast.makeText(this, "Please write your password...", Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            loadingBar.setTitle("Login Account");
+            loadingBar.setMessage("Please wait, while we are checking the credentials.");
+            loadingBar.setCanceledOnTouchOutside(false);
+            loadingBar.show();
+
+
+            AllowAccessToAccount(phone, password);
+        }
+    }
+
+
+    private void AllowAccessToAccount(final String phone, final String password)
+    {
+        if(checkBox.isChecked())
+        {
+            Paper.book().write(RememberMe.UserPhoneKey, phone);
+            Paper.book().write(RememberMe.UserPasswordKey, password);
+        }
+
+
+        final DatabaseReference RootRef;
+        RootRef = FirebaseDatabase.getInstance().getReference();
+
+
+        RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
+                if (dataSnapshot.child(parentDbName).child(phone).exists())
+                {
+                    Customer usersData = dataSnapshot.child(parentDbName).child(phone).getValue(Customer.class);
+
+                    if (usersData.getPhone().equals(phone))
+                    {
+                        if (usersData.getPassword().equals(password))
+                        {
+                            if (parentDbName.equals("Admins"))
+                            {
+                                Toast.makeText(LogIn.this, "Welcome Admin, you are logged in Successfully...", Toast.LENGTH_SHORT).show();
+                                loadingBar.dismiss();
+
+                                Intent intent = new Intent(LogIn.this, RetailerHome.class);
+                                startActivity(intent);
+                            }
+                            else if (parentDbName.equals("users/customers"))
+                            {
+                                Toast.makeText(LogIn.this, "logged in Successfully...", Toast.LENGTH_SHORT).show();
+                                loadingBar.dismiss();
+
+                                Intent intent = new Intent(LogIn.this, CustomerHome.class);
+                                //RememberMe.currentOnlineCustomer = usersData;
+                                startActivity(intent);
+                            }
+                        }
+                        else
+                        {
+                            loadingBar.dismiss();
+                            Toast.makeText(LogIn.this, "Password is incorrect.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+                else
+                {
+                    Toast.makeText(LogIn.this, "Account with this " + phone + " number do not exists.", Toast.LENGTH_SHORT).show();
+                    loadingBar.dismiss();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*private void ValidateLogin(){
+       *//* progressDialog.setMessage("Logging in..");
+        progressDialog.show();*//*
+
+        String phone = userPhone.getText().toString().trim();
         String password = userPassword.getText().toString().trim();
 
-        if(TextUtils.isEmpty(email) || TextUtils.isEmpty(password )){
+        if(TextUtils.isEmpty(phone) || TextUtils.isEmpty(password )){
             Toast.makeText(this, "Please enter all details", Toast.LENGTH_LONG).show();
             progressDialog.dismiss();
         }
-        else firebaseAuth.signInWithEmailAndPassword(email, password)
+
+        LoginUser(phone, password);
+
+    }
+
+    private void LoginUser(final String phone, final String userPassword) {
+
+        Paper.book().write(RememberMe.UserPhone, phone);
+        Paper.book().write(RememberMe.UserPasswordKey, userPassword);
+
+        final DatabaseReference RootRef;
+        RootRef = FirebaseDatabase.getInstance().getReference();
+
+        RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.child(parentDbName).child(phone).exists())
+                {
+                    Customer usersData = dataSnapshot.child(parentDbName).child(phone).getValue(Customer.class);
+
+                    if (usersData.getPhone().equals(phone))
+                    {
+                        if (usersData.getPassword().equals(userPassword))
+                        {
+                            if (parentDbName.equals("retailers"))
+                            {
+                                Toast.makeText(LogIn.this, "Welcome retailer, you are logged in Successfully...", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(LogIn.this, RetailerHome.class);
+                                startActivity(intent);
+                            }
+                            else if (parentDbName.equals("users/customers"))
+                            {
+
+                                Toast.makeText(LogIn.this, "logged in Successfully...", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(LogIn.this, CustomerHome.class);
+                                //RememberMe.currentOnlineCustomer = usersData;
+                                startActivity(intent);
+                            }
+                        }
+                        else
+                        {
+
+                            Toast.makeText(LogIn.this, "Password is incorrect.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+                else
+                {
+                    Toast.makeText(LogIn.this, "Account with this " + phone + " number does not exist.", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+       *//* firebaseAuth.signInWithEmailAndPassword(phone, userPassword)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -113,11 +280,11 @@ public class LogIn extends AppCompatActivity {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                                    User user = dataSnapshot.getValue(User.class);
+                                    Customer customer = dataSnapshot.getValue(Customer.class);
                                     try{
-                                        userType = user.getUserType();
+                                        userType = customer.getUserType();
 
-                                        if (user.getUserType().equals("cust")){
+                                        if (customer.getUserType().equals("cust")){
                                             finish();
                                             startActivity(new Intent(getApplicationContext(), CustomerHome.class));
                                             Toast.makeText(LogIn.this, "Logged in", Toast.LENGTH_SHORT).show();
@@ -145,7 +312,7 @@ public class LogIn extends AppCompatActivity {
                         }
                         progressDialog.dismiss();
                     }
-                });
+                });*//*
     }
 
     public void linkUserToAppropriatePage(String userType){
@@ -160,10 +327,10 @@ public class LogIn extends AppCompatActivity {
 
     public void onLogInBtnClick(View view){
         if(view.getId() == R.id.logInBtn){
-            userLogin();
+            ValidateLogin();
         }
 
-    }
+    }*/
 
     public void onSignUpLinkBtnClick(View view){
         if(view.getId() == R.id.signUpLinkBtn){

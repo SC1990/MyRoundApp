@@ -4,7 +4,7 @@ import com.example.stuar.myroundapp.ProductList;
 
 import java.util.ArrayList;
 
-public class Retailer extends User {
+public class Retailer extends Customer {
 
     private byte[] profilePic;
     private String hours;
@@ -13,6 +13,17 @@ public class Retailer extends User {
     private double delFee;
     private double rating;
     private ArrayList<String> beerStyles;
+    private String password;
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public String getMinSpend() {
         return minSpend;
@@ -47,8 +58,8 @@ public class Retailer extends User {
     }
 
 
-    public Retailer(String name, String address, String town, String mobileNum, String userId, String hours) {
-        super(name, address, town, mobileNum, userId);
+    public Retailer(String name, String address, String town, String mobileNum, String userId, String hours, String email, String password) {
+        super(name, address, town, mobileNum, userId, password);
         this.hours = hours;
     }
 

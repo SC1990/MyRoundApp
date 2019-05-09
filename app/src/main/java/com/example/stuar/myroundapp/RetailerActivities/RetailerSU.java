@@ -11,8 +11,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.stuar.myroundapp.LogIn;
+import com.example.stuar.myroundapp.Models.Customer;
 import com.example.stuar.myroundapp.Models.Retailer;
-import com.example.stuar.myroundapp.Models.User;
 import com.example.stuar.myroundapp.R;
 import com.example.stuar.myroundapp.RetailerHome;
 import com.example.stuar.myroundapp.CustomerActivities.CustomerHome;
@@ -65,7 +65,7 @@ public class RetailerSU extends AppCompatActivity {
         progressDialog.show();
 
         String email = retEmail.getText().toString().trim();
-        String password = retPassword.getText().toString().trim();
+        final String password = retPassword.getText().toString().trim();
         String confirmPassword = verifyPassword.getText().toString().trim();
 
 
@@ -130,10 +130,11 @@ public class RetailerSU extends AppCompatActivity {
                                 String town = "";
                                 String num = "";
                                 String hours = "";
-                                User user = new Retailer(name, address, town, num, id, hours);
-                                user.setUserType("ret");
+                                String email = "";
+                                Customer customer = new Retailer(name, address, town, num, id, hours, email, password);
+                                customer.setUserType("ret");
 
-                                databaseReferenceUsers.child(id).setValue(user);
+                                databaseReferenceUsers.child(id).setValue(customer);
                                 finish();
                                 startActivity(new Intent(getApplicationContext(), RetailerHome.class));
                                 Toast.makeText(RetailerSU.this, "Account created", Toast.LENGTH_SHORT).show();
@@ -170,7 +171,7 @@ public class RetailerSU extends AppCompatActivity {
 
 
     public void onLogInLinkBtnClick(View view) {
-        if(view.getId() == R.id.logInBtn){
+        if(view.getId() == R.id.login_btn){
             startActivity(new Intent(RetailerSU.this, LogIn.class));
         }
     }

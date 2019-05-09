@@ -18,10 +18,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.stuar.myroundapp.LogIn;
+import com.example.stuar.myroundapp.MainPageActivity;
 import com.example.stuar.myroundapp.MyDetails;
 import com.example.stuar.myroundapp.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+import io.paperdb.Paper;
 
 public class CustomerHome extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -61,7 +65,7 @@ public class CustomerHome extends AppCompatActivity implements NavigationView.On
 
 
 
-        //userEmailET = findViewById(R.id.userEmailET);
+      /*  //userEmailET = findViewById(R.id.userEmailET);
         firebaseAuth = FirebaseAuth.getInstance();
 
         if(firebaseAuth.getCurrentUser() == null){
@@ -70,15 +74,31 @@ public class CustomerHome extends AppCompatActivity implements NavigationView.On
         }
 
         else{
-            FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+            firebaseUser = firebaseAuth.getCurrentUser();
             //userEmailET.setText("Welcome " + firebaseUser.getEmail());
-        }
+        }*/
+
+        View headerView = navigationView.getHeaderView(0);
+        TextView userNameTextView = headerView.findViewById(R.id.profile_user_name);
+        CircleImageView profileImageView = headerView.findViewById(R.id.user_profile_image);
+
+
+        //userNameTextView.setText(firebaseUser.getUid());
 
     }
 
     public void onDetailsBtnClick(View view){
         if(view.getId() == R.id.myDetailsBtn1){
             retrieveUserInfo();
+        }
+    }
+
+    public void onLogOutBtnClick(View view){
+        if(view.getId() == R.id.logOutBtn){
+            Paper.book().destroy();
+            //firebaseAuth.signOut();
+            finish();
+            startActivity(new Intent(CustomerHome.this, MainPageActivity.class));
         }
     }
 
