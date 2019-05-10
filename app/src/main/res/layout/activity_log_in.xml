@@ -12,8 +12,8 @@
         android:id="@+id/login_applogo"
         android:layout_width="300dp"
         android:layout_height="100dp"
-        android:layout_alignStart="@+id/not_admin_panel_link"
-        android:layout_alignLeft="@+id/not_admin_panel_link"
+        android:layout_alignStart="@+id/not_retailer_link"
+        android:layout_alignLeft="@+id/not_retailer_link"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="95dp"
@@ -122,10 +122,10 @@
 
 
     <TextView
-        android:id="@+id/admin_panel_link"
+        android:id="@+id/retailer_link"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="I'm an Admin?"
+        android:text="I'm a Retailer?"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/login_btn"
         android:textColor="@android:color/white"
@@ -138,13 +138,13 @@
 
 
     <TextView
-        android:id="@+id/not_admin_panel_link"
+        android:id="@+id/not_retailer_link"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="I'm not an Admin?"
+        android:text="I'm not a Retailer?"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/login_btn"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@android:color/white"
         android:textSize="20sp"
         android:textStyle="bold"
         android:layout_marginLeft="80dp"

@@ -17,6 +17,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.stuar.myroundapp.DataRetrieval.RememberMe;
 import com.example.stuar.myroundapp.LogIn;
 import com.example.stuar.myroundapp.MainPageActivity;
 import com.example.stuar.myroundapp.MyDetails;
@@ -45,6 +46,7 @@ public class CustomerHome extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.userhome);
 
+        Paper.init(this);
 
         gridView = (GridView) findViewById(R.id.gridView1);
         gridView.setAdapter(new ImageAdapterGridView(this));
@@ -83,7 +85,7 @@ public class CustomerHome extends AppCompatActivity implements NavigationView.On
         CircleImageView profileImageView = headerView.findViewById(R.id.user_profile_image);
 
 
-        //userNameTextView.setText(firebaseUser.getUid());
+        userNameTextView.setText(RememberMe.currentOnlineCustomer.getName());
 
     }
 

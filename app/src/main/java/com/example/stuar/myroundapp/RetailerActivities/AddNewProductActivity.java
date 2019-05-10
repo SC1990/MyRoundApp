@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.stuar.myroundapp.DataRetrieval.RememberMe;
 import com.example.stuar.myroundapp.R;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -29,6 +30,8 @@ import com.google.firebase.storage.UploadTask;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
+
+import io.paperdb.Paper;
 
 public class AddNewProductActivity extends AppCompatActivity {
 
@@ -52,9 +55,9 @@ public class AddNewProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_product);
 
-        productName = (EditText) findViewById(R.id.product_name);
+        productName = (EditText) findViewById(R.id.cv_product_name);
         productDesc = (EditText) findViewById(R.id.product_description);
-        productPrice = (EditText) findViewById(R.id.product_price);
+        productPrice = (EditText) findViewById(R.id.cv_product_price);
         prodVol = (EditText) findViewById(R.id.product_volume);
         productImg = (ImageView) findViewById(R.id.select_product_image);
         addNewProductButton = (Button) findViewById(R.id.add_new_product);
@@ -69,9 +72,8 @@ public class AddNewProductActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
 
-        if(firebaseAuth.getCurrentUser() != null){
-            retId = firebaseUser.getUid();
-        }
+        Paper.init(this);
+        retId = RememberMe.currentOnlineCustomer.getUserId();
         //------------------------------------------------
 
         productImg.setOnClickListener(new View.OnClickListener() {

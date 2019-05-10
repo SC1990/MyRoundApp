@@ -5,34 +5,34 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ImageButton;
+import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.stuar.myroundapp.Cart;
 import com.example.stuar.myroundapp.ImageUpload;
+import com.example.stuar.myroundapp.Models.Product;
 import com.example.stuar.myroundapp.R;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
+import com.example.stuar.myroundapp.ViewHolders.ProductViewHolder;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
-import java.security.Permission;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import static android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION;
+import io.paperdb.Paper;
 
 
 public class RetailerProfileCustView extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -51,6 +51,8 @@ public class RetailerProfileCustView extends AppCompatActivity implements Naviga
 
     ArrayList<ImageUpload> rProds;
     DatabaseReference databaseReference;
+    private RecyclerView recyclerView;
+    RecyclerView.LayoutManager layoutManager;
 
     //ProdListCustViewAdapter adapter;
 
@@ -63,7 +65,9 @@ public class RetailerProfileCustView extends AppCompatActivity implements Naviga
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retailer_profile);
 
-        listView = findViewById(R.id.listview_prods);
+        Paper.init(this);
+
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Products");
 
         tvName = (TextView)findViewById(R.id.prof_name);
         Intent i = getIntent();
@@ -127,13 +131,18 @@ public class RetailerProfileCustView extends AppCompatActivity implements Naviga
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        NavigationView navigationView = (NavigationView)findViewById(R.id.drawer2);
-        navigationView.setNavigationItemSelectedListener(this);
+        /*NavigationView navigationView = (NavigationView)findViewById(R.id.drawer2);
+        navigationView.setNavigationItemSelectedListener(this);*/
 
 
         TabLayout tabLayout = findViewById(R.id.tab);
         tabLayout.addTab(tabLayout.newTab().setText("Drinks"));
         tabLayout.addTab(tabLayout.newTab().setText("Reviews"));
+
+        recyclerView = findViewById(R.id.recycler_menu);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
 
     /*    tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -158,7 +167,7 @@ public class RetailerProfileCustView extends AppCompatActivity implements Naviga
 
 
 
-        //product view
+       /* //product view
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -205,10 +214,45 @@ public class RetailerProfileCustView extends AppCompatActivity implements Naviga
 
                 dialog.show();
             }
-        });
+        });*/
 
 
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        FirebaseRecyclerOptions<Product> options =
+                new FirebaseRecyclerOptions.Builder<Product>()
+                        .setQuery(databaseReference, Product.class)
+                        .build();
+
+
+        FirebaseRecyclerAdapter<Product, ProductViewHolder> adapter =
+                new FirebaseRecyclerAdapter<Product, ProductViewHolder>(options) {
+                    @Override
+                    protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Product model)
+                    {
+                        holder.txtProductName.setText(model.getpName());
+                        //holder.txtProductDescription.setText(model.getDescription());
+                        holder.txtProductPrice.setText("€" + model.getPrice());
+                        Picasso.get().load(model.getpImage()).into(holder.imageView);
+                    }
+
+                    @NonNull
+                    @Override
+                    public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+                    {
+                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.products_layout, parent, false);
+                        ProductViewHolder holder = new ProductViewHolder(view);
+                        return holder;
+                    }
+                };
+
+        recyclerView.setAdapter(adapter);
+        adapter.startListening();
     }
 
     private void addToCart(){

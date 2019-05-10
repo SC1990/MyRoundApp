@@ -32,10 +32,12 @@ public class LogIn extends AppCompatActivity {
     private EditText InputPhoneNumber, InputPassword;
     private Button LoginButton;
     private ProgressDialog loadingBar;
-    private TextView AdminLink, NotAdminLink;
 
     private String parentDbName = "users/customers";
     private CheckBox checkBox;
+
+    private TextView retailerLink;
+    private TextView notRetailerLink;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +48,8 @@ public class LogIn extends AppCompatActivity {
         LoginButton = (Button) findViewById(R.id.login_btn);
         InputPassword = (EditText) findViewById(R.id.login_password_input);
         InputPhoneNumber = (EditText) findViewById(R.id.login_phone_number_input);
-        AdminLink = (TextView) findViewById(R.id.admin_panel_link);
-        NotAdminLink = (TextView) findViewById(R.id.not_admin_panel_link);
+        retailerLink = (TextView) findViewById(R.id.retailer_link);
+        notRetailerLink = (TextView) findViewById(R.id.not_retailer_link);
         loadingBar = new ProgressDialog(this);
 
 
@@ -63,27 +65,27 @@ public class LogIn extends AppCompatActivity {
             }
         });
 
-       /* AdminLink.setOnClickListener(new View.OnClickListener() {
+        retailerLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
             {
-                LoginButton.setText("Login Admin");
-                AdminLink.setVisibility(View.INVISIBLE);
-                NotAdminLink.setVisibility(View.VISIBLE);
-                parentDbName = "Admins";
+                LoginButton.setText("Login Retailer");
+                retailerLink.setVisibility(View.INVISIBLE);
+                notRetailerLink.setVisibility(View.VISIBLE);
+                parentDbName = "retailers";
             }
         });
 
-        NotAdminLink.setOnClickListener(new View.OnClickListener() {
+        notRetailerLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
             {
                 LoginButton.setText("Login");
-                AdminLink.setVisibility(View.VISIBLE);
-                NotAdminLink.setVisibility(View.INVISIBLE);
-                parentDbName = "Users";
+                retailerLink.setVisibility(View.VISIBLE);
+                notRetailerLink.setVisibility(View.INVISIBLE);
+                parentDbName = "users/customers";
             }
-        });*/
+        });
 
 
 
@@ -112,7 +114,10 @@ public class LogIn extends AppCompatActivity {
 
             AllowAccessToAccount(phone, password);
         }
+
     }
+
+
 
 
     private void AllowAccessToAccount(final String phone, final String password)
@@ -140,12 +145,13 @@ public class LogIn extends AppCompatActivity {
                     {
                         if (usersData.getPassword().equals(password))
                         {
-                            if (parentDbName.equals("Admins"))
+                            if (parentDbName.equals("retailers"))
                             {
-                                Toast.makeText(LogIn.this, "Welcome Admin, you are logged in Successfully...", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LogIn.this, "Welcome " + usersData.getName() +", you are logged in Successfully...", Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
 
                                 Intent intent = new Intent(LogIn.this, RetailerHome.class);
+                                RememberMe.currentOnlineCustomer = usersData;
                                 startActivity(intent);
                             }
                             else if (parentDbName.equals("users/customers"))
@@ -154,7 +160,7 @@ public class LogIn extends AppCompatActivity {
                                 loadingBar.dismiss();
 
                                 Intent intent = new Intent(LogIn.this, CustomerHome.class);
-                                //RememberMe.currentOnlineCustomer = usersData;
+                                RememberMe.currentOnlineCustomer = usersData;
                                 startActivity(intent);
                             }
                         }

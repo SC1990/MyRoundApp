@@ -54,7 +54,7 @@ public class RetailerList extends AppCompatActivity implements NavigationView.On
         adapter = new RetailerListAdapter(this, retailers);
         recyclerView.setAdapter(adapter);
 
-        dbRets = FirebaseDatabase.getInstance().getReference("users/retailers");
+        dbRets = FirebaseDatabase.getInstance().getReference("retailers");
         dbRets.addListenerForSingleValueEvent(valueEventListener);
 
 

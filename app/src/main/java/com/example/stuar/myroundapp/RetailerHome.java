@@ -11,10 +11,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.stuar.myroundapp.DataRetrieval.RememberMe;
 import com.example.stuar.myroundapp.RetailerActivities.RetailerProductsActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import io.paperdb.Paper;
 
 public class RetailerHome extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -28,6 +32,8 @@ public class RetailerHome extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retailer_home);
+
+        Paper.init(this);
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -43,19 +49,9 @@ public class RetailerHome extends AppCompatActivity implements NavigationView.On
         actionBarDrawerToggle.syncState();
 
 
-
         retEmailTV = findViewById(R.id.retEmailTV);
-        firebaseAuth = FirebaseAuth.getInstance();
+        retEmailTV.setText(RememberMe.currentOnlineCustomer.getName());
 
-        if(firebaseAuth.getCurrentUser() == null){
-            finish();
-            startActivity(new Intent(getApplicationContext(), LogIn.class));
-        }
-
-        else{
-            FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-            retEmailTV.setText("Welcome " + firebaseUser.getEmail());
-        }
 
     }
 
