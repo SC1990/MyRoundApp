@@ -64,7 +64,7 @@ public class MyRoundHome extends AppCompatActivity implements NavigationView.OnN
         setSupportActionBar(toolbar);
 
         drawerLayout = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = (NavigationView)findViewById(R.id.drawer);
+        NavigationView navigationView = (NavigationView)findViewById(R.id.drawer_customer_home);
         navigationView.setNavigationItemSelectedListener(this);
 
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout,

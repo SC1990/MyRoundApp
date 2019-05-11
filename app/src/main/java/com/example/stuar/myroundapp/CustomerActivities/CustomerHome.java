@@ -18,10 +18,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.stuar.myroundapp.DataRetrieval.RememberMe;
-import com.example.stuar.myroundapp.LogIn;
 import com.example.stuar.myroundapp.MainPageActivity;
-import com.example.stuar.myroundapp.MyDetails;
 import com.example.stuar.myroundapp.R;
+import com.example.stuar.myroundapp.SettingsActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -56,7 +55,7 @@ public class CustomerHome extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
 
         drawerLayout = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = (NavigationView)findViewById(R.id.drawer);
+        NavigationView navigationView = (NavigationView)findViewById(R.id.drawer_customer_home);
         navigationView.setNavigationItemSelectedListener(this);
 
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
@@ -105,24 +104,20 @@ public class CustomerHome extends AppCompatActivity implements NavigationView.On
     }
 
     private void retrieveUserInfo() {
-        startActivity(new Intent(CustomerHome.this, MyDetails.class));
+        startActivity(new Intent(CustomerHome.this, SettingsActivity.class));
     }
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
 
-        //String itemName = (String)item.getTitle();
+        int id = item.getItemId();
 
-        closeDrawer();
-
-        switch (item.getItemId()){
-            case R.id.item_login:
-                break;
-
-            case R.id.item_b:
-                break;
+        if (id == R.id.nav_settings) {
+            Intent intent = new Intent(CustomerHome.this, SettingsActivity.class);
+            startActivity(intent);
         }
 
+        closeDrawer();
         return true;
     }
 
