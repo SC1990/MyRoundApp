@@ -12,7 +12,7 @@ import android.widget.Toast;
 import com.example.stuar.myroundapp.CustomerActivities.CustSignUp;
 import com.example.stuar.myroundapp.CustomerActivities.CustomerHome;
 import com.example.stuar.myroundapp.DataRetrieval.RememberMe;
-import com.example.stuar.myroundapp.Models.Customer;
+import com.example.stuar.myroundapp.Models.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -65,7 +65,7 @@ public class MainPageActivity extends AppCompatActivity {
             {
                 if (dataSnapshot.child("users/customers").child(phone).exists())
                 {
-                    Customer usersData = dataSnapshot.child("users/customers").child(phone).getValue(Customer.class);
+                    User usersData = dataSnapshot.child("users/customers").child(phone).getValue(User.class);
 
                     if (usersData.getPhone().equals(phone))
                     {
@@ -75,7 +75,7 @@ public class MainPageActivity extends AppCompatActivity {
                             loadingBar.dismiss();
 
                             Intent intent = new Intent(MainPageActivity.this, CustomerHome.class);
-                            RememberMe.currentOnlineCustomer = usersData;
+                            RememberMe.currentOnlineUser = usersData;
                             startActivity(intent);
                         }
                         else

@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.stuar.myroundapp.LogIn;
-import com.example.stuar.myroundapp.Models.Customer;
+import com.example.stuar.myroundapp.Models.User;
 import com.example.stuar.myroundapp.Models.Retailer;
 import com.example.stuar.myroundapp.R;
 import com.example.stuar.myroundapp.RetailerHome;
@@ -131,10 +131,10 @@ public class RetailerSU extends AppCompatActivity {
                                 String num = "";
                                 String hours = "";
                                 String email = "";
-                                Customer customer = new Retailer(name, address, town, num, id, hours, email, password);
-                                customer.setUserType("ret");
+                                User user = new Retailer(name, address, town, num, id, hours, email, password);
+                                user.setUserType("ret");
 
-                                databaseReferenceUsers.child(id).setValue(customer);
+                                databaseReferenceUsers.child(id).setValue(user);
                                 finish();
                                 startActivity(new Intent(getApplicationContext(), RetailerHome.class));
                                 Toast.makeText(RetailerSU.this, "Account created", Toast.LENGTH_SHORT).show();

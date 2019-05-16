@@ -1,33 +1,35 @@
 package com.example.stuar.myroundapp.Models;
 
-public class Customer {
+public class User {
 
     private String userId;
-    private String email;
     private String password;
     private String name;
     private String address;
-    private String town;
-    private String eircode;
-    private String city;
     private String phone;
     private String userType;
+    private String image;
 
-    public Customer() {
+    public User() {
     }
 
-    public Customer(String email, String password) {
-        this.email = email;
-        this.password = password;
-    }
 
-    public Customer(String name, String address, String town, String phone, String userId, String password) {
+
+    public User(String name, String phone, String password, String image, String address, String userId) {
         this.name = name;
-        this.address = address;
-        this.town = town;
         this.phone = phone;
-        this.userId = userId;
         this.password = password;
+        this.image = image;
+        this.address = address;
+        this.userId = userId;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getUserId() {
@@ -54,29 +56,7 @@ public class Customer {
         this.address = address;
     }
 
-    public String getTown() {
-        return town;
-    }
 
-    public void setTown(String town) {
-        this.town = town;
-    }
-
-    public String getEircode() {
-        return eircode;
-    }
-
-    public void setEircode(String eircode) {
-        this.eircode = eircode;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
 
     public String getPhone() {
         return phone;
@@ -86,14 +66,6 @@ public class Customer {
         this.phone = phone;
     }
 
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public String getPassword() {
         return password;

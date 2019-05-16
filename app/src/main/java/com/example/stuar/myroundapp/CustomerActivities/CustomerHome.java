@@ -23,6 +23,7 @@ import com.example.stuar.myroundapp.R;
 import com.example.stuar.myroundapp.SettingsActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.paperdb.Paper;
@@ -83,8 +84,13 @@ public class CustomerHome extends AppCompatActivity implements NavigationView.On
         TextView userNameTextView = headerView.findViewById(R.id.profile_user_name);
         CircleImageView profileImageView = headerView.findViewById(R.id.user_profile_image);
 
+        if(RememberMe.currentOnlineUser.getImage() == "empty"){
+            RememberMe.currentOnlineUser.setImage(String.valueOf(R.drawable.av));
+        }else{
+            Picasso.get().load(RememberMe.currentOnlineUser.getImage()).into(profileImageView);
+        }
 
-        userNameTextView.setText(RememberMe.currentOnlineCustomer.getName());
+        userNameTextView.setText(RememberMe.currentOnlineUser.getName());
 
     }
 

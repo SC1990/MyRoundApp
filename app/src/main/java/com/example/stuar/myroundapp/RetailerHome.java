@@ -49,7 +49,7 @@ public class RetailerHome extends AppCompatActivity implements NavigationView.On
 
 
         retEmailTV = findViewById(R.id.retEmailTV);
-        retEmailTV.setText(RememberMe.currentOnlineCustomer.getName());
+        retEmailTV.setText(RememberMe.currentOnlineUser.getName());
 
 
     }

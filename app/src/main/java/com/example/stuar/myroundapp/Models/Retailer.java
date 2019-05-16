@@ -4,7 +4,7 @@ import com.example.stuar.myroundapp.ProductList;
 
 import java.util.ArrayList;
 
-public class Retailer extends Customer {
+public class Retailer extends User {
 
     private byte[] profilePic;
     private String hours;

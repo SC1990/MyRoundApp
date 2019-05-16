@@ -8,11 +8,11 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.stuar.myroundapp.Models.Customer;
+import com.example.stuar.myroundapp.DataRetrieval.RememberMe;
+import com.example.stuar.myroundapp.Models.User;
 import com.example.stuar.myroundapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -23,8 +23,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-
 import java.util.HashMap;
+
+import io.paperdb.Paper;
 
 public class CustSignUp extends AppCompatActivity {
 
@@ -47,6 +48,8 @@ public class CustSignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
+        Paper.init(this);
+
         firebaseAuth = FirebaseAuth.getInstance();
 
         userEmail = findViewById(R.id.user_email);
@@ -62,11 +65,11 @@ public class CustSignUp extends AppCompatActivity {
 
     public void onSignUpBtnClick(View v){
         if(v.getId() == R.id.register_btn){
-            addUser();
+            CreateAccount();
         }
     }
 
-    private void addUser(){
+    /*private void addUser(){
 
         String email = userEmail.getText().toString().trim();
         final String password = userPassword.getText().toString().trim();
@@ -143,11 +146,11 @@ public class CustSignUp extends AppCompatActivity {
                                 String id = firebaseUser.getUid();
                                 String name = "";
                                 String address = "";
-                                String town = "";
-                                Customer customer = new Customer(name, address, town, phoneNum, id, password);
-                                customer.setUserType("cust");
+                                String image = "empty";
+                                User user = new User(name, phoneNum, password, image, address, id);
+                                user.setUserType("cust");
 
-                                databaseReferenceUsers.child(phoneNum).setValue(customer);
+                                databaseReferenceUsers.child(phoneNum).setValue(user);
                                 finish();
                                 startActivity(new Intent(getApplicationContext(), CustomerHome.class));
                                 Toast.makeText(CustSignUp.this, "Account created", Toast.LENGTH_SHORT).show();
@@ -173,13 +176,14 @@ public class CustSignUp extends AppCompatActivity {
         }
 
 
-    }
+    }*/
 
-   /* private void CreateAccount()
+    private void CreateAccount()
     {
-        String email = InputEmail.getText().toString();
-        String phone = InputPhoneNumber.getText().toString();
-        String password = InputPassword.getText().toString();
+        String email = userEmail.getText().toString();
+        String phone = userPhone.getText().toString();
+        String password = userPassword.getText().toString();
+        String confirmPassword = verifyPassword.getText().toString().trim();
 
         if (TextUtils.isEmpty(email))
         {
@@ -192,6 +196,14 @@ public class CustSignUp extends AppCompatActivity {
         else if (TextUtils.isEmpty(password))
         {
             Toast.makeText(this, "Please write your password...", Toast.LENGTH_SHORT).show();
+        }
+        else if (TextUtils.isEmpty(confirmPassword))
+        {
+            Toast.makeText(this, "Please write your phone number...", Toast.LENGTH_SHORT).show();
+        }else if(!password.equals(confirmPassword)){
+            verifyPassword.setError("Passwords don't match!");
+            verifyPassword.requestFocus();
+
         }
         else
         {
@@ -206,21 +218,27 @@ public class CustSignUp extends AppCompatActivity {
     private void ValidatePhoneNumber(final String name, final String phone, final String password)
     {
 
-        firebaseAuth.createUserWithEmailAndPassword(InputEmail.toString(), password)
+        firebaseAuth.createUserWithEmailAndPassword(userEmail.getText().toString(), password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task){
                         if(task.isSuccessful()){
                             FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-                            //String userId = firebaseUser.getUid();
+                            String userId = firebaseUser.getUid();
 
                             HashMap<String, Object> userdataMap = new HashMap<>();
                             userdataMap.put("phone", phone);
                             userdataMap.put("password", password);
                             userdataMap.put("name", name);
-                            //userdataMap.put("userId", userId);
+                            userdataMap.put("userId", userId);
+                            userdataMap.put("image", "empty");
+                            userdataMap.put("address", "");
+                            userdataMap.put("userType", "customer");
+
+                            User user = new User(name, phone, password, "empty", "", userId);
 
                             databaseReferenceUsers.child(phone).setValue(userdataMap);
+                            RememberMe.currentOnlineUser = user;
                             finish();
                             startActivity(new Intent(getApplicationContext(), CustomerHome.class));
                             Toast.makeText(CustSignUp.this, "Account created", Toast.LENGTH_SHORT).show();
@@ -242,7 +260,7 @@ public class CustSignUp extends AppCompatActivity {
                 });
 
 
-    }*/
+    }
 
 
 
@@ -338,7 +356,7 @@ public class CustSignUp extends AppCompatActivity {
                                 String name = "";
                                 String address = "";
                                 String town = "";
-                                Customer customer = new Customer(name, address, town, phoneNum, id, password);
+                                User customer = new User(name, address, town, phoneNum, id, password);
                                 customer.setUserType("cust");
 
                                 databaseReferenceUsers.child(phoneNum).setValue(customer);

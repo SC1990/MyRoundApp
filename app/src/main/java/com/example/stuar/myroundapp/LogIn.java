@@ -16,7 +16,7 @@ import android.widget.Toast;
 import com.example.stuar.myroundapp.CustomerActivities.CustSignUp;
 import com.example.stuar.myroundapp.CustomerActivities.CustomerHome;
 import com.example.stuar.myroundapp.DataRetrieval.RememberMe;
-import com.example.stuar.myroundapp.Models.Customer;
+import com.example.stuar.myroundapp.Models.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -139,7 +139,7 @@ public class LogIn extends AppCompatActivity {
             {
                 if (dataSnapshot.child(parentDbName).child(phone).exists())
                 {
-                    Customer usersData = dataSnapshot.child(parentDbName).child(phone).getValue(Customer.class);
+                    User usersData = dataSnapshot.child(parentDbName).child(phone).getValue(User.class);
 
                     if (usersData.getPhone().equals(phone))
                     {
@@ -151,7 +151,7 @@ public class LogIn extends AppCompatActivity {
                                 loadingBar.dismiss();
 
                                 Intent intent = new Intent(LogIn.this, RetailerHome.class);
-                                RememberMe.currentOnlineCustomer = usersData;
+                                RememberMe.currentOnlineUser = usersData;
                                 startActivity(intent);
                             }
                             else if (parentDbName.equals("users/customers"))
@@ -160,7 +160,7 @@ public class LogIn extends AppCompatActivity {
                                 loadingBar.dismiss();
 
                                 Intent intent = new Intent(LogIn.this, CustomerHome.class);
-                                RememberMe.currentOnlineCustomer = usersData;
+                                RememberMe.currentOnlineUser = usersData;
                                 startActivity(intent);
                             }
                         }
@@ -231,7 +231,7 @@ public class LogIn extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.child(parentDbName).child(phone).exists())
                 {
-                    Customer usersData = dataSnapshot.child(parentDbName).child(phone).getValue(Customer.class);
+                    User usersData = dataSnapshot.child(parentDbName).child(phone).getValue(User.class);
 
                     if (usersData.getPhone().equals(phone))
                     {
@@ -248,7 +248,7 @@ public class LogIn extends AppCompatActivity {
 
                                 Toast.makeText(LogIn.this, "logged in Successfully...", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(LogIn.this, CustomerHome.class);
-                                //RememberMe.currentOnlineCustomer = usersData;
+                                //RememberMe.currentOnlineUser = usersData;
                                 startActivity(intent);
                             }
                         }
@@ -286,11 +286,11 @@ public class LogIn extends AppCompatActivity {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                                    Customer customer = dataSnapshot.getValue(Customer.class);
+                                    User user = dataSnapshot.getValue(User.class);
                                     try{
-                                        userType = customer.getUserType();
+                                        userType = user.getUserType();
 
-                                        if (customer.getUserType().equals("cust")){
+                                        if (user.getUserType().equals("cust")){
                                             finish();
                                             startActivity(new Intent(getApplicationContext(), CustomerHome.class));
                                             Toast.makeText(LogIn.this, "Logged in", Toast.LENGTH_SHORT).show();

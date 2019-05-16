@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import com.example.stuar.myroundapp.Models.Customer;
+import com.example.stuar.myroundapp.Models.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -30,7 +30,7 @@ public class MyDetails extends AppCompatActivity {
     DatabaseReference databaseReferenceUsers;
     FirebaseUser firebaseUser;
 
-    Customer customer;
+    User user;
 
 
 
@@ -71,12 +71,12 @@ public class MyDetails extends AppCompatActivity {
         databaseReferenceUsers.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Customer customer = dataSnapshot.getValue(Customer.class);
+                User user = dataSnapshot.getValue(User.class);
                 try{
-                    nameET.setText(customer.getName());
-                    addressET.setText(customer.getAddress());
-                    townET.setText(customer.getTown());
-                    mobileNumET.setText(customer.getPhone());
+                    nameET.setText(user.getName());
+                    addressET.setText(user.getAddress());
+                    //townET.setText(user.getTown());
+                    mobileNumET.setText(user.getPhone());
                 }catch (Exception e){
                     NullPointerException nullPointerException;
                     nameET.setText("");
@@ -111,10 +111,10 @@ public class MyDetails extends AppCompatActivity {
             FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
             String id = firebaseUser.getUid();
-            Customer customer = new Customer(name, address, town, num, id);
-            customer.setUserType("cust");
+            User user = new User(name, address, town, num, id);
+            user.setUserType("cust");
 
-            databaseReferenceUsers.child(id).setValue(customer);
+            databaseReferenceUsers.child(id).setValue(user);
 
             Toast.makeText(this, "info saved", Toast.LENGTH_LONG).show();
         }*/

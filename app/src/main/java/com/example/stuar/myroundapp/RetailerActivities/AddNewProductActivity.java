@@ -73,7 +73,7 @@ public class AddNewProductActivity extends AppCompatActivity {
         firebaseUser = firebaseAuth.getCurrentUser();
 
         Paper.init(this);
-        retId = RememberMe.currentOnlineCustomer.getUserId();
+        retId = RememberMe.currentOnlineUser.getUserId();
         //------------------------------------------------
 
         productImg.setOnClickListener(new View.OnClickListener() {
