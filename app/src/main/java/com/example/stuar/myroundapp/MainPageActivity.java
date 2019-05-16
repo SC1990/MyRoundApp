@@ -13,6 +13,7 @@ import com.example.stuar.myroundapp.CustomerActivities.CustSignUp;
 import com.example.stuar.myroundapp.CustomerActivities.CustomerHome;
 import com.example.stuar.myroundapp.DataRetrieval.RememberMe;
 import com.example.stuar.myroundapp.Models.User;
+import com.example.stuar.myroundapp.RetailerActivities.RetailerSU;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -107,6 +108,11 @@ public class MainPageActivity extends AppCompatActivity {
 
     public void onLoginClick(View view) {
         Intent intent = new Intent(MainPageActivity.this, LogIn.class);
+        startActivity(intent);
+    }
+
+    public void onRetSULink(View view) {
+        Intent intent = new Intent(MainPageActivity.this, RetailerSU.class);
         startActivity(intent);
     }
 }

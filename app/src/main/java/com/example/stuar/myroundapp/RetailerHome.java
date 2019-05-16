@@ -34,7 +34,7 @@ public class RetailerHome extends AppCompatActivity implements NavigationView.On
 
         Paper.init(this);
 
-        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar3);
         setSupportActionBar(toolbar);
 
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -112,6 +112,15 @@ public class RetailerHome extends AppCompatActivity implements NavigationView.On
     public void onProductsClick(View view) {
         if(view.getId() == R.id.myProdBtn){
             startActivity(new Intent(getApplicationContext(), RetailerProductsActivity.class));
+        }
+    }
+
+    public void onLogoutClick(View view) {
+        if(view.getId() == R.id.loBtn){
+            Paper.book().destroy();
+            //firebaseAuth.signOut();
+            finish();
+            startActivity(new Intent(RetailerHome.this, MainPageActivity.class));
         }
     }
 }

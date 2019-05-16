@@ -72,7 +72,7 @@ public class LogIn extends AppCompatActivity {
                 LoginButton.setText("Login Retailer");
                 retailerLink.setVisibility(View.INVISIBLE);
                 notRetailerLink.setVisibility(View.VISIBLE);
-                parentDbName = "retailers";
+                parentDbName = "users/retailers";
             }
         });
 
@@ -145,7 +145,7 @@ public class LogIn extends AppCompatActivity {
                     {
                         if (usersData.getPassword().equals(password))
                         {
-                            if (parentDbName.equals("retailers"))
+                            if (parentDbName.equals("users/retailers"))
                             {
                                 Toast.makeText(LogIn.this, "Welcome " + usersData.getName() +", you are logged in Successfully...", Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();

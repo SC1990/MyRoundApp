@@ -50,6 +50,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     implementation 'com.google.firebase:firebase-storage:17.0.0'
     implementation 'com.firebaseui:firebase-ui-storage:3.2.1'
+    implementation 'com.cepheuen.elegant-number-button:lib:1.0.2'
 
 
 

@@ -60,7 +60,7 @@ public class MyRoundHome extends AppCompatActivity implements NavigationView.OnN
 
         */
 
-        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar3);
         setSupportActionBar(toolbar);
 
         drawerLayout = findViewById(R.id.drawer_layout);

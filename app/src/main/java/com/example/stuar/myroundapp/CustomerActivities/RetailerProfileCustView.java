@@ -17,10 +17,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.stuar.myroundapp.Cart;
 import com.example.stuar.myroundapp.ImageUpload;
 import com.example.stuar.myroundapp.Models.Product;
+import com.example.stuar.myroundapp.ProductDetailsActivity;
 import com.example.stuar.myroundapp.R;
 import com.example.stuar.myroundapp.ViewHolders.ProductViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -38,15 +40,7 @@ import io.paperdb.Paper;
 public class RetailerProfileCustView extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     ListView listView;
-  /*  Integer imgIds[] = {R.drawable.bbottle, R.drawable.bbottle, R.drawable.bbottle,
-            R.drawable.bbottle, R.drawable.bbottle, R.drawable.bbottle,
-            R.drawable.bbottle, R.drawable.bbottle, R.drawable.bbottle,
-            R.drawable.bbottle, R.drawable.bbottle, R.drawable.bbottle,
-            R.drawable.bbottle, R.drawable.bbottle, R.drawable.bbottle,
-            R.drawable.bbottle, R.drawable.bbottle, R.drawable.bbottle};*/
-
     final Context context = this;
-
     private TextView tvName;
 
     ArrayList<ImageUpload> rProds;
@@ -58,6 +52,7 @@ public class RetailerProfileCustView extends AppCompatActivity implements Naviga
 
     String rID;
     String name;
+    String rIdCheck = "";
 
 
     @Override
@@ -67,8 +62,6 @@ public class RetailerProfileCustView extends AppCompatActivity implements Naviga
 
         Paper.init(this);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Products");
-
         tvName = (TextView)findViewById(R.id.prof_name);
         Intent i = getIntent();
         Bundle b = i.getExtras();
@@ -77,8 +70,11 @@ public class RetailerProfileCustView extends AppCompatActivity implements Naviga
             name =(String) b.get("name");
             tvName.setText(name);
 
-            //rID = (String) b.get("id");
+            rID = (String) b.get("id");
         }
+
+
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Products");
 
       /*  Retailer retailer = new Retailer();
         retailer.setName(name);
@@ -143,6 +139,8 @@ public class RetailerProfileCustView extends AppCompatActivity implements Naviga
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+
+
 
     /*    tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -233,21 +231,35 @@ public class RetailerProfileCustView extends AppCompatActivity implements Naviga
         FirebaseRecyclerAdapter<Product, ProductViewHolder> adapter =
                 new FirebaseRecyclerAdapter<Product, ProductViewHolder>(options) {
                     @Override
-                    protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Product model)
-                    {
-                        holder.txtProductName.setText(model.getpName());
-                        //holder.txtProductDescription.setText(model.getDescription());
-                        holder.txtProductPrice.setText("€" + model.getPrice());
-                        Picasso.get().load(model.getpImage()).into(holder.imageView);
+                    protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final Product model) {
+                        rIdCheck = model.getRetId();
+
+                        if(model.getRetId().equals(rID)){
+                            holder.txtProductName.setText(model.getpName());
+                            //holder.txtProductDescription.setText(model.getDescription());
+                            holder.txtProductPrice.setText("€" + model.getPrice());
+                            Picasso.get().load(model.getpImage()).into(holder.imageView);
+                        }
+
+                        holder.itemView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                Intent intent = new Intent(RetailerProfileCustView.this, ProductDetailsActivity.class);
+                                intent.putExtra("pId", model.getpId());
+                                startActivity(intent);
+                            }
+                        });
                     }
 
                     @NonNull
                     @Override
                     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
                     {
-                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.products_layout, parent, false);
-                        ProductViewHolder holder = new ProductViewHolder(view);
-                        return holder;
+                            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.products_layout, parent, false);
+                            ProductViewHolder holder = new ProductViewHolder(view);
+                            return holder;
+
                     }
                 };
 

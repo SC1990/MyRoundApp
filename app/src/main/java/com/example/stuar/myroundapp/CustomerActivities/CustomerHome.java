@@ -52,7 +52,7 @@ public class CustomerHome extends AppCompatActivity implements NavigationView.On
         gridView.setAdapter(new ImageAdapterGridView(this));
 
 
-        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar3);
         setSupportActionBar(toolbar);
 
         drawerLayout = findViewById(R.id.drawer_layout);

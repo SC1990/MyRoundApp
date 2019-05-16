@@ -127,11 +127,9 @@ public class RetailerSU extends AppCompatActivity {
                                 String id = firebaseUser.getUid();
                                 String name = "";
                                 String address = "";
-                                String town = "";
+                                String image = "empty";
                                 String num = "";
-                                String hours = "";
-                                String email = "";
-                                User user = new Retailer(name, address, town, num, id, hours, email, password);
+                                User user = new Retailer(name, address, image, num, id, password);
                                 user.setUserType("ret");
 
                                 databaseReferenceUsers.child(id).setValue(user);

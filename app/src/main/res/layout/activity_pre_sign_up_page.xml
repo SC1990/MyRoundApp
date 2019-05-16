@@ -8,7 +8,7 @@
 
     <android.support.v7.widget.Toolbar
 
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbar3"
         android:layout_width="370dp"
         android:layout_height="100dp"
         android:background="@drawable/button_border"
