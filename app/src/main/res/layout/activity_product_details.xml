@@ -65,7 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:initialNumber="1"
-        app:backGroundColor="@color/colorPrimary"
+        android:background="@drawable/button_border"
         android:elevation="6dp"
         app:textSize="16dp"
         android:layout_below="@id/prod_price"
@@ -74,16 +74,15 @@
 
     </com.cepheuen.elegantnumberbutton.view.ElegantNumberButton>
 
-    <android.support.design.widget.FloatingActionButton
+    <Button
         android:id="@+id/cart_btn"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:elevation="6dp"
-        android:backgroundTint="@color/colorPrimaryDark"
-        app:fabSize="normal"
-        android:src="@drawable/icon_cart"
+        android:text="Add to cart"
+        android:textStyle="bold"
+        android:background="@drawable/button_border"
+        android:layout_centerInParent="true"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
         android:layout_margin="10dp"/>
 
 </RelativeLayout>

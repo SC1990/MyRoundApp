@@ -54,6 +54,8 @@ public class RetailerProfileCustView extends AppCompatActivity implements Naviga
     String name;
     String rIdCheck = "";
 
+    FirebaseDatabase database;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,15 +68,16 @@ public class RetailerProfileCustView extends AppCompatActivity implements Naviga
         Intent i = getIntent();
         Bundle b = i.getExtras();
 
-        if(b!=null) {
-            name =(String) b.get("name");
-            tvName.setText(name);
-
-            rID = (String) b.get("id");
-        }
+        rID = (String) b.get("id");
 
 
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Products");
+
+        //databaseReference = FirebaseDatabase.getInstance().getReference().child("Products");
+        database = FirebaseDatabase.getInstance();
+        databaseReference = database.getReference("Products");
+
+
+
 
       /*  Retailer retailer = new Retailer();
         retailer.setName(name);
@@ -102,7 +105,7 @@ public class RetailerProfileCustView extends AppCompatActivity implements Naviga
 
                     if(imageUpload.getRetId().equalsIgnoreCase(rID)){
                         rProds.add(imageUpload);
-                    }else{
+                   }else{
                         Toast.makeText(RetailerProfileCustView.this, "nope", Toast.LENGTH_SHORT).show();
                     }
 
@@ -224,7 +227,7 @@ public class RetailerProfileCustView extends AppCompatActivity implements Naviga
 
         FirebaseRecyclerOptions<Product> options =
                 new FirebaseRecyclerOptions.Builder<Product>()
-                        .setQuery(databaseReference, Product.class)
+                        .setQuery(databaseReference.orderByChild("retId").equalTo(rID), Product.class)
                         .build();
 
 
@@ -246,6 +249,7 @@ public class RetailerProfileCustView extends AppCompatActivity implements Naviga
                             public void onClick(View v) {
 
                                 Intent intent = new Intent(RetailerProfileCustView.this, ProductDetailsActivity.class);
+                                intent.putExtra("rId", model.getRetId());
                                 intent.putExtra("pId", model.getpId());
                                 startActivity(intent);
                             }
