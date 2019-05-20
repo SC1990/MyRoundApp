@@ -5,6 +5,10 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/item_cart"
+            android:icon="@drawable/icon_cart"
+            android:title="@string/cart" />
+        <item
             android:id="@+id/item_login"
             android:icon="@drawable/profile_icon"
             android:title="@string/log_innn" />

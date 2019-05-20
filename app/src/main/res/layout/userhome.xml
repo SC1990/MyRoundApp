@@ -95,6 +95,18 @@
             android:onClick="onViewRetailersBtnClick"
             android:text="@string/view_retailers1" />
 
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/cart_fab"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="15dp"
+            android:layout_marginRight="15dp"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:src="@drawable/icon_cart"
+            />
+
     </RelativeLayout>
 
     <android.support.design.widget.NavigationView
