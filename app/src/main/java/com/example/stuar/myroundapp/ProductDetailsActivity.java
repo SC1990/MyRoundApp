@@ -40,6 +40,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
     private String pId = "";
     private String rId = "";
+    private String image = "";
     private String saveCurrentDate;
     private String saveCurrentTime;
 
@@ -53,6 +54,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
         pId = getIntent().getStringExtra("pId");
         rId = getIntent().getStringExtra("rId");
+        image = getIntent().getStringExtra("image");
 
         cartButton = findViewById(R.id.cart_btn);
         prodImg = findViewById(R.id.product_details_img);
@@ -86,6 +88,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         final HashMap<String, Object> cartMap = new HashMap<>();
         cartMap.put("pId", pId);
         cartMap.put("rId", rId);
+        cartMap.put("cartImage", image);
         cartMap.put("pName", pName.getText().toString());
         cartMap.put("price", pPrice.getText().toString());
         cartMap.put("date", saveCurrentDate);

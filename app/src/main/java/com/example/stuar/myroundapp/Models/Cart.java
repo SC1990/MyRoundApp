@@ -1,17 +1,26 @@
 package com.example.stuar.myroundapp.Models;
 
 public class Cart {
-    private String pId, pName, price, quantity;
+    private String pId, pName, price, quantity, cartImage;
 
     public Cart(){
 
     }
 
-    public Cart(String pId, String pName, String price, String quantity) {
+    public Cart(String pId, String pName, String price, String quantity, String cartImage) {
         this.pId = pId;
         this.pName = pName;
         this.price = price;
         this.quantity = quantity;
+        this.cartImage = cartImage;
+    }
+
+    public String getCartImage() {
+        return cartImage;
+    }
+
+    public void setCartImage(String cartImage) {
+        this.cartImage = cartImage;
     }
 
     public String getpId() {

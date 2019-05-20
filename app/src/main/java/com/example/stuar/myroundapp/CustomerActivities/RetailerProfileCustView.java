@@ -251,6 +251,7 @@ public class RetailerProfileCustView extends AppCompatActivity implements Naviga
                                 Intent intent = new Intent(RetailerProfileCustView.this, ProductDetailsActivity.class);
                                 intent.putExtra("rId", model.getRetId());
                                 intent.putExtra("pId", model.getpId());
+                                intent.putExtra("image", model.getpImage());
                                 startActivity(intent);
                             }
                         });
