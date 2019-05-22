@@ -38,7 +38,8 @@
         <activity android:name=".LogIn" />
         <activity android:name=".SettingsActivity" />
         <activity android:name=".ProductDetailsActivity" />
-        <activity android:name=".CartActivity"></activity>
+        <activity android:name=".CartActivity" />
+        <activity android:name=".ConfirmOrderActivity"></activity>
     </application>
 
 </manifest>

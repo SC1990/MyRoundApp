@@ -14,12 +14,12 @@
         >
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/p_img"
-            android:scaleType="centerCrop"
             android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:layout_centerInParent="true"
-            android:layout_gravity="center"
-            android:layout_above="@id/price"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/prod_name"
+            android:layout_marginLeft="-5dp"
             />
 
         <TextView

@@ -37,6 +37,8 @@ public class CartActivity extends AppCompatActivity {
     private TextView totalTv;
     private CircleImageView cart_prodImg;
 
+    private int orderTotal = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +50,7 @@ public class CartActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         cart_prodImg = findViewById(R.id.p_img);
 
+
         nextBtn = findViewById(R.id.next_btn);
         totalTv = findViewById(R.id.total);
 
@@ -55,6 +58,12 @@ public class CartActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                totalTv.setText("Total: €" + String.valueOf(orderTotal));
+
+                Intent intent = new Intent(CartActivity.this , ConfirmOrderActivity.class);
+                intent.putExtra("total", String.valueOf(orderTotal));
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -78,10 +87,12 @@ public class CartActivity extends AppCompatActivity {
                     protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull final Cart model) {
 
                         Picasso.get().load(model.getCartImage()).into(holder.imageView);
-                        Toast.makeText(getApplicationContext(), model.getCartImage(), Toast.LENGTH_SHORT).show();
                         holder.pName.setText(model.getpName());
                         holder.pPrice.setText("Price: " + model.getPrice() + "€");
                         holder.quantity.setText("Quantity: " + model.getQuantity());
+
+                        int prodTotal=(Integer.parseInt(model.getPrice().replaceAll("\\D+",""))) * Integer.parseInt(model.getQuantity());
+                        orderTotal = orderTotal + prodTotal;
 
                         holder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
