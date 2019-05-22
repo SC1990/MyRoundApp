@@ -57,7 +57,6 @@ public class CartActivity extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 totalTv.setText("Total: €" + String.valueOf(orderTotal));
 
                 Intent intent = new Intent(CartActivity.this , ConfirmOrderActivity.class);

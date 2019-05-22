@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
 import com.example.stuar.myroundapp.CustomerActivities.RetailerProfileCustView;
 import com.example.stuar.myroundapp.DataRetrieval.RememberMe;
+import com.example.stuar.myroundapp.DataRetrieval.RetailerDetails;
 import com.example.stuar.myroundapp.Models.Product;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -83,6 +84,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
         SimpleDateFormat currentTime = new SimpleDateFormat("HH-mm-ss");
         saveCurrentTime = currentTime.format(calendar.getTime());
 
+        RetailerDetails.retailerId = rId;
+
         final DatabaseReference cartRef = FirebaseDatabase.getInstance().getReference().child("Cart");
 
         final HashMap<String, Object> cartMap = new HashMap<>();
@@ -116,7 +119,9 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
                                                 Intent intent = new Intent(ProductDetailsActivity.this, RetailerProfileCustView.class);
                                                 intent.putExtra("id", rId);
+                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                                 startActivity(intent);
+                                                finish();
                                             }
                                         }
                                     });
