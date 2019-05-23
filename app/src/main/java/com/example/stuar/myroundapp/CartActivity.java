@@ -183,8 +183,8 @@ public class CartActivity extends AppCompatActivity {
                         nextBtn.setVisibility(View.GONE);
 
                     }
-                    else if(orderStatus.equals("Order Placed")){
-                        totalTv.setText("Order status: " + orderStatus);
+                    else if(orderStatus.equals("CustomerOrder Placed")){
+                        totalTv.setText("CustomerOrder status: " + orderStatus);
                         recyclerView.setVisibility(View.GONE);
                         orderMsg.setVisibility(View.VISIBLE);
                         nextBtn.setVisibility(View.GONE);

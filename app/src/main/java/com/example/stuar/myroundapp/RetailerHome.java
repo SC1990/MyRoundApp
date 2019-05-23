@@ -105,7 +105,8 @@ public class RetailerHome extends AppCompatActivity implements NavigationView.On
 
     public void onRetOrdersBtnClick(View view) {
         if(view.getId() == R.id.retOrdersBtn){
-            //retrieveUserInfo();
+            Intent intent = new Intent(RetailerHome.this, RetailerNewOrderActivity.class);
+            startActivity(intent);
         }
     }
 
@@ -119,8 +120,10 @@ public class RetailerHome extends AppCompatActivity implements NavigationView.On
         if(view.getId() == R.id.loBtn){
             Paper.book().destroy();
             //firebaseAuth.signOut();
+            Intent intent = new Intent(RetailerHome.this, MainPageActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
             finish();
-            startActivity(new Intent(RetailerHome.this, MainPageActivity.class));
         }
     }
 }

@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginBottom="425dp"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/toolbar_layout"
             android:minHeight="?attr/actionBarSize"
             app:layout_constraintBottom_toTopOf="@+id/floatingActionButton2"
             app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +39,8 @@
             android:minHeight="90dp"
             android:numColumns="auto_fit"
             android:stretchMode="columnWidth"
-            android:layout_alignParentLeft="true">
+            android:layout_alignParentLeft="true"
+            android:visibility="gone">
 
         </ListView>
 
@@ -51,12 +52,16 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_marginRight="17dp"
+            android:layout_marginTop="8dp"
             android:src="@android:drawable/ic_input_add"
             app:backgroundTint="@color/colorPrimary" />
 
 
-
     </RelativeLayout>
+
+
+
+
 
         <android.support.design.widget.NavigationView
             android:id="@+id/drawer3"

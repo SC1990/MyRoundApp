@@ -39,7 +39,9 @@
         <activity android:name=".SettingsActivity" />
         <activity android:name=".ProductDetailsActivity" />
         <activity android:name=".CartActivity" />
-        <activity android:name=".ConfirmOrderActivity"></activity>
+        <activity android:name=".ConfirmOrderActivity" />
+        <activity android:name=".RetailerNewOrderActivity" />
+        <activity android:name=".OrderProductDetailsActivity"></activity>
     </application>
 
 </manifest>

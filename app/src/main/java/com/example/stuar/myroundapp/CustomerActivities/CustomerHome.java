@@ -116,8 +116,10 @@ public class CustomerHome extends AppCompatActivity implements NavigationView.On
         if(view.getId() == R.id.logOutBtn){
             Paper.book().destroy();
             //firebaseAuth.signOut();
+            Intent intent = new Intent(CustomerHome.this, MainPageActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
             finish();
-            startActivity(new Intent(CustomerHome.this, MainPageActivity.class));
         }
     }
 

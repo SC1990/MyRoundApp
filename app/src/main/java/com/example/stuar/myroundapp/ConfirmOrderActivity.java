@@ -76,7 +76,7 @@ public class ConfirmOrderActivity extends AppCompatActivity {
         ordersMap.put("rId", RetailerDetails.retailerId);
         ordersMap.put("date", saveCurrentDate);
         ordersMap.put("time", saveCurrentTime);
-        ordersMap.put("status", "Order Placed");
+        ordersMap.put("status", "CustomerOrder Placed");
 
         orderRef.updateChildren(ordersMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -92,7 +92,7 @@ public class ConfirmOrderActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
-                                        Toast.makeText(getApplicationContext(), "Order Placed", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(), "CustomerOrder Placed", Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(ConfirmOrderActivity.this, CustomerHome.class);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);

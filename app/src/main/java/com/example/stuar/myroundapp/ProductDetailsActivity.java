@@ -71,7 +71,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(status.equals("Order Placed") || status.equals("Out for delivery")){
+                if(status.equals("CustomerOrder Placed") || status.equals("Out for delivery")){
                     Toast.makeText(getApplicationContext(), "Please wait for order to be confirmed", Toast.LENGTH_SHORT).show();
                 }
                 else{
@@ -191,8 +191,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
                         status = "Out for delivery";
 
                     }
-                    else if(orderStatus.equals("Order Placed")){
-                        status = "Order Placed";
+                    else if(orderStatus.equals("CustomerOrder Placed")){
+                        status = "CustomerOrder Placed";
 
                     }
 
