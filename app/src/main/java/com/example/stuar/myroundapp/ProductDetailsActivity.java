@@ -44,6 +44,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private String image = "";
     private String saveCurrentDate;
     private String saveCurrentTime;
+    private String status = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,9 +70,25 @@ public class ProductDetailsActivity extends AppCompatActivity {
         cartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addToCart();
+
+                if(status.equals("Order Placed") || status.equals("Out for delivery")){
+                    Toast.makeText(getApplicationContext(), "Please wait for order to be confirmed", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    addToCart();
+                }
             }
         });
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        checkOrderStatus();
+        Toast.makeText(getApplicationContext(), status, Toast.LENGTH_SHORT).show();
+
 
     }
 
@@ -144,6 +161,40 @@ public class ProductDetailsActivity extends AppCompatActivity {
                     pDesc.setText(product.getDescription());
                     pPrice.setText(product.getPrice());
                     Picasso.get().load(product.getpImage()).into(prodImg);
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+
+    private void checkOrderStatus(){
+        DatabaseReference databaseReference;
+        databaseReference = FirebaseDatabase.getInstance().getReference()
+                .child("Orders")
+                .child(RememberMe.currentOnlineUser.getPhone());
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+
+                    String orderStatus = dataSnapshot.child("status").getValue().toString();
+
+                    if(orderStatus.equals("Out for Delivery")){
+                        status = "Out for delivery";
+
+                    }
+                    else if(orderStatus.equals("Order Placed")){
+                        status = "Order Placed";
+
+                    }
 
                 }
 

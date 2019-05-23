@@ -76,7 +76,7 @@ public class ConfirmOrderActivity extends AppCompatActivity {
         ordersMap.put("rId", RetailerDetails.retailerId);
         ordersMap.put("date", saveCurrentDate);
         ordersMap.put("time", saveCurrentTime);
-        ordersMap.put("status", "Processing Order..");
+        ordersMap.put("status", "Order Placed");
 
         orderRef.updateChildren(ordersMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
