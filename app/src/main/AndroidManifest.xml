@@ -42,7 +42,8 @@
         <activity android:name=".ConfirmOrderActivity" />
         <activity android:name=".RetailerNewOrderActivity" />
         <activity android:name=".OrderProductDetailsActivity" />
-        <activity android:name=".SearchProductsActivity"></activity>
+        <activity android:name=".SearchProductsActivity" />
+        <activity android:name=".MaintainProductsActivity"></activity>
     </application>
 
 </manifest>

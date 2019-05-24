@@ -26,6 +26,7 @@ public class MainPageActivity extends AppCompatActivity {
 
 
     private ProgressDialog loadingBar;
+    private String parentDbName = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

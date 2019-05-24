@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.stuar.myroundapp.DataRetrieval.RetailerDetails;
 import com.example.stuar.myroundapp.ImageUpload;
 import com.example.stuar.myroundapp.ImageUploader;
+import com.example.stuar.myroundapp.MaintainProductsActivity;
 import com.example.stuar.myroundapp.Models.Product;
 import com.example.stuar.myroundapp.ProductDetailsActivity;
 import com.example.stuar.myroundapp.R;
@@ -135,7 +136,7 @@ public class RetailerProductsActivity extends AppCompatActivity  {
                             @Override
                             public void onClick(View v) {
 
-                                Intent intent = new Intent(RetailerProductsActivity.this, ProductDetailsActivity.class);
+                                Intent intent = new Intent(RetailerProductsActivity.this, MaintainProductsActivity.class);
                                 intent.putExtra("rId", model.getRetId());
                                 intent.putExtra("pId", model.getpId());
                                 intent.putExtra("image", model.getpImage());
