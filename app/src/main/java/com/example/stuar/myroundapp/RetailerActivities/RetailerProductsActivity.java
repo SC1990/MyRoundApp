@@ -1,18 +1,33 @@
 package com.example.stuar.myroundapp.RetailerActivities;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.example.stuar.myroundapp.DataRetrieval.RetailerDetails;
 import com.example.stuar.myroundapp.ImageUpload;
 import com.example.stuar.myroundapp.ImageUploader;
+import com.example.stuar.myroundapp.Models.Product;
+import com.example.stuar.myroundapp.ProductDetailsActivity;
 import com.example.stuar.myroundapp.R;
+import com.example.stuar.myroundapp.ViewHolders.ProductViewHolder;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -30,12 +45,16 @@ public class RetailerProductsActivity extends AppCompatActivity  {
 
     RetailerProdListAdapter adapter;
 
+    RecyclerView recyclerView;
+    RecyclerView.LayoutManager layoutManager;
+
+    private String id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retailer_products);
 
-        listView = findViewById(R.id.listView);
 
      /*   rProds = new ArrayList<>();
 
@@ -69,10 +88,6 @@ public class RetailerProductsActivity extends AppCompatActivity  {
 
 
 
-
-        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar2);
-        setSupportActionBar(toolbar);
-
      /*   drawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = (NavigationView) findViewById(R.id.drawer5);
         navigationView.setNavigationItemSelectedListener(this);
@@ -82,6 +97,66 @@ public class RetailerProductsActivity extends AppCompatActivity  {
 
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();*/
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("Products");
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        recyclerView = findViewById(R.id.ret_prodlist);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+
+
+        FirebaseRecyclerOptions<Product> options =
+                new FirebaseRecyclerOptions.Builder<Product>()
+                        .setQuery(databaseReference.orderByChild("retId").equalTo(RetailerDetails.retailerId), Product.class)
+                        .build();
+
+
+        FirebaseRecyclerAdapter<Product, ProductViewHolder> adapter =
+                new FirebaseRecyclerAdapter<Product, ProductViewHolder>(options) {
+                    @Override
+                    protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final Product model) {
+
+                        holder.txtProductName.setText(model.getpName());
+                        //holder.txtProductDescription.setText(model.getDescription());
+                        holder.txtProductPrice.setText("€" + model.getPrice());
+                        Picasso.get().load(model.getpImage()).into(holder.imageView);
+
+
+                        holder.itemView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                Intent intent = new Intent(RetailerProductsActivity.this, ProductDetailsActivity.class);
+                                intent.putExtra("rId", model.getRetId());
+                                intent.putExtra("pId", model.getpId());
+                                intent.putExtra("image", model.getpImage());
+                                startActivity(intent);
+                            }
+                        });
+                    }
+
+                    @NonNull
+                    @Override
+                    public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+                    {
+                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.products_layout, parent, false);
+                        ProductViewHolder holder = new ProductViewHolder(view);
+                        return holder;
+
+                    }
+                };
+
+        recyclerView.setAdapter(adapter);
+        adapter.startListening();
     }
 
 
@@ -137,43 +212,5 @@ public class RetailerProductsActivity extends AppCompatActivity  {
     }
 
 
-  /*  public class ProdImageAdapterGridView extends BaseAdapter {
-        private Context mContext;
 
-        public ProdImageAdapterGridView(Context context) {
-            mContext = context;
-        }
-
-        @Override
-        public int getCount() {
-            return rProds.size();
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return null;
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return 0;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            ImageView mImageView;
-
-            if (convertView == null) {
-                mImageView =  new ImageView(mContext);
-                mImageView.setLayoutParams(new GridView.LayoutParams(130, 280));
-                mImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                mImageView.setPadding(16, 16, 16, 16);
-            } else {
-                mImageView = (ImageView) convertView;
-            }
-            mImageView.setImageResource(imgIds[position]);
-            return mImageView;
-        }
-
-    }*/
 }

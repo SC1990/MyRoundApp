@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.stuar.myroundapp.CustomerActivities.CustSignUp;
 import com.example.stuar.myroundapp.CustomerActivities.CustomerHome;
 import com.example.stuar.myroundapp.DataRetrieval.RememberMe;
+import com.example.stuar.myroundapp.DataRetrieval.RetailerDetails;
 import com.example.stuar.myroundapp.Models.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -33,7 +34,7 @@ public class LogIn extends AppCompatActivity {
     private Button LoginButton;
     private ProgressDialog loadingBar;
 
-    private String parentDbName = "users/customers";
+    private String parentDbName = "";
     private CheckBox checkBox;
 
     private TextView retailerLink;
@@ -152,6 +153,7 @@ public class LogIn extends AppCompatActivity {
 
                                 Intent intent = new Intent(LogIn.this, RetailerHome.class);
                                 RememberMe.currentOnlineUser = usersData;
+                                RetailerDetails.retailerId = usersData.getUserId();
                                 startActivity(intent);
                             }
                             else if (parentDbName.equals("users/customers"))

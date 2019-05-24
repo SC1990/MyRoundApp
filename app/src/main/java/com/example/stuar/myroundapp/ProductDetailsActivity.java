@@ -87,8 +87,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
         super.onStart();
 
         checkOrderStatus();
-        Toast.makeText(getApplicationContext(), status, Toast.LENGTH_SHORT).show();
-
 
     }
 

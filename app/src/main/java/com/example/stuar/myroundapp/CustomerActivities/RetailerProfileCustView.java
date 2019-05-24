@@ -24,6 +24,7 @@ import com.example.stuar.myroundapp.ImageUpload;
 import com.example.stuar.myroundapp.Models.Product;
 import com.example.stuar.myroundapp.ProductDetailsActivity;
 import com.example.stuar.myroundapp.R;
+import com.example.stuar.myroundapp.SearchProductsActivity;
 import com.example.stuar.myroundapp.ViewHolders.ProductViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -304,9 +305,9 @@ public class RetailerProfileCustView extends AppCompatActivity implements Naviga
                 startActivity(new Intent(getApplicationContext(), Cart.class));
                 break;
 
-        /*    case R.id.search_products_icon:
-                startActivity(new Intent(getApplicationContext(), LogIn.class));
-                break;*/
+            case R.id.search_products_icon:
+                startActivity(new Intent(getApplicationContext(), SearchProductsActivity.class));
+                break;
 
         }
 
