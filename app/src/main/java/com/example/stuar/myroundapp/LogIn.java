@@ -34,11 +34,12 @@ public class LogIn extends AppCompatActivity {
     private Button LoginButton;
     private ProgressDialog loadingBar;
 
-    private String parentDbName = "";
+    private String parentDbName = "users/customers";
     private CheckBox checkBox;
 
     private TextView retailerLink;
     private TextView notRetailerLink;
+    private TextView forgotPasswordLink;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,7 @@ public class LogIn extends AppCompatActivity {
         setContentView(R.layout.activity_log_in);
 
 
+        forgotPasswordLink = (TextView) findViewById(R.id.forget_password_link);
         LoginButton = (Button) findViewById(R.id.login_btn);
         InputPassword = (EditText) findViewById(R.id.login_password_input);
         InputPhoneNumber = (EditText) findViewById(R.id.login_phone_number_input);
@@ -60,8 +62,7 @@ public class LogIn extends AppCompatActivity {
 
         LoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 LoginUser();
             }
         });
@@ -85,6 +86,15 @@ public class LogIn extends AppCompatActivity {
                 retailerLink.setVisibility(View.VISIBLE);
                 notRetailerLink.setVisibility(View.INVISIBLE);
                 parentDbName = "users/customers";
+            }
+        });
+
+        forgotPasswordLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LogIn.this, ForgotPasswordActivity.class);
+                intent.putExtra("check", "login");
+                startActivity(intent);
             }
         });
 
@@ -121,10 +131,8 @@ public class LogIn extends AppCompatActivity {
 
 
 
-    private void AllowAccessToAccount(final String phone, final String password)
-    {
-        if(checkBox.isChecked())
-        {
+    private void AllowAccessToAccount(final String phone, final String password) {
+        if(checkBox.isChecked()) {
             Paper.book().write(RememberMe.UserPhoneKey, phone);
             Paper.book().write(RememberMe.UserPasswordKey, password);
         }
@@ -136,18 +144,13 @@ public class LogIn extends AppCompatActivity {
 
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-            {
-                if (dataSnapshot.child(parentDbName).child(phone).exists())
-                {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.child(parentDbName).child(phone).exists()) {
                     User usersData = dataSnapshot.child(parentDbName).child(phone).getValue(User.class);
 
-                    if (usersData.getPhone().equals(phone))
-                    {
-                        if (usersData.getPassword().equals(password))
-                        {
-                            if (parentDbName.equals("users/retailers"))
-                            {
+                    if (usersData.getPhone().equals(phone)) {
+                        if (usersData.getPassword().equals(password)) {
+                            if (parentDbName.equals("users/retailers")) {
                                 Toast.makeText(LogIn.this, "Welcome " + usersData.getName() +", you are logged in Successfully...", Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
 
@@ -156,8 +159,7 @@ public class LogIn extends AppCompatActivity {
                                 RetailerDetails.retailerId = usersData.getUserId();
                                 startActivity(intent);
                             }
-                            else if (parentDbName.equals("users/customers"))
-                            {
+                            else if (parentDbName.equals("users/customers")) {
                                 Toast.makeText(LogIn.this, "logged in Successfully...", Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
 
@@ -166,15 +168,13 @@ public class LogIn extends AppCompatActivity {
                                 startActivity(intent);
                             }
                         }
-                        else
-                        {
+                        else{
                             loadingBar.dismiss();
                             Toast.makeText(LogIn.this, "Password is incorrect.", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
-                else
-                {
+                else{
                     Toast.makeText(LogIn.this, "Account with this " + phone + " number do not exists.", Toast.LENGTH_SHORT).show();
                     loadingBar.dismiss();
                 }

@@ -38,20 +38,6 @@
         android:textColor="@android:color/white"
         android:textSize="18sp" />
 
-    <Button
-        android:id="@+id/ret_su_link"
-        android:onClick="onRetSULink"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linear_layout_1"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="191dp"
-        android:layout_marginRight="15dp"
-        android:background="@drawable/button_border"
-        android:padding="17dp"
-        android:text="Create account (retailers)"
-        android:textAllCaps="false"
-        android:textColor="@android:color/white"
-        android:textSize="18sp" />
+
 
 </RelativeLayout>

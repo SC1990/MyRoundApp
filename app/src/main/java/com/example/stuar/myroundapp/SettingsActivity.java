@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,6 +46,7 @@ public class SettingsActivity extends AppCompatActivity{
     private StorageTask uploadTask;
     private StorageReference storageProfilePictureRef;
     private String checker = "";
+    private Button securityQuestionBtn;
 
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
@@ -65,6 +67,7 @@ public class SettingsActivity extends AppCompatActivity{
         profileChangeTextBtn = (TextView) findViewById(R.id.profile_image_change_btn);
         closeTextBtn = (TextView) findViewById(R.id.close_settings_btn);
         saveTextButton = (TextView) findViewById(R.id.update_account_settings_btn);
+        securityQuestionBtn = findViewById(R.id.security_questions_btn);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -100,6 +103,15 @@ public class SettingsActivity extends AppCompatActivity{
             public void onClick(View view) {
                 checker = "clicked";
                 OpenGallery();
+            }
+        });
+
+        securityQuestionBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SettingsActivity.this, ForgotPasswordActivity.class);
+                intent.putExtra("check", "settings");
+                startActivity(intent);
             }
         });
     }

@@ -40,10 +40,8 @@ public class MainPageActivity extends AppCompatActivity {
         String UserPhoneKey = Paper.book().read(RememberMe.UserPhoneKey);
         String UserPasswordKey = Paper.book().read(RememberMe.UserPasswordKey);
 
-        if (UserPhoneKey != "" && UserPasswordKey != "")
-        {
-            if (!TextUtils.isEmpty(UserPhoneKey)  &&  !TextUtils.isEmpty(UserPasswordKey))
-            {
+        if (UserPhoneKey != "" && UserPasswordKey != "") {
+            if (!TextUtils.isEmpty(UserPhoneKey)  &&  !TextUtils.isEmpty(UserPasswordKey)) {
                 AllowAccess(UserPhoneKey, UserPasswordKey);
 
                 loadingBar.setTitle("Already Logged in");
@@ -55,24 +53,19 @@ public class MainPageActivity extends AppCompatActivity {
     }
 
 
-    private void AllowAccess(final String phone, final String password)
-    {
+    private void AllowAccess(final String phone, final String password) {
         final DatabaseReference RootRef;
         RootRef = FirebaseDatabase.getInstance().getReference();
 
 
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-            {
-                if (dataSnapshot.child("users/customers").child(phone).exists())
-                {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.child("users/customers").child(phone).exists()) {
                     User usersData = dataSnapshot.child("users/customers").child(phone).getValue(User.class);
 
-                    if (usersData.getPhone().equals(phone))
-                    {
-                        if (usersData.getPassword().equals(password))
-                        {
+                    if (usersData.getPhone().equals(phone)) {
+                        if (usersData.getPassword().equals(password)) {
                             Toast.makeText(MainPageActivity.this, "Please wait, you are already logged in...", Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
 
@@ -80,15 +73,13 @@ public class MainPageActivity extends AppCompatActivity {
                             RememberMe.currentOnlineUser = usersData;
                             startActivity(intent);
                         }
-                        else
-                        {
+                        else {
                             loadingBar.dismiss();
                             Toast.makeText(MainPageActivity.this, "Password is incorrect.", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
-                else
-                {
+                else {
                     Toast.makeText(MainPageActivity.this, "Account with this " + phone + " number do not exists.", Toast.LENGTH_SHORT).show();
                     loadingBar.dismiss();
                 }
@@ -112,8 +103,4 @@ public class MainPageActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void onRetSULink(View view) {
-        Intent intent = new Intent(MainPageActivity.this, RetailerSU.class);
-        startActivity(intent);
-    }
 }
