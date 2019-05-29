@@ -69,7 +69,7 @@ public class MainPageActivity extends AppCompatActivity {
                             Toast.makeText(MainPageActivity.this, "Please wait, you are already logged in...", Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
 
-                            Intent intent = new Intent(MainPageActivity.this, CustomerHome.class);
+                            Intent intent = new Intent(MainPageActivity.this, CustomerPaymentActivity.class);
                             RememberMe.currentOnlineUser = usersData;
                             startActivity(intent);
                         }

@@ -163,7 +163,7 @@ public class LogIn extends AppCompatActivity {
                                 Toast.makeText(LogIn.this, "logged in Successfully...", Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
 
-                                Intent intent = new Intent(LogIn.this, CustomerHome.class);
+                                Intent intent = new Intent(LogIn.this, CustomerPaymentActivity.class);
                                 RememberMe.currentOnlineUser = usersData;
                                 startActivity(intent);
                             }

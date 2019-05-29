@@ -44,7 +44,8 @@
         <activity android:name=".OrderProductDetailsActivity" />
         <activity android:name=".SearchProductsActivity" />
         <activity android:name=".MaintainProductsActivity" />
-        <activity android:name=".ForgotPasswordActivity"></activity>
+        <activity android:name=".ForgotPasswordActivity" />
+        <activity android:name=".CustomerPaymentActivity" />
     </application>
 
 </manifest>

@@ -5,7 +5,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.stuar.myroundapp"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -38,6 +38,7 @@ dependencies {
     implementation 'com.android.support:design:28.0.0'
     implementation 'com.firebaseui:firebase-ui-database:3.3.1'
     implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.stripe:stripe-android:9.0.1'
 
 
     implementation 'de.hdodenhof:circleimageview:3.0.0'

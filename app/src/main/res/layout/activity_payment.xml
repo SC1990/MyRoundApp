@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:stripe="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CustomerPaymentActivity"
+    >
+
+    <com.stripe.android.view.CardMultilineWidget
+        android:id="@+id/card_input_widget"
+        android:layout_width="320dp"
+        android:layout_height="200dp"
+        stripe:cardTint="@android:color/holo_purple"
+        stripe:cardTextErrorColor="@android:color/holo_red_dark"
+        android:layout_marginTop="250dp"
+        android:layout_centerInParent="true"
+        />
+
+    <Button
+        android:id="@+id/pay_btn"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/card_input_widget"
+        android:layout_alignEnd="@+id/card_input_widget"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="-5dp"
+        android:layout_marginBottom="129dp"
+        android:background="@drawable/button_border"
+        android:text="pay"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
+
+
+
+
+
+
+</RelativeLayout>
