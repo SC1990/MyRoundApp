@@ -61,5 +61,6 @@ dependencies {
 
     implementation 'io.paperdb:paperdb:2.6'
 
+    implementation "com.github.10bis:compactCreditInput:1.0.0-rc4"
 
 }

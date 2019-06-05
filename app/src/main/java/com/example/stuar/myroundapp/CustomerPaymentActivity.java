@@ -1,3 +1,4 @@
+
 package com.example.stuar.myroundapp;
 
 import android.support.annotation.NonNull;
@@ -65,11 +66,11 @@ public class CustomerPaymentActivity extends AppCompatActivity {
                         //create token
                         // unique string that Stripe generates to refer to a user’s sensitive credit information
 
-                        Stripe stripe = new Stripe(getApplicationContext(), "pk_test_Qz6xxzsbKrTinqluYMFxitQW005xGSAkr3");
+                        final Stripe stripe = new Stripe(getApplicationContext(), "pk_test_Qz6xxzsbKrTinqluYMFxitQW005xGSAkr3");
                         stripe.createToken(
                                 card,
                                 new TokenCallback() {
-                                    public void onSuccess(Token token) {
+                                    public void onSuccess(final Token token) {
                                         // Send token to your server
                                         final DatabaseReference tokenRef;
                                         tokenRef = FirebaseDatabase.getInstance().getReference()
