@@ -58,10 +58,11 @@ public class CartActivity extends AppCompatActivity {
         totalTv = findViewById(R.id.total);
         orderMsg = findViewById(R.id.order_msg);
 
+        totalTv.setText("Total: €" + String.valueOf(RememberMe.total));
+
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                totalTv.setText("Total: €" + String.valueOf(orderTotal));
 
                 Intent intent = new Intent(CartActivity.this , ConfirmOrderActivity.class);
                 intent.putExtra("total", String.valueOf(orderTotal));
@@ -132,6 +133,9 @@ public class CartActivity extends AppCompatActivity {
 
                                                             if(task.isSuccessful()){
                                                                 Toast.makeText(getApplicationContext(), model.getpName() + " removed from cart", Toast.LENGTH_SHORT).show();
+                                                                if(RememberMe.cartCount != 0){
+                                                                    RememberMe.cartCount--;
+                                                                }
 
                                                                 Intent intent = new Intent(CartActivity.this , CartActivity.class);
                                                                 startActivity(intent);

@@ -52,6 +52,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private String status = "";
     NotificationBadge badge;
     private int cartCount;
+    private int price;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +92,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
                     addToCart();
                     RememberMe.cartCount++;
+
                 }
            // }
         });
@@ -171,6 +173,9 @@ public class ProductDetailsActivity extends AppCompatActivity {
         cartMap.put("date", saveCurrentDate);
         cartMap.put("time", saveCurrentTime);
         cartMap.put("quantity", counterBtn.getNumber());
+        cartMap.put("total", Integer.valueOf(counterBtn.getNumber()) * price);
+
+        RememberMe.total += Integer.valueOf(counterBtn.getNumber()) * price;
 
         cartRef.child("Customer view").child(RememberMe.currentOnlineUser.getPhone())
                 .child("Products").child(pId)
@@ -214,6 +219,9 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 if(dataSnapshot.exists()){
 
                     Product product = dataSnapshot.getValue(Product.class);
+
+                    price = Integer.valueOf(product.getPrice());
+
                     pName.setText(product.getpName());
                     pDesc.setText(product.getDescription());
                     pPrice.setText(product.getPrice());

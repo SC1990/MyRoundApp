@@ -43,6 +43,11 @@ public class ConfirmOrderActivity extends AppCompatActivity {
         orderAddress = findViewById(R.id.order_address);
         orderTown = findViewById(R.id.order_town);
 
+        orderName.setText(RememberMe.currentOnlineUser.getName());
+        orderPhone.setText(RememberMe.currentOnlineUser.getPhone());
+        orderAddress.setText(RememberMe.currentOnlineUser.getAddress());
+        orderTown.setText(RememberMe.currentOnlineUser.getAddress());
+
         total = getIntent().getStringExtra("total");
 
         confirmBtn.setOnClickListener(new View.OnClickListener() {
@@ -50,6 +55,7 @@ public class ConfirmOrderActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 confirmOrder();
+                RememberMe.cartCount = 0;
             }
         });
     }

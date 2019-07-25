@@ -19,6 +19,7 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.stuar.myroundapp.CartActivity;
 import com.example.stuar.myroundapp.DataRetrieval.RememberMe;
@@ -75,8 +76,15 @@ public class CustomerHome extends AppCompatActivity implements NavigationView.On
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(CustomerHome.this, CartActivity.class);
-                startActivity(intent);
+                if(RememberMe.cartCount != 0){
+                    Intent intent = new Intent(CustomerHome.this, CartActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "Cart is empty", Toast.LENGTH_SHORT).show();
+
+                }
+
             }
         });
 
