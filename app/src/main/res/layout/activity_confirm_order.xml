@@ -14,8 +14,9 @@
         android:textSize="18dp"
         android:textColor="@android:color/black"
         android:textStyle="bold"
-        android:layout_margin="25dp"
-        android:textAlignment="center"/>
+
+        android:textAlignment="center"
+        />
 
     <EditText
         android:id="@+id/order_name"
@@ -26,6 +27,8 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:hint="Name"
+        android:background="@drawable/edittext_border"
+        android:padding="15dp"
         />
 
     <EditText
@@ -38,6 +41,8 @@
         android:layout_marginRight="20dp"
         android:hint="Phone Number"
         android:inputType="number"
+        android:background="@drawable/edittext_border"
+        android:padding="15dp"
         />
 
     <EditText
@@ -49,6 +54,8 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:hint="Address"
+        android:background="@drawable/edittext_border"
+        android:padding="15dp"
         />
 
     <EditText
@@ -60,19 +67,65 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:hint="Town/Village"
+        android:background="@drawable/edittext_border"
+        android:padding="15dp"
         />
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/order_town">
+
+
+    <RadioButton
+        android:id="@+id/radio0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pay by card"
+        android:textSize="20dp"
+        android:layout_marginLeft="20dp"
+        />
+
+        <RadioButton
+            android:id="@+id/radio1"
+            android:textSize="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="220dp"
+            android:layout_marginTop="-32dp"
+
+            android:text="Pay by cash" />
+
+    </RadioGroup>
 
     <Button
         android:id="@+id/confirm_btn"
-        android:layout_width="match_parent"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="20dp"
-        android:text="Confirm"
-        android:textStyle="bold"
+        android:layout_below="@+id/order_town"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="61dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/button_border"
+        android:text="Go to payment"
         android:textSize="20dp"
-        />
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/back_btn"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/confirm_btn"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/button_border2"
+        android:text="Back to cart"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>

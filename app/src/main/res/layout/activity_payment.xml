@@ -20,7 +20,7 @@
     <Button
         android:id="@+id/pay_btn"
         android:layout_width="320dp"
-        android:layout_height="wrap_content"
+        android:layout_height="59dp"
         android:layout_below="@id/card_input_widget"
         android:layout_alignEnd="@+id/card_input_widget"
         android:layout_alignParentBottom="true"
