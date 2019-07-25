@@ -6,6 +6,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -17,6 +19,7 @@ import com.example.stuar.myroundapp.CustomerActivities.RetailerProfileCustView;
 import com.example.stuar.myroundapp.DataRetrieval.RememberMe;
 import com.example.stuar.myroundapp.DataRetrieval.RetailerDetails;
 import com.example.stuar.myroundapp.Models.Product;
+import com.google.android.gms.common.internal.service.Common;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -24,6 +27,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.nex3z.notificationbadge.NotificationBadge;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
@@ -31,6 +35,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import io.paperdb.Paper;
 
 public class ProductDetailsActivity extends AppCompatActivity {
 
@@ -45,11 +50,17 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private String saveCurrentDate;
     private String saveCurrentTime;
     private String status = "";
+    NotificationBadge badge;
+    private int cartCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_details);
+
+        cartCount = RememberMe.cartCount;
+        Paper.init(this);
+
 
         Toolbar toolbar = findViewById(R.id.toolbar3);
         setSupportActionBar(toolbar);
@@ -67,19 +78,67 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
         getProductDetails(pId);
 
+
         cartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if(status.equals("CustomerOrder Placed") || status.equals("Out for delivery")){
-                    Toast.makeText(getApplicationContext(), "Please wait for order to be confirmed", Toast.LENGTH_SHORT).show();
+               /* if(status.equals("CustomerOrder Placed") *//*|| status.equals("Out for delivery")*//*){
+                    Toast.makeText(getApplicationContext(), "Please wait for order confirmation", Toast.LENGTH_SHORT).show();
                 }
-                else{
+                else{*/
+
+
                     addToCart();
+                    RememberMe.cartCount++;
                 }
+           // }
+        });
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.main_cart, menu);
+        View view = menu.findItem(R.id.action_cart).getActionView();
+        badge = view.findViewById(R.id.badge);
+        updateCartCounter();
+
+        return true;
+    }
+
+    private void updateCartCounter() {
+
+        if(badge == null) return;
+
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                badge.setVisibility(View.VISIBLE);
+                badge.setText(String.valueOf(RememberMe.cartCount));
+
             }
         });
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if(id == R.id.action_cart){
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onResume() {
+        updateCartCounter();
+        super.onResume();
     }
 
     @Override

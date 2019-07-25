@@ -17,6 +17,8 @@
 
         />
 
+
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/product_details_img"
         android:layout_width="match_parent"

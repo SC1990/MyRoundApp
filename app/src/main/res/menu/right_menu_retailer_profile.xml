@@ -6,18 +6,11 @@
     >
 
 
-    <item
-        android:id="@+id/cart_icon"
-        android:icon="@drawable/icon_cart"
-        android:orderInCategory="300"
-        android:title="@string/my_details_"
-        android:visible="true"
-        app:showAsAction="always" />
+
 
 
     <item
         android:id="@+id/search_products_icon"
-        android:orderInCategory="100"
         android:title="@string/my_details6"
         app:showAsAction="always"
         android:visible="true"

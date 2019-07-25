@@ -21,6 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".CustomerActivities.CustSignUp" />
         <activity android:name=".MyDetails" />
         <activity android:name=".CustomerActivities.PreSignUpPage" />
@@ -46,7 +47,8 @@
         <activity android:name=".MaintainProductsActivity" />
         <activity android:name=".ForgotPasswordActivity" />
         <activity android:name=".CustomerPaymentActivity" />
-         />
+        />
+
     </application>
 
 </manifest>

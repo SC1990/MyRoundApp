@@ -11,6 +11,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,7 @@ import com.example.stuar.myroundapp.R;
 import com.example.stuar.myroundapp.SettingsActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.nex3z.notificationbadge.NotificationBadge;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -43,6 +45,7 @@ public class CustomerHome extends AppCompatActivity implements NavigationView.On
     Integer imgIds[] =  {
             R.drawable.or, R.drawable.sett, R.drawable.or, R.drawable.sett, R.drawable.or, R.drawable.sett
           };
+    NotificationBadge badge;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +82,8 @@ public class CustomerHome extends AppCompatActivity implements NavigationView.On
 
 
 
+
+
       /*  //userEmailET = findViewById(R.id.userEmailET);
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -104,6 +109,38 @@ public class CustomerHome extends AppCompatActivity implements NavigationView.On
 
         userNameTextView.setText(RememberMe.currentOnlineUser.getName());
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.main_cart, menu);
+        View view = menu.findItem(R.id.action_cart).getActionView();
+        badge = view.findViewById(R.id.badge);
+        updateCartCounter();
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    private void updateCartCounter() {
+
+
+        if(badge == null) return;
+
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                badge.setVisibility(View.VISIBLE);
+                badge.setText(String.valueOf(RememberMe.cartCount));
+
+            }
+        });
+
+    }
+
+    @Override
+    protected void onResume() {
+        updateCartCounter();
+        super.onResume();
     }
 
     public void onDetailsBtnClick(View view){

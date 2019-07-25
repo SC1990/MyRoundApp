@@ -20,6 +20,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.stuar.myroundapp.Cart;
+import com.example.stuar.myroundapp.CartActivity;
+import com.example.stuar.myroundapp.DataRetrieval.RememberMe;
 import com.example.stuar.myroundapp.ImageUpload;
 import com.example.stuar.myroundapp.Models.Product;
 import com.example.stuar.myroundapp.ProductDetailsActivity;
@@ -30,6 +32,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.nex3z.notificationbadge.NotificationBadge;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -56,6 +59,7 @@ public class RetailerProfileCustView extends AppCompatActivity implements Naviga
     String rIdCheck = "";
 
     FirebaseDatabase database;
+    NotificationBadge badge;
 
 
     @Override
@@ -292,7 +296,32 @@ public class RetailerProfileCustView extends AppCompatActivity implements Naviga
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.right_menu_retailer_profile, menu);
+        getMenuInflater().inflate(R.menu.main_cart, menu);
+        View view = menu.findItem(R.id.action_cart).getActionView();
+        badge = view.findViewById(R.id.badge);
+        updateCartCounter();
         return super.onCreateOptionsMenu(menu);
+    }
+
+    private void updateCartCounter() {
+
+        if(badge == null) return;
+
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                badge.setVisibility(View.VISIBLE);
+                badge.setText(String.valueOf(RememberMe.cartCount));
+
+            }
+        });
+
+    }
+
+    @Override
+    protected void onResume() {
+        updateCartCounter();
+        super.onResume();
     }
 
     //cart icon
@@ -301,8 +330,8 @@ public class RetailerProfileCustView extends AppCompatActivity implements Naviga
     {
         switch (item.getItemId())
         {
-            case R.id.cart_icon:
-                startActivity(new Intent(getApplicationContext(), Cart.class));
+            case R.id.action_cart:
+                startActivity(new Intent(getApplicationContext(), CartActivity.class));
                 break;
 
             case R.id.search_products_icon:
