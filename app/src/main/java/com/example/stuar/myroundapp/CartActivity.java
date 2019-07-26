@@ -58,6 +58,7 @@ public class CartActivity extends AppCompatActivity {
         totalTv = findViewById(R.id.total);
         orderMsg = findViewById(R.id.order_msg);
 
+
         totalTv.setText("Total: €" + String.valueOf(RememberMe.total));
 
         nextBtn.setOnClickListener(new View.OnClickListener() {

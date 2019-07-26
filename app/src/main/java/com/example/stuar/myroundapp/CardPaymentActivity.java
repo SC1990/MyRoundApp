@@ -26,12 +26,9 @@ import com.stripe.android.view.CardMultilineWidget;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Currency;
 import java.util.HashMap;
 
-import static java.security.AccessController.getContext;
-
-public class CustomerPaymentActivity extends AppCompatActivity {
+public class CardPaymentActivity extends AppCompatActivity {
 
     private Card card;
     private Button payBtn;
@@ -151,7 +148,7 @@ public class CustomerPaymentActivity extends AppCompatActivity {
                 .child(RememberMe.currentOnlineUser.getPhone());
 
         HashMap<String, Object> ordersMap = new HashMap<>();
-        ordersMap.put("total", total);
+        ordersMap.put("total", RememberMe.total);
         ordersMap.put("name", RememberMe.currentOnlineUser.getName());
         ordersMap.put("phone", RememberMe.currentOnlineUser.getPhone());
         ordersMap.put("address", RememberMe.currentOnlineUser.getAddress());
@@ -159,6 +156,7 @@ public class CustomerPaymentActivity extends AppCompatActivity {
         ordersMap.put("date", saveCurrentDate);
         ordersMap.put("time", saveCurrentTime);
         ordersMap.put("status", "CustomerOrder Placed");
+        ordersMap.put("payment_type", "Card");
 
         orderRef.updateChildren(ordersMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -175,7 +173,7 @@ public class CustomerPaymentActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
                                         Toast.makeText(getApplicationContext(), "CustomerOrder Placed", Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(CustomerPaymentActivity.this, CustomerHome.class);
+                                        Intent intent = new Intent(CardPaymentActivity.this, CustomerOrderActivity.class);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);
                                         finish();
@@ -191,6 +189,6 @@ public class CustomerPaymentActivity extends AppCompatActivity {
 
 
     private void handleError(String s) {
-        Toast.makeText(CustomerPaymentActivity.this, s, Toast.LENGTH_SHORT).show();
+        Toast.makeText(CardPaymentActivity.this, s, Toast.LENGTH_SHORT).show();
     }
 }
