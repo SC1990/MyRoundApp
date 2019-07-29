@@ -46,15 +46,16 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="59dp"
         android:textColor="@android:color/black"
-        android:textSize="30dp" />
+        android:textSize="30dp"
+        android:text="retailer"/>
 
     <TextView
         android:id="@+id/time_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="99dp"
+        android:layout_marginTop="199dp"
         android:textColor="@android:color/black"
-        android:textSize="30dp" />
+        android:textSize="20dp" />
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"

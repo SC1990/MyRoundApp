@@ -198,9 +198,10 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
                                                 Intent intent = new Intent(ProductDetailsActivity.this, RetailerProfileCustView.class);
                                                 intent.putExtra("id", rId);
-                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                intent.putExtra("name", RememberMe.rName);
+                                                //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                                 startActivity(intent);
-                                                finish();
+                                                //finish();
                                             }
                                         }
                                     });
@@ -240,7 +241,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
 
     private void checkOrderStatus(){
-        DatabaseReference databaseReference;
+        /*DatabaseReference databaseReference;
         databaseReference = FirebaseDatabase.getInstance().getReference()
                 .child("Orders")
                 .child(RememberMe.currentOnlineUser.getPhone());
@@ -269,6 +270,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });
+        });*/
     }
 }

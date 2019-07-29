@@ -8,6 +8,9 @@ public class RememberMe {
 
     public static final String UserPhoneKey = "UserPhone";
     public static final String UserPasswordKey = "UserPassword";
+
+    //current order global variables - so can retrieve in different activities
     public static int cartCount = 0;
     public static int total = 0;
+    public static String rName;
 }

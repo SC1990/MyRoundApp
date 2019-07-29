@@ -63,7 +63,7 @@ public class RetailerProductsActivity extends AppCompatActivity  {
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
         if(firebaseAuth.getCurrentUser() != null){
-            retId = firebaseUser.getUid();
+            retId = firebaseUser.getName();
         }
 
         databaseReference = FirebaseDatabase.getInstance().getReference("prod_image");

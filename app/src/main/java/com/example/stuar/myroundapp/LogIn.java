@@ -282,7 +282,7 @@ public class LogIn extends AppCompatActivity {
 
                         if (task.isSuccessful()) {
 
-                            databaseReference = FirebaseDatabase.getInstance().getReference("users/customers").child(firebaseAuth.getUid());
+                            databaseReference = FirebaseDatabase.getInstance().getReference("users/customers").child(firebaseAuth.getName());
                             // Attach a listener to read the data at your profile reference
                             databaseReference.addValueEventListener(new ValueEventListener() {
                                 @Override

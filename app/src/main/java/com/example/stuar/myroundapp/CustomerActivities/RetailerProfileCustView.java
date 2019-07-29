@@ -22,10 +22,12 @@ import android.widget.Toast;
 import com.example.stuar.myroundapp.Cart;
 import com.example.stuar.myroundapp.CartActivity;
 import com.example.stuar.myroundapp.DataRetrieval.RememberMe;
+import com.example.stuar.myroundapp.DataRetrieval.RetailerDetails;
 import com.example.stuar.myroundapp.ImageUpload;
 import com.example.stuar.myroundapp.Models.Product;
 import com.example.stuar.myroundapp.ProductDetailsActivity;
 import com.example.stuar.myroundapp.R;
+import com.example.stuar.myroundapp.RetailerReviewList;
 import com.example.stuar.myroundapp.SearchProductsActivity;
 import com.example.stuar.myroundapp.ViewHolders.ProductViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -69,11 +71,19 @@ public class RetailerProfileCustView extends AppCompatActivity implements Naviga
 
         Paper.init(this);
 
-        tvName = (TextView)findViewById(R.id.prof_name);
+        tvName = findViewById(R.id.prof_name);
+
+
         Intent i = getIntent();
         Bundle b = i.getExtras();
 
-        rID = (String) b.get("id");
+        /*rID = (String) b.get("id");*/
+        rID = RetailerDetails.retailerId;
+        //name = (String) b.get("name");
+        name = RetailerDetails.retailerName;
+
+        RememberMe.rName = name;
+        tvName.setText(RememberMe.rName);
 
 
 
@@ -150,7 +160,7 @@ public class RetailerProfileCustView extends AppCompatActivity implements Naviga
 
 
 
-    /*    tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
 
@@ -168,7 +178,7 @@ public class RetailerProfileCustView extends AppCompatActivity implements Naviga
             public void onTabReselected(TabLayout.Tab tab) {
 
             }
-        });*/
+        });
 
 
 

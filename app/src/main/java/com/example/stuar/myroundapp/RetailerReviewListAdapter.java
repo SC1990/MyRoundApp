@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.stuar.myroundapp.Models.Review;
 
@@ -14,24 +15,37 @@ import java.util.List;
 
 public class RetailerReviewListAdapter extends RecyclerView.Adapter<RetailerReviewListAdapter.RetailerReviewViewHolder> {
 
-    private Context context;
+    private Context mCtx;
     private List<Review> reviewList;
     View view;
 
-    public RetailerReviewListAdapter(Context context, List<Review> reviewList) {
-        this.context = context;
+    public RetailerReviewListAdapter(Context mCtx, List<Review> reviewList) {
+        this.mCtx = mCtx;
         this.reviewList = reviewList;
     }
 
     @NonNull
     @Override
     public RetailerReviewViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.retailer_review_row, parent, false);
-        return new RetailerReviewListAdapter.RetailerReviewViewHolder(view);
+        View view = LayoutInflater.from(mCtx).inflate(R.layout.retailer_review_row, parent, false);
+        return new RetailerReviewViewHolder(view);
     }
 
+
     @Override
-    public void onBindViewHolder(@NonNull RetailerReviewViewHolder retailerReviewViewHolder, int i) {
+    public void onBindViewHolder(@NonNull RetailerReviewViewHolder holder, final int position) {
+
+        holder.userEmail = (TextView) view.findViewById(R.id.u_email);
+        holder.dateTV = (TextView) view.findViewById(R.id.t_date);
+        holder.reviewTxt = (TextView) view.findViewById(R.id.review_text);
+
+        //current retailer
+        Review review = reviewList.get(position);
+
+        //set retailer details
+        holder.userEmail.setText(review.getName());
+        holder.dateTV.setText(review.getTime_date());
+        holder.reviewTxt.setText(review.getText());
 
 
     }
@@ -41,18 +55,17 @@ public class RetailerReviewListAdapter extends RecyclerView.Adapter<RetailerRevi
         return reviewList.size();
     }
 
-    class RetailerReviewViewHolder extends RecyclerView.ViewHolder {
 
-        LinearLayout parent1;
+    public class RetailerReviewViewHolder extends RecyclerView.ViewHolder {
+        TextView userEmail, dateTV, reviewTxt;
+        LinearLayout parent;
 
         public RetailerReviewViewHolder(@NonNull View itemView) {
             super(itemView);
             view = itemView;
 
-            parent1 = itemView.findViewById(R.id.parent);
-
+            parent = itemView.findViewById(R.id.parent);
 
         }
     }
-
 }

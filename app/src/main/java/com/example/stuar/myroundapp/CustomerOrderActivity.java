@@ -27,6 +27,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class CustomerOrderActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
@@ -44,12 +48,31 @@ public class CustomerOrderActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
+        rname = findViewById(R.id.rname);
+        timeDate = findViewById(R.id.time_date);
+        discount = findViewById(R.id.discount2);
+        subtotal = findViewById(R.id.subtotal2);
+        dFee = findViewById(R.id.delivery_fee2);
+        total = findViewById(R.id.order_total2);
+
+        rname.setText(RememberMe.rName);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd 'at' HH:mm:ss");
+        String currentDateandTime = sdf.format(new Date());
+        timeDate.setText(currentDateandTime);
+
+        discount.setText("€0");
+
+        total.setText(String.valueOf(RememberMe.total));
+        subtotal.setText(String.valueOf(RememberMe.total - 2.50));
+        dFee.setText("€2.50");
+
     }
 
 
-    @Override
+    /*@Override
     protected void onStart() {
-        super.onStart();
+               super.onStart();
 
         final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Cart");
 
@@ -89,5 +112,5 @@ public class CustomerOrderActivity extends AppCompatActivity {
 
 
 
-    }
+    }*/
 }

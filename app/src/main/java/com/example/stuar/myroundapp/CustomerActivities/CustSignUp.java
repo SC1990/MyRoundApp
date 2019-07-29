@@ -143,7 +143,7 @@ public class CustSignUp extends AppCompatActivity {
                             if(task.isSuccessful()){
                                 FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
-                                String id = firebaseUser.getUid();
+                                String id = firebaseUser.getName();
                                 String name = "";
                                 String address = "";
                                 String image = "empty";
@@ -352,7 +352,7 @@ public class CustSignUp extends AppCompatActivity {
                             if(task.isSuccessful()){
                                 FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
-                                String id = firebaseUser.getUid();
+                                String id = firebaseUser.getName();
                                 String name = "";
                                 String address = "";
                                 String town = "";

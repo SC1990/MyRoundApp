@@ -1,37 +1,39 @@
 package com.example.stuar.myroundapp.Models;
 
-import java.util.Date;
-
 public class Review {
 
-    private String reviewer;
-    private String reviewText;
-    private Date date;
+    private String name;
+    private String text;
     private int stars;
+    private String time_date;
 
-    public String getReviewer() {
-        return reviewer;
+    public String getTime_date() {
+        return time_date;
     }
 
-    public void setReviewer(String reviewer) {
-        this.reviewer = reviewer;
+    public void setTime_date(String time_date) {
+        this.time_date = time_date;
     }
 
-    public String getReviewText() {
-        return reviewText;
+
+
+    public String getName() {
+        return name;
     }
 
-    public void setReviewText(String reviewText) {
-        this.reviewText = reviewText;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Date getDate() {
-        return date;
+    public String getText() {
+        return text;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setText(String text) {
+        this.text = text;
     }
+
+
 
     public int getStars() {
         return stars;

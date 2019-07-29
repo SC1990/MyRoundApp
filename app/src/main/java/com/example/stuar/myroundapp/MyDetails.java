@@ -110,7 +110,7 @@ public class MyDetails extends AppCompatActivity {
         if(!TextUtils.isEmpty(name) || !TextUtils.isEmpty(address) || !TextUtils.isEmpty(town) || !TextUtils.isEmpty(num)){
             FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
-            String id = firebaseUser.getUid();
+            String id = firebaseUser.getName();
             User user = new User(name, address, town, num, id);
             user.setUserType("cust");
 

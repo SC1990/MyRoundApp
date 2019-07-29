@@ -13,7 +13,7 @@
     android:gravity="center_vertical"
     android:orientation="horizontal">
 
-    <ImageView
+    <!--<ImageView
         android:id="@+id/imageView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -55,38 +55,48 @@
         android:layout_weight="1"
         android:layout_marginTop="25dp"
         android:layout_marginLeft="100dp"
-        app:srcCompat="@drawable/empty_star" />
+        app:srcCompat="@drawable/empty_star" />-->
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/u_email"
         android:layout_width="184dp"
         android:layout_height="36dp"
         android:layout_marginBottom="100dp"
         android:layout_weight="1"
-        android:text="Pedro"
-        android:textSize="16sp"
+        android:text="User"
+        android:textSize="13sp"
         android:layout_marginLeft="3dp"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/t_date"
         android:layout_width="184dp"
         android:layout_height="36dp"
         android:layout_marginBottom="100dp"
         android:layout_weight="1"
         android:text="15/02/19"
-        android:textSize="16sp"
+        android:textSize="12sp"
         android:textStyle="bold"
-        android:layout_marginLeft="60dp"
-        android:layout_toRightOf="@id/textView11"/>
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/u_email"/>
+
+   <!-- <RatingBar
+        android:id="@+id/rating"
+        android:layout_marginTop="13dp"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:saveEnabled="true"
+        android:numStars="5"
+        />-->
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/edittext_border">
 
         <TextView
+            android:id="@+id/review_text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Donec gravida accumsan magna, a congue massa dictum at. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse potenti. Donec eget enim quis massa aliquet posuere vel vel magna. Praesent porta dolor et auctor malesuada. Integer vitae fringilla lectus."/>
