@@ -2,8 +2,8 @@ package com.example.stuar.myroundapp.RetailerActivities;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -55,10 +55,10 @@ public class AddNewProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_product);
 
-        productName = (EditText) findViewById(R.id.cv_product_name);
-        productDesc = (EditText) findViewById(R.id.product_description);
-        productPrice = (EditText) findViewById(R.id.cv_product_price);
-        prodVol = (EditText) findViewById(R.id.product_volume);
+        productName = (EditText) findViewById(R.id.product_name);
+        productDesc = (EditText) findViewById(R.id.prod_desc);
+        productPrice = (EditText) findViewById(R.id.prod_price);
+        prodVol = (EditText) findViewById(R.id.prod_vol);
         productImg = (ImageView) findViewById(R.id.select_product_image);
         addNewProductButton = (Button) findViewById(R.id.add_new_product);
 

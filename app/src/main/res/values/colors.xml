@@ -7,4 +7,10 @@
     <color name="blue">#2fef4f</color>
     <color name="gold">#e6b121</color>
     <color name="grey">#fa0505</color>
+    <color name="starColor">#e6b121</color>
+    <color name="noteDescriptionTextColor">#d97528</color>
+    <color name="titleTextColor">#fa0505</color>
+    <color name="contentTextColor">#fa0505</color>
+    <color name="hintTextColor">#fa0505</color>
+    <color name="commentTextColor">#fa0505</color>
 </resources>

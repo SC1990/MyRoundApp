@@ -1,16 +1,15 @@
 package com.example.stuar.myroundapp;
 
-import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
-import android.support.design.widget.TabLayout;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,7 +24,6 @@ import com.example.stuar.myroundapp.CustomerActivities.RetailerProfileCustView;
 import com.example.stuar.myroundapp.DataRetrieval.RememberMe;
 import com.example.stuar.myroundapp.DataRetrieval.RetailerDetails;
 import com.example.stuar.myroundapp.Models.Review;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -33,14 +31,20 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.stepstone.apprating.AppRatingDialog;
+import com.stepstone.apprating.listener.RatingDialogListener;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 
-public class RetailerReviewList extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class RetailerReviewList extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, RatingDialogListener {
 
+    //private static final int TAG = ;
     private RecyclerView recyclerView;
     private RetailerReviewListAdapter adapter;
     private ArrayList<Review> reviews;
@@ -106,7 +110,9 @@ public class RetailerReviewList extends AppCompatActivity implements NavigationV
             @Override
             public void onClick(View v) {
 
-                final AlertDialog dialogBuilder = new AlertDialog.Builder(RetailerReviewList.this).create();
+                showDialog();
+
+                /*final AlertDialog dialogBuilder = new AlertDialog.Builder(RetailerReviewList.this).create();
                 LayoutInflater inflater = RetailerReviewList.this.getLayoutInflater();
                 View dialogView = inflater.inflate(R.layout.new_review, null);
 
@@ -164,7 +170,7 @@ public class RetailerReviewList extends AppCompatActivity implements NavigationV
                 });
 
                 dialogBuilder.setView(dialogView);
-                dialogBuilder.show();
+                dialogBuilder.show();*/
             }
         });
 
@@ -208,5 +214,78 @@ public class RetailerReviewList extends AppCompatActivity implements NavigationV
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         return false;
+    }
+
+
+    //-----------------------------------------------------------------------------------
+
+    private void showDialog() {
+        new AppRatingDialog.Builder()
+                .setPositiveButtonText("Submit review")
+                .setNegativeButtonText("Cancel")
+                .setNeutralButtonText("Later")
+                .setNoteDescriptions(Arrays.asList("Poor", "Satisfactory", "Good", "Great", "Excellent !!!"))
+                .setDefaultRating(2)
+                .setTitle("Review this retailer")
+                .setDescription("Please select some stars and give your feedback")
+                .setCommentInputEnabled(true)
+                .setDefaultComment("Write review....")
+                .setStarColor(R.color.starColor)
+                .setNoteDescriptionTextColor(R.color.noteDescriptionTextColor)
+                .setTitleTextColor(R.color.titleTextColor)
+                .setDescriptionTextColor(R.color.contentTextColor)
+                .setHint("Please write your comment here ...")
+                .setHintTextColor(R.color.hintTextColor)
+                .setCommentTextColor(R.color.commentTextColor)
+                .setCommentBackgroundColor(R.color.colorPrimaryDark)
+                .setWindowAnimation(R.style.MyDialogFadeAnimation)
+                .setCancelable(false)
+                .setCanceledOnTouchOutside(false)
+                .create(RetailerReviewList.this)
+                .show();
+    }
+
+    @Override
+    public void onNegativeButtonClicked() {
+
+    }
+
+    @Override
+    public void onNeutralButtonClicked() {
+
+    }
+
+    @Override
+    public void onPositiveButtonClicked(int i, @NotNull String text) {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss");
+        String currentDateandTime = sdf.format(new Date());
+        String uniqueReviewKey = currentDateandTime + "_" + RememberMe.currentOnlineUser.getPhone();
+
+        final DatabaseReference reviewRef = FirebaseDatabase.getInstance().getReference().child("retailer_reviews");
+        final HashMap<String, Object> reviewMap = new HashMap<>();
+        reviewMap.put("name", RememberMe.currentOnlineUser.getName());
+        reviewMap.put("text", text);
+        reviewMap.put("rId", RetailerDetails.retailerId);
+        reviewMap.put("ret_name", RetailerDetails.retailerName);
+        reviewMap.put("time_date", currentDateandTime);
+        reviewMap.put("stars", i);
+
+        reviewRef.child(RetailerDetails.retailerName).child(uniqueReviewKey).updateChildren(reviewMap)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()) {
+                            Intent intent = new Intent(RetailerReviewList.this, RetailerList.class);
+                            startActivity(intent);
+                            Toast.makeText(RetailerReviewList.this, "Review submitted successfully..", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+
+                            String message = task.getException().toString();
+                            Toast.makeText(RetailerReviewList.this, "Error: " + message, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 }

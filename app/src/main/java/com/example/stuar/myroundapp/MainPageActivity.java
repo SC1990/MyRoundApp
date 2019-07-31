@@ -2,8 +2,8 @@ package com.example.stuar.myroundapp;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -13,7 +13,6 @@ import com.example.stuar.myroundapp.CustomerActivities.CustSignUp;
 import com.example.stuar.myroundapp.CustomerActivities.CustomerHome;
 import com.example.stuar.myroundapp.DataRetrieval.RememberMe;
 import com.example.stuar.myroundapp.Models.User;
-import com.example.stuar.myroundapp.RetailerActivities.RetailerSU;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

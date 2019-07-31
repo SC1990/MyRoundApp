@@ -8,7 +8,7 @@
     tools:context=".CustomerActivities.RetailerProfileCustView"
     >
 
-        <android.support.v7.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
             android:id="@id/toolbar1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -17,7 +17,7 @@
             app:layout_constraintTop_toTopOf="@id/food_img"
             android:minHeight="?attr/actionBarSize"
             >
-        </android.support.v7.widget.Toolbar>
+        </androidx.appcompat.widget.Toolbar>
 
         <ImageView
             android:id="@+id/food_img"
@@ -31,7 +31,7 @@
             android:layout_marginTop="2dp"
             app:srcCompat="@drawable/beer" />
 
-        <android.support.design.widget.TabLayout
+        <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
             android:background="@drawable/toolbar_layout"
             app:tabIndicatorColor="@color/common_google_signin_btn_text_dark_focused">
 
-        </android.support.design.widget.TabLayout>
+        </com.google.android.material.tabs.TabLayout>
 
 
         <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -91,14 +91,14 @@
             android:layout_alignLeft="@+id/prof_name"
             android:layout_marginLeft="2dp" />
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_menu"
             android:layout_below="@id/tab"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbars="vertical">
 
-        </android.support.v7.widget.RecyclerView>
+        </androidx.recyclerview.widget.RecyclerView>
 
 
 </RelativeLayout>

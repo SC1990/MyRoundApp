@@ -1,34 +1,15 @@
 package com.example.stuar.myroundapp;
 
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.stuar.myroundapp.DataRetrieval.RememberMe;
-import com.example.stuar.myroundapp.Models.Cart;
-import com.example.stuar.myroundapp.Models.Order;
-import com.example.stuar.myroundapp.ViewHolders.CartViewHolder;
-import com.example.stuar.myroundapp.ViewHolders.OrderViewHolder;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 public class CustomerOrderActivity extends AppCompatActivity {

@@ -1,31 +1,27 @@
 package com.example.stuar.myroundapp.RetailerActivities;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.stuar.myroundapp.DataRetrieval.RetailerDetails;
 import com.example.stuar.myroundapp.ImageUpload;
-import com.example.stuar.myroundapp.ImageUploader;
 import com.example.stuar.myroundapp.MaintainProductsActivity;
 import com.example.stuar.myroundapp.Models.Product;
-import com.example.stuar.myroundapp.ProductDetailsActivity;
 import com.example.stuar.myroundapp.R;
 import com.example.stuar.myroundapp.ViewHolders.ProductViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
