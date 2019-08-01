@@ -7,6 +7,15 @@ public class NewBeer {
     private String time_date;
     private String location;
     private String image;
+    private String user;
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
 
     public String getName() {
         return name;

@@ -12,7 +12,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class NewBeerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-    public TextView bName, bStyle, bABV;
+    public TextView bName, bStyle, bABV, moreInfo;
     public CircleImageView bImage;
     public ItemClickListener listener;
 
@@ -20,10 +20,16 @@ public class NewBeerViewHolder extends RecyclerView.ViewHolder implements View.O
         super(itemView);
 
         bImage = (CircleImageView) itemView.findViewById(R.id.new_beer_img);
-        bName = (TextView) itemView.findViewById(R.id.product_name);
-        bStyle = (TextView) itemView.findViewById(R.id.prod_desc);
-        bABV = (TextView) itemView.findViewById(R.id.abv);
+        bName = (TextView) itemView.findViewById(R.id.b_name);
+        bStyle = (TextView) itemView.findViewById(R.id.b_style);
+        bABV = (TextView) itemView.findViewById(R.id.b_abv);
+        moreInfo = (TextView) itemView.findViewById(R.id.more_info);
     }
+
+    public void setItemClickListener(ItemClickListener listener) {
+        this.listener = listener;
+    }
+
 
     @Override
     public void onClick(View v) {

@@ -1,8 +1,14 @@
 package com.example.stuar.myroundapp;
 
 import com.example.stuar.myroundapp.DataRetrieval.RememberMe;
+import com.example.stuar.myroundapp.DataRetrieval.RetailerDetails;
 import com.example.stuar.myroundapp.Fragments.AllBeersFragment;
 import com.example.stuar.myroundapp.Fragments.FavouriteBeersFragment;
+import com.example.stuar.myroundapp.Models.NewBeer;
+import com.example.stuar.myroundapp.Models.Product;
+import com.example.stuar.myroundapp.ViewHolders.NewBeerViewHolder;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -15,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,6 +32,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
@@ -62,27 +71,20 @@ public class MyBeersActivity extends AppCompatActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
-
-    private String imageURL, downloadImageUrl, uniqueKey;
-    private static final int GalleryPick = 1;
-    private Uri imageUri;
-    private ImageView beerImg;
     private FloatingActionButton fab;
-    private AlertDialog dialogBuilder;
-    private LayoutInflater inflater;
-    private View dialogView;
-    DatabaseReference newBeersRef;
-    StorageReference newBeersStorageRef;
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_beers2);
 
-        fab = (FloatingActionButton) findViewById(R.id.fab_new_beers);
+        fab =  findViewById(R.id.fab_new_beers);
 
-          newBeersRef = FirebaseDatabase.getInstance().getReference().child("new_beers");
-          newBeersStorageRef = FirebaseStorage.getInstance().getReference().child("MyBeer Images");
+
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -103,130 +105,12 @@ public class MyBeersActivity extends AppCompatActivity {
 
         fab.setOnClickListener(view -> {
 
-            dialogBuilder = new AlertDialog.Builder(MyBeersActivity.this).create();
-            inflater = MyBeersActivity.this.getLayoutInflater();
-            dialogView = inflater.inflate(R.layout.new_beer, null);
-            dialogBuilder.setView(dialogView);
-            dialogBuilder.show();
+            startActivity(new Intent(MyBeersActivity.this, AddNewBeerActivity.class));
 
-            beerImg = findViewById(R.id.select_beer_img);
-            beerImg.setOnClickListener(v -> OpenGallery());
         });
 
     }
 
-    private void OpenGallery() {
-        Intent galleryIntent = new Intent();
-        galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
-        galleryIntent.setType("image/*");
-        startActivityForResult(galleryIntent, GalleryPick);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode==GalleryPick  &&  resultCode==RESULT_OK  &&  data!=null)
-        {
-            imageUri = data.getData();
-            beerImg.setImageURI(imageUri);
-        }
-    }
-
-    public void addNewBeerBtnClick(View view) {
-        if(view.getId() == R.id.add_new_beer_btn){
-            addNewBeer();
-        }
-    }
-
-    private void addNewBeer() {
-
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss");
-        String currentDateandTime = sdf.format(new Date());
-        uniqueKey = currentDateandTime + "_" + RememberMe.currentOnlineUser.getPhone();
-        //----------------------------------------------------------
-
-        //store in Firebase Storage
-        final StorageReference filePath = newBeersStorageRef.child(imageUri.getLastPathSegment() + uniqueKey + ".jpg");
-        //----------------------------------------------------------
-
-        final UploadTask uploadTask = filePath.putFile(imageUri);
-
-        uploadTask.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                String message = e.toString();
-                Toast.makeText(MyBeersActivity.this, "Error: " + message, Toast.LENGTH_SHORT).show();
-                //----------------------------------------------------------
-
-            }
-        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-                Toast.makeText(MyBeersActivity.this, "Beer Image uploaded Successfully...", Toast.LENGTH_SHORT).show();
-                //----------------------------------------------------------
-
-                Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-                    @Override
-                    public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                        if (!task.isSuccessful()) {
-                            throw task.getException();
-                        }
-
-                        downloadImageUrl = filePath.getDownloadUrl().toString();
-                        return filePath.getDownloadUrl();
-
-                        //----------------------------------------------------------
-                    }
-                }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Uri> task) {
-                        if (task.isSuccessful()) {
-                            downloadImageUrl = task.getResult().toString();
-                            Toast.makeText(MyBeersActivity.this, "got the image Url Successfully...", Toast.LENGTH_SHORT).show();
-                            SaveInfoToDatabase();
-
-                            //----------------------------------------------------------
-                        }
-                    }
-                });
-            }
-        });
-    }
-
-    private void SaveInfoToDatabase() {
-        EditText nameET = dialogView.findViewById(R.id.beer_name);
-        EditText styleET = dialogView.findViewById(R.id.beer_style);
-        EditText abvET = dialogView.findViewById(R.id.beer_abv);
-        EditText notesET = dialogView.findViewById(R.id.notes);
-
-        HashMap<String, Object> newBeersMap = new HashMap<>();
-        newBeersMap.put("user", RememberMe.currentOnlineUser.getName());
-        newBeersMap.put("name", nameET.getText());
-        newBeersMap.put("style", styleET.getText());
-        newBeersMap.put("abv", abvET.getText());
-        newBeersMap.put("notes", notesET.getText());
-        newBeersMap.put("image", downloadImageUrl);
-
-        newBeersRef.child(RememberMe.currentOnlineUser.getName()).child(uniqueKey).updateChildren(newBeersMap)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()) {
-                            Intent intent = new Intent(MyBeersActivity.this, MyBeersActivity.class);
-                            startActivity(intent);
-                            Toast.makeText(MyBeersActivity.this, "New beer added..", Toast.LENGTH_SHORT).show();
-                        }
-                        else{
-
-                            String message = task.getException().toString();
-                            Toast.makeText(MyBeersActivity.this, "Error: " + message, Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    }
 
 
     @Override
@@ -250,6 +134,7 @@ public class MyBeersActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 
 
 
