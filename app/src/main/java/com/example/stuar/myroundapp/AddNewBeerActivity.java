@@ -150,6 +150,8 @@ public class AddNewBeerActivity extends AppCompatActivity {
         newBeersMap.put("abv", abvET.getText().toString());
         newBeersMap.put("notes", notesET.getText().toString());
         newBeersMap.put("image", downloadImageUrl);
+        newBeersMap.put("favourites", "false");
+        newBeersMap.put("beerId", uniqueKey);
 
         newBeersRef.child(uniqueKey).updateChildren(newBeersMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {

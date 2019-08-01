@@ -63,5 +63,14 @@
         android:textColor="@color/dark_blue"
         />
 
+    <ImageButton
+        android:id="@+id/add_to_favs_btn"
+        android:onClick="addToFavsBtnClick"
+        android:background="@drawable/empty_star"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="230dp"
+        android:layout_marginBottom="-100dp"/>
+
 
 </LinearLayout>

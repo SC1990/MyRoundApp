@@ -8,6 +8,15 @@ public class NewBeer {
     private String location;
     private String image;
     private String user;
+    private String beerId;
+
+    public String getBeerId() {
+        return beerId;
+    }
+
+    public void setBeerId(String beerId) {
+        this.beerId = beerId;
+    }
 
     public String getUser() {
         return user;
