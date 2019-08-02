@@ -1,8 +1,10 @@
 package com.example.stuar.myroundapp.CustomerActivities;
 
 import android.graphics.Color;
+import android.media.Image;
 import android.os.Bundle;
 
+import com.example.stuar.myroundapp.DataRetrieval.RememberMe;
 import com.example.stuar.myroundapp.Models.NewBeer;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -10,11 +12,14 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.TableLayout;
 
 import com.example.stuar.myroundapp.R;
@@ -23,6 +28,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 
 import android.os.Bundle;
@@ -66,6 +72,7 @@ public class BeerLeaderboardActivity extends AppCompatActivity {
                     newBeer.setStyle(dataSnapshot1.child("style").getValue().toString());
                     newBeer.setAbv(dataSnapshot1.child("abv").getValue().toString());
                     newBeer.setRating(dataSnapshot1.child("rating").getValue().toString());
+                    newBeer.setImage(dataSnapshot1.child("image").getValue().toString());
 
                     TableLayout topBeers = (TableLayout)findViewById(R.id.table2);
                     topBeers.setStretchAllColumns(true);
@@ -73,6 +80,7 @@ public class BeerLeaderboardActivity extends AppCompatActivity {
 
                     //top 20 beers
                     for(int i = 0; i < 10; i++){
+
                         TableRow tr =  new TableRow(BeerLeaderboardActivity.this);
                         tr.setBackgroundColor(Color.WHITE);
 
@@ -85,6 +93,18 @@ public class BeerLeaderboardActivity extends AppCompatActivity {
                                         .create();
 
                                 dialog.show();
+
+                                LinearLayout linearLayout = dialog.findViewById(R.id.ll2);
+
+                                CircleImageView image = dialog.findViewById(R.id.image__);
+                                Picasso.get().load(newBeer.getImage()).into(image);
+
+                                RatingBar ratingBar = new RatingBar(getApplicationContext());
+                                ratingBar.setNumStars(Integer.valueOf(newBeer.getRating()));
+                                linearLayout.addView(ratingBar);
+
+
+
 
                             }
                         });

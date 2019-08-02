@@ -1,74 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll2"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    >
+    tools:context=".CustomerActivities.BeerLeaderboardActivity">
 
 
 
-    <ImageButton
-        android:id="@+id/x_butt"
-        android:layout_width="50dp"
-        android:layout_height="40dp"
-        android:layout_gravity="right"
-        android:layout_marginRight="-10dp"
-        android:layout_marginTop="-35dp"
-        android:background="@color/colorAccent"
-        android:src="@drawable/x_button" />
 
-    <ImageView
-        android:layout_width="20dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="24dp"
-        android:src="@drawable/star_filled"/>
-
-    <ImageView
-        android:layout_width="20dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="-31dp"
-        android:layout_marginLeft="54dp"
-        android:src="@drawable/star_filled" />
-
-    <ImageView
-        android:layout_width="20dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="-31dp"
-        android:layout_marginLeft="84dp"
-        android:src="@drawable/star_filled" />
-
-    <ImageView
-        android:layout_width="20dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="-31dp"
-        android:layout_marginLeft="114dp"
-        android:src="@drawable/star_filled" />
-
-    <ImageView
-        android:layout_width="20dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="-31dp"
-        android:layout_marginLeft="144dp"
-        android:src="@drawable/empty_star" />
-
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/image__"
         android:layout_width="150dp"
         android:layout_height="160dp"
-        android:src="@drawable/bbottle"
-        android:layout_marginBottom="-160dp"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="-160dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="185dp"
         android:layout_marginLeft="130dp"
-        android:padding="16dp"
         android:layout_marginBottom="20dp"
-        android:text="The pour is hazy and amber in colour with a small white head. Aromas of floral and grass hops with light malts. The taste is mildly bitter. Medium body and soft carbonation."/>
-
-
-
-
+        android:padding="16dp"
+        android:text="The pour is hazy and amber in colour with a small white head. Aromas of floral and grass hops with light malts. The taste is mildly bitter. Medium body and soft carbonation." />
 
 
 </LinearLayout>
