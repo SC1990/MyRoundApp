@@ -52,7 +52,11 @@
             android:name=".MyBeersActivity"
             android:label="@string/title_activity_my_beers"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".AddNewBeerActivity"></activity>
+        <activity android:name=".AddNewBeerActivity" />
+        <activity
+            android:name=".CustomerActivities.BeerLeaderboardActivity"
+            android:label="@string/title_activity_beer_leaderboard"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
     </application>
 
 </manifest>

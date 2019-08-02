@@ -52,6 +52,7 @@ public class CustomerHome extends AppCompatActivity implements NavigationView.On
     NotificationBadge badge;
 
     private Button myBeersBtn;
+    private Button lBoardBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +64,15 @@ public class CustomerHome extends AppCompatActivity implements NavigationView.On
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(CustomerHome.this, MyBeersActivity.class));
+            }
+        });
+
+        lBoardBtn = findViewById(R.id.leaderboard_btn);
+        lBoardBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(getApplicationContext(), BeerLeaderboardActivity.class));
             }
         });
 

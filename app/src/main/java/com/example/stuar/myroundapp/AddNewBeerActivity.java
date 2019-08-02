@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.Toast;
 
 import com.example.stuar.myroundapp.DataRetrieval.RememberMe;
@@ -142,6 +143,7 @@ public class AddNewBeerActivity extends AppCompatActivity {
         EditText styleET = findViewById(R.id.beer_style);
         EditText abvET = findViewById(R.id.beer_abv);
         EditText notesET = findViewById(R.id.notes);
+        RatingBar ratingBar = findViewById(R.id.rating);
 
         HashMap<String, Object> newBeersMap = new HashMap<>();
         newBeersMap.put("user", RememberMe.currentOnlineUser.getName());
@@ -152,6 +154,7 @@ public class AddNewBeerActivity extends AppCompatActivity {
         newBeersMap.put("image", downloadImageUrl);
         newBeersMap.put("favourites", "false");
         newBeersMap.put("beerId", uniqueKey);
+        newBeersMap.put("rating", ratingBar.getNumStars());
 
         newBeersRef.child(uniqueKey).updateChildren(newBeersMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {

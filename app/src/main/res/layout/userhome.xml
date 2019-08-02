@@ -46,6 +46,13 @@
             android:text="My Beers"
             android:layout_marginTop="100dp"/>
 
+        <Button
+            android:id="@+id/leaderboard_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Beer Leaderboard"
+            android:layout_marginTop="160dp"/>
+
 
         <Button
             android:id="@+id/myDetailsBtn1"
@@ -102,6 +109,7 @@
             android:layout_marginBottom="259dp"
             android:onClick="onViewRetailersBtnClick"
             android:text="@string/view_retailers1" />
+
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="match_parent"

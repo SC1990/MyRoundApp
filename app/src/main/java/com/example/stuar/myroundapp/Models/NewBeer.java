@@ -9,6 +9,15 @@ public class NewBeer {
     private String image;
     private String user;
     private String beerId;
+    private String rating;
+
+    public String getRating() {
+        return rating;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
+    }
 
     public String getBeerId() {
         return beerId;
