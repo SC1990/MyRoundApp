@@ -56,7 +56,10 @@
         <activity
             android:name=".CustomerActivities.BeerLeaderboardActivity"
             android:label="@string/title_activity_beer_leaderboard"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".RetailerActivities.SalesAnalysisActivity" />
+        <activity android:name=".RetailerActivities.RetailerSalesOverviewActivity" />
+        <activity android:name=".RetailerActivities.PreSalesAnalysis"></activity>
     </application>
 
 </manifest>

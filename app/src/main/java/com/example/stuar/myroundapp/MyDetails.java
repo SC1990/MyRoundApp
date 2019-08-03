@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.stuar.myroundapp.DataRetrieval.RememberMe;
 import com.example.stuar.myroundapp.Models.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -49,16 +50,16 @@ public class MyDetails extends AppCompatActivity {
         townET = findViewById(R.id.townET);
         mobileNumET = findViewById(R.id.mobileNumET);
 
-        userId = firebaseUser.getUid();
+        userId = RememberMe.currentOnlineUser.getUserId();
 
         loadDetails();
 
         databaseReferenceUsers = FirebaseDatabase.getInstance().getReference("users/customers");
 
-        if(firebaseAuth.getCurrentUser() == null){
+       /* if(firebaseAuth.getCurrentUser() == null){
             finish();
             startActivity(new Intent(getApplicationContext(), LogIn.class));
-        }
+        }*/
 
 
 

@@ -69,7 +69,8 @@
             app:layout_constraintTop_toBottomOf="@+id/myDetailsBtn1" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/sales_btn"
+            android:onClick="onSalesBtnClick"
             android:layout_width="155dp"
             android:layout_height="50dp"
             android:text="@string/sales_analysis"
@@ -83,8 +84,8 @@
         android:layout_marginTop="4dp"
         android:text="My Products"
         android:onClick="onProductsClick"
-        app:layout_constraintStart_toStartOf="@+id/button2"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintStart_toStartOf="@+id/sales_btn"
+        app:layout_constraintTop_toBottomOf="@+id/sales_btn" />
 
         <Button
             android:id="@+id/loBtn"
@@ -93,8 +94,8 @@
             android:layout_marginTop="54dp"
             android:text="log out"
             android:onClick="onLogoutClick"
-            app:layout_constraintStart_toStartOf="@+id/button2"
-            app:layout_constraintTop_toBottomOf="@+id/button2" />
+            app:layout_constraintStart_toStartOf="@+id/sales_btn"
+            app:layout_constraintTop_toBottomOf="@+id/sales_btn" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

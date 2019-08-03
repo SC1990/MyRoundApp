@@ -177,8 +177,7 @@ public class CustSignUp extends AppCompatActivity {
 
     }*/
 
-    private void CreateAccount()
-    {
+    private void CreateAccount() {
         String email = userEmail.getText().toString();
         String phone = userPhone.getText().toString();
         String password = userPassword.getText().toString();
@@ -214,8 +213,7 @@ public class CustSignUp extends AppCompatActivity {
 
 
 
-    private void ValidatePhoneNumber(final String name, final String phone, final String password)
-    {
+    private void ValidatePhoneNumber(final String name, final String phone, final String password) {
 
         firebaseAuth.createUserWithEmailAndPassword(userEmail.getText().toString(), password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -236,7 +234,7 @@ public class CustSignUp extends AppCompatActivity {
 
                             User user = new User(name, phone, password, "empty", "", userId);
 
-                            databaseReferenceUsers.child(phone).setValue(userdataMap);
+                            databaseReferenceUsers.child(userId).setValue(userdataMap);
                             RememberMe.currentOnlineUser = user;
                             finish();
                             startActivity(new Intent(getApplicationContext(), CustomerHome.class));

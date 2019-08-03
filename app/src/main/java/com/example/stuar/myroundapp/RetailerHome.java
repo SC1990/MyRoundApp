@@ -1,6 +1,8 @@
 package com.example.stuar.myroundapp;
 
 import android.content.Intent;
+
+import com.example.stuar.myroundapp.RetailerActivities.PreSalesAnalysis;
 import com.google.android.material.navigation.NavigationView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -124,6 +126,14 @@ public class RetailerHome extends AppCompatActivity implements NavigationView.On
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();
+        }
+    }
+
+    public void onSalesBtnClick(View view) {
+        if(view.getId() == R.id.sales_btn){
+
+            startActivity(new Intent(RetailerHome.this, PreSalesAnalysis.class));
+
         }
     }
 }
