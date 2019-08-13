@@ -13,7 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.example.stuar.myroundapp.LogIn;
+import com.example.stuar.myroundapp.SignUpAndLogInActivities.LogIn;
 import com.example.stuar.myroundapp.R;
 
 
@@ -89,7 +89,7 @@ public class MyRoundHome extends AppCompatActivity implements NavigationView.OnN
                 startActivity(new Intent(getApplicationContext(), LogIn.class));
                 break;
 
-            case R.id.item_b:
+            case R.id.find_beer:
                 break;
         }
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainPageActivity">
+    tools:context=".Other.MainPageActivity">
 
     <Button
         android:id="@+id/login_btn2"
@@ -12,31 +12,35 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/linear_layout_1"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="225dp"
         android:layout_marginRight="15dp"
         android:background="@drawable/button_border"
         android:padding="17dp"
         android:onClick="onLoginClick"
+        android:textStyle="bold"
         android:text="Login"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:visibility="invisible"/>
 
     <Button
+        android:visibility="invisible"
         android:id="@+id/signUpLinkBtn2"
-        android:onClick="onSignUpLinkBtnClick2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linear_layout_1"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="121dp"
+        android:layout_marginTop="321dp"
         android:layout_marginRight="15dp"
         android:background="@drawable/button_border"
+        android:onClick="onSignUpLinkBtnClick2"
         android:padding="17dp"
         android:text="Create account"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:textStyle="bold"/>
 
 
 

@@ -1,7 +1,5 @@
 package com.example.stuar.myroundapp.Models;
 
-import com.example.stuar.myroundapp.ImageUpload;
-
 public class RetailerProduct {
 
     private int retId;

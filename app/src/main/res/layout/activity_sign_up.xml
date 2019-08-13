@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/beer_back"
-    tools:context=".CustomerActivities.CustSignUp">
+    tools:context=".SignUpAndLogInActivities.CustomerSignUpActivity">
 
     <ImageView
         android:id="@+id/register_applogo"
@@ -58,7 +58,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_marginTop="6dp"
-        android:hint="Password"
+        android:hint="@string/password_hint"
         android:inputType="textPassword"
         android:textColor="@color/colorPrimaryDark"
         android:textColorHint="@color/colorPrimaryDark"
@@ -75,7 +75,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_marginTop="6dp"
-        android:hint="Confirm Password"
+        android:hint="@string/confirm_password_hint"
         android:inputType="textPassword"
         android:textColor="@color/colorPrimaryDark"
         android:textColorHint="@color/colorPrimaryDark"

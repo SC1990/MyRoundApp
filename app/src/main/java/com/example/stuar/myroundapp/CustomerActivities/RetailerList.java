@@ -60,8 +60,10 @@ public class RetailerList extends AppCompatActivity implements NavigationView.On
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar1);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        drawerLayout = findViewById(R.id.drawer_layout);
+       /* drawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = (NavigationView)findViewById(R.id.drawer2);
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -69,7 +71,7 @@ public class RetailerList extends AppCompatActivity implements NavigationView.On
                 toolbar, R.string.drawer_open, R.string.drawer_closed);
 
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
-        actionBarDrawerToggle.syncState();
+        actionBarDrawerToggle.syncState();*/
 
 
        /* adapter.view.setOnClickListener(new View.OnClickListener() {
@@ -79,6 +81,12 @@ public class RetailerList extends AppCompatActivity implements NavigationView.On
             }
         });*/
 
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
 
@@ -124,7 +132,7 @@ public class RetailerList extends AppCompatActivity implements NavigationView.On
             case R.id.item_login:
                 break;
 
-            case R.id.item_b:
+            case R.id.find_beer:
                 break;
         }
 
@@ -139,14 +147,7 @@ public class RetailerList extends AppCompatActivity implements NavigationView.On
         drawerLayout.openDrawer(GravityCompat.START);
     }
 
-    @Override
-    public void onBackPressed() {
-        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
-            closeDrawer();
-        }
 
-        super.onBackPressed();
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

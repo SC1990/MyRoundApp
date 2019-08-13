@@ -4,11 +4,10 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.example.stuar.myroundapp.Interfaces.ItemClickListener;
+import com.example.stuar.myroundapp.OrderActivities.Interfaces.ItemClickListener;
 import com.example.stuar.myroundapp.R;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 import de.hdodenhof.circleimageview.CircleImageView;
 

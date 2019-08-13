@@ -5,6 +5,7 @@
     <color name="colorAccent">#ffffff</color>
 
     <color name="blue">#2fef4f</color>
+    <color name="grey2">#f7ef79</color>
     <color name="gold">#e6b121</color>
     <color name="grey">#fa0505</color>
     <color name="starColor">#e6b121</color>
@@ -13,4 +14,5 @@
     <color name="contentTextColor">#fa0505</color>
     <color name="hintTextColor">#fa0505</color>
     <color name="commentTextColor">#fa0505</color>
+    <color name="black">#131212</color>
 </resources>

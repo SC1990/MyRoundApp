@@ -1,23 +1,19 @@
 package com.example.stuar.myroundapp.Fragments;
 
 import android.content.DialogInterface;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 
 import com.example.stuar.myroundapp.DataRetrieval.RememberMe;
 import com.example.stuar.myroundapp.Models.NewBeer;
-import com.example.stuar.myroundapp.NewBeerAdapter;
 import com.example.stuar.myroundapp.R;
 import com.example.stuar.myroundapp.ViewHolders.NewBeerViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
@@ -29,7 +25,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import smartadapter.SmartRecyclerAdapter;
+
 
 public class AllBeersFragment extends Fragment {
 
@@ -40,9 +36,9 @@ public class AllBeersFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        final View view = inflater.inflate(R.layout.all_beers_layout, container, false);
-        final FragmentActivity c = getActivity();
-        final RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.all_beers);
+        View view = inflater.inflate(R.layout.all_beers_layout, container, false);
+        FragmentActivity c = getActivity();
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.all_beers);
         LinearLayoutManager layoutManager = new LinearLayoutManager(c);
         recyclerView.setLayoutManager(layoutManager);
 
@@ -51,14 +47,10 @@ public class AllBeersFragment extends Fragment {
             @Override
             public void run() {
 
-
-
                 c.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         databaseReference = FirebaseDatabase.getInstance().getReference("new_beers");
-
-
 
                         FirebaseRecyclerOptions<NewBeer> options =
                                 new FirebaseRecyclerOptions.Builder<NewBeer>()
@@ -95,13 +87,10 @@ public class AllBeersFragment extends Fragment {
                                                         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("new_beers")
                                                         .child(id);
 
-
                                                         HashMap<String, Object> beersMap = new HashMap<>();
                                                         beersMap. put("favourites", "true");
 
                                                         ref.updateChildren(beersMap);
-
-                                                        //dialog.dismiss();
 
                                                     }
                                                 });

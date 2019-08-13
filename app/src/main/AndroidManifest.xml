@@ -14,52 +14,52 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:replace="android:icon,android:label,android:theme">
-        <activity android:name=".MainPageActivity">
+        <activity android:name=".SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CustomerActivities.CustSignUp" />
-        <activity android:name=".MyDetails" />
-        <activity android:name=".CustomerActivities.PreSignUpPage" />
+        <activity android:name=".SignUpAndLogInActivities.CustomerSignUpActivity" />
+        <activity android:name=".Other.MyDetails" />
+        <activity android:name=".SignUpAndLogInActivities.PreSignUpPage" />
         <activity android:name=".CustomerActivities.CustomerHome" />
-        <activity android:name=".RetailerActivities.RetailerSU" />
+        <activity android:name=".SignUpAndLogInActivities.RetailerSU" />
         <activity android:name=".CustomerActivities.RetailerList" />
-        <activity android:name=".RetailerHome" />
-        <activity android:name=".CustomerActivities.RetailerProfileCustView" />
-        <activity android:name=".RetailerReviewList" />
-        <activity android:name=".Checkout" />
-        <activity android:name=".ImageUploader" />
+        <activity android:name=".RetailerActivities.RetailerHome" />
+        <activity android:name=".OrderActivities.RetailerProfileCustView" />
+        <activity android:name=".CustomerActivities.RetailerReviewList" />
+        <activity android:name=".Other.ImageUploader" />
         <activity android:name=".RetailerActivities.RetailerProductsActivity" />
         <activity android:name=".RetailerActivities.AddNewProductActivity" />
-        <activity android:name=".CustomerHomeActivity" />
-        <activity android:name=".LogIn" />
-        <activity android:name=".SettingsActivity" />
-        <activity android:name=".ProductDetailsActivity" />
-        <activity android:name=".CartActivity" />
-        <activity android:name=".ConfirmOrderActivity" />
-        <activity android:name=".RetailerNewOrderActivity" />
-        <activity android:name=".OrderProductDetailsActivity" />
-        <activity android:name=".SearchProductsActivity" />
-        <activity android:name=".MaintainProductsActivity" />
-        <activity android:name=".ForgotPasswordActivity" />
-        <activity android:name=".CardPaymentActivity" />
+        <activity android:name=".CustomerActivities.CustomerHomeActivity" />
+        <activity android:name=".SignUpAndLogInActivities.LogIn" />
+        <activity android:name=".Other.SettingsActivity" />
+        <activity android:name=".OrderActivities.ProductDetailsActivity" />
+        <activity android:name=".OrderActivities.CartActivity" />
+        <activity android:name=".OrderActivities.ConfirmOrderActivity" />
+        <activity android:name=".RetailerActivities.RetailerNewOrderActivity" />
+        <activity android:name=".OrderActivities.OrderProductDetailsActivity" />
+        <activity android:name=".CustomerActivities.SearchProductsActivity" />
+        <activity android:name=".RetailerActivities.MaintainProductsActivity" />
+        <activity android:name=".SignUpAndLogInActivities.ForgotPasswordActivity" />
+        <activity android:name=".OrderActivities.CardPaymentActivity" />
         />
-        <activity android:name=".CustomerOrderActivity" />
+        <activity android:name=".OrderActivities.CustomerOrderActivity" />
         <activity
-            android:name=".MyBeersActivity"
+            android:name=".MyBeersActivities.MyBeersActivity"
             android:label="@string/title_activity_my_beers"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".AddNewBeerActivity" />
+        <activity android:name=".MyBeersActivities.AddNewBeerActivity" />
         <activity
-            android:name=".CustomerActivities.BeerLeaderboardActivity"
+            android:name=".MyBeersActivities.BeerLeaderboardActivity"
             android:label="@string/title_activity_beer_leaderboard"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".RetailerActivities.SalesAnalysisActivity" />
-        <activity android:name=".RetailerActivities.RetailerSalesOverviewActivity" />
-        <activity android:name=".RetailerActivities.PreSalesAnalysis"></activity>
+        <activity android:name=".Other.RetailerSalesActivities.SalesAnalysisActivity" />
+        <activity android:name=".Other.RetailerSalesActivities.RetailerSalesOverviewActivity" />
+        <activity android:name=".Other.RetailerSalesActivities.PreSalesAnalysis" />
+        <activity android:name=".Other.MainPageActivity"></activity>
     </application>
 
 </manifest>

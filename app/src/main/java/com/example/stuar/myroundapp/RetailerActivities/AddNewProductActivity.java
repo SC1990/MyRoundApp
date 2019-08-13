@@ -215,7 +215,6 @@ public class AddNewProductActivity extends AppCompatActivity {
         productMap.put("volume", volume);
         productMap.put("retId", retId);
 
-
         ProductsRef.child(productRandomKey).updateChildren(productMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

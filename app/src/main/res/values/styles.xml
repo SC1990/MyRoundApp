@@ -63,5 +63,13 @@
         <item name="titleTextColor">@color/white</item>
     </style>
 
+    <style name="TitleText">Toolbar.TitleText
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TitleText2">TitleText2
+        <item name="android:textSize">19sp</item>
+    </style>
+
 
 </resources>

@@ -1,12 +1,17 @@
 package com.example.stuar.myroundapp.CustomerActivities;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 
-import com.example.stuar.myroundapp.MyBeersActivity;
+import com.example.stuar.myroundapp.MyBeersActivities.BeerLeaderboardActivity;
+import com.example.stuar.myroundapp.MyBeersActivities.MyBeersActivity;
+import com.example.stuar.myroundapp.OrderActivities.CartActivity;
+import com.example.stuar.myroundapp.SignUpAndLogInActivities.LogIn;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -24,11 +29,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.stuar.myroundapp.CartActivity;
 import com.example.stuar.myroundapp.DataRetrieval.RememberMe;
-import com.example.stuar.myroundapp.MainPageActivity;
+import com.example.stuar.myroundapp.Other.MainPageActivity;
 import com.example.stuar.myroundapp.R;
-import com.example.stuar.myroundapp.SettingsActivity;
+import com.example.stuar.myroundapp.Other.SettingsActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.nex3z.notificationbadge.NotificationBadge;
@@ -47,9 +51,15 @@ public class CustomerHome extends AppCompatActivity implements NavigationView.On
 
     GridView gridView;
     Integer imgIds[] =  {
-            R.drawable.or, R.drawable.sett, R.drawable.or, R.drawable.sett, R.drawable.or, R.drawable.sett
+            R.drawable.icons8_beer_40, R.drawable.beer_lboard, R.drawable.shop,
+            R.drawable.form
           };
     NotificationBadge badge;
+
+    CircleImageView findBeer;
+    CircleImageView topBeers;
+    CircleImageView myBeers;
+    CircleImageView myDeets;
 
     private Button myBeersBtn;
     private Button lBoardBtn;
@@ -60,10 +70,49 @@ public class CustomerHome extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.userhome);
 
         myBeersBtn = findViewById(R.id.mybeers_btn);
+
         myBeersBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(CustomerHome.this, MyBeersActivity.class));
+            }
+        });
+
+
+        findBeer = findViewById(R.id.shop);
+        topBeers = findViewById(R.id.bl);
+        myBeers = findViewById(R.id.mb);
+        myDeets = findViewById(R.id.deets);
+
+        findBeer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                fetchRetailers();
+            }
+        });
+
+        topBeers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(getApplicationContext(), BeerLeaderboardActivity.class));
+            }
+        });
+
+        myBeers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(CustomerHome.this, MyBeersActivity.class));
+            }
+        });
+
+        myDeets.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                retrieveUserInfo();
             }
         });
 
@@ -78,8 +127,8 @@ public class CustomerHome extends AppCompatActivity implements NavigationView.On
 
         Paper.init(this);
 
-        gridView = (GridView) findViewById(R.id.gridView1);
-        gridView.setAdapter(new ImageAdapterGridView(this));
+        /*gridView = (GridView) findViewById(R.id.gridView1);
+        gridView.setAdapter(new ImageAdapterGridView(this));*/
 
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar3);
@@ -184,7 +233,7 @@ public class CustomerHome extends AppCompatActivity implements NavigationView.On
         if(view.getId() == R.id.logOutBtn){
             Paper.book().destroy();
             //firebaseAuth.signOut();
-            Intent intent = new Intent(CustomerHome.this, MainPageActivity.class);
+            Intent intent = new Intent(CustomerHome.this, LogIn.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();
@@ -204,9 +253,48 @@ public class CustomerHome extends AppCompatActivity implements NavigationView.On
             Intent intent = new Intent(CustomerHome.this, SettingsActivity.class);
             startActivity(intent);
         }
-        else if(id == R.id.item_cart){
-            Intent intent = new Intent(CustomerHome.this, CartActivity.class);
+
+        if (id == R.id.find_beer) {
+            Intent intent = new Intent(CustomerHome.this, RetailerList.class);
             startActivity(intent);
+        }
+
+        if (id == R.id.nav_logout) {
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(CustomerHome.this);
+            builder.setTitle("Log out");
+
+            builder.setMessage("Are you sure?");
+
+            DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    switch(which){
+                        case DialogInterface.BUTTON_POSITIVE:
+                            // User clicked the Yes button
+
+                            Paper.book().destroy();
+
+                            Intent intent = new Intent(CustomerHome.this, LogIn.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
+                            finish();
+                            break;
+
+                        case DialogInterface.BUTTON_NEGATIVE:
+                            // User clicked the cancel button
+                            break;
+                    }
+                }
+            };
+
+            // add the buttons
+            builder.setPositiveButton("Yes", dialogClickListener);
+            builder.setNegativeButton("Cancel", dialogClickListener);
+
+            // create and show the alert dialog
+            AlertDialog dialog = builder.create();
+            dialog.show();
 
         }
 
@@ -262,6 +350,7 @@ public class CustomerHome extends AppCompatActivity implements NavigationView.On
         public ImageAdapterGridView(Context context) {
             mContext = context;
         }
+
 
         @Override
         public int getCount() {

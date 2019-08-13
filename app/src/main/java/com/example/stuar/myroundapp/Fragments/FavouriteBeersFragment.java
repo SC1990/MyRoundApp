@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import com.example.stuar.myroundapp.DataRetrieval.RememberMe;
 import com.example.stuar.myroundapp.Models.NewBeer;
@@ -82,6 +83,9 @@ public class FavouriteBeersFragment extends Fragment {
                             public NewBeerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
                             {
                                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.new_beer_row, parent, false);
+                                ImageButton star = view.findViewById(R.id.add_to_favs_btn);
+                                star.setImageResource(R.drawable.star_filled);
+                                star.setClickable(false);
                                 NewBeerViewHolder holder = new NewBeerViewHolder(view);
                                 return holder;
 

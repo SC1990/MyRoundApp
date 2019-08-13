@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.stuar.myroundapp.ImageUpload;
+import com.example.stuar.myroundapp.Models.ImageUpload;
 import com.example.stuar.myroundapp.R;
 
 import java.util.List;

@@ -30,13 +30,11 @@
     <string name="customer_orders">Customer Orders</string>
     <string name="sales_analysis">My Sales</string>
     <string name="email1">email</string>
-    <string name="password1">password</string>
     <string name="confirm_password1">confirm password</string>
     <string name="sign_up1">sign up</string>
     <string name="log_in1">log in</string>
     <string name="enter_code">enter code</string>
     <string name="email3">email</string>
-    <string name="password3">password</string>
     <string name="confirm_password3">confirm password</string>
     <string name="sign_up3">sign up</string>
     <string name="log_in3">log in</string>
@@ -161,6 +159,8 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
+    <string name="password_hint">Password</string>
+    <string name="confirm_password_hint">Confirm Password</string>
 
 
 </resources>

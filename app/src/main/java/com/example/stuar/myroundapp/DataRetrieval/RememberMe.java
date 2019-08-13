@@ -6,7 +6,7 @@ public class RememberMe {
 
     public static User currentOnlineUser;
 
-    public static final String UserPhoneKey = "UserPhone";
+    public static final String UserEmailKey = "UserPhone";
     public static final String UserPasswordKey = "UserPassword";
 
     //current order global variables - so can retrieve in different activities

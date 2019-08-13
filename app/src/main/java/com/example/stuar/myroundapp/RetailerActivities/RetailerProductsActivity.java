@@ -14,8 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.example.stuar.myroundapp.DataRetrieval.RetailerDetails;
-import com.example.stuar.myroundapp.ImageUpload;
-import com.example.stuar.myroundapp.MaintainProductsActivity;
+import com.example.stuar.myroundapp.Models.ImageUpload;
 import com.example.stuar.myroundapp.Models.Product;
 import com.example.stuar.myroundapp.R;
 import com.example.stuar.myroundapp.ViewHolders.ProductViewHolder;

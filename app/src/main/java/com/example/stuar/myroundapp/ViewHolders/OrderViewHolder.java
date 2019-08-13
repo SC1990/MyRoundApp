@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.stuar.myroundapp.Interfaces.ItemClickListener;
+import com.example.stuar.myroundapp.OrderActivities.Interfaces.ItemClickListener;
 import com.example.stuar.myroundapp.R;
 
 import de.hdodenhof.circleimageview.CircleImageView;

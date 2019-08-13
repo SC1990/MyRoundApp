@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.example.stuar.myroundapp.DataRetrieval.RetailerDetails;
 import com.example.stuar.myroundapp.Models.Retailer;
 import com.example.stuar.myroundapp.R;
-import com.example.stuar.myroundapp.CustomerActivities.RetailerProfileCustView;
+import com.example.stuar.myroundapp.OrderActivities.RetailerProfileCustView;
 import com.google.firebase.database.DatabaseReference;
 
 import java.util.List;

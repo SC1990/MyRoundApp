@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SplashScreenActivity"
+    android:orientation="vertical">
+
+
+
+
+
+    <uk.co.barbuzz.beerprogressview.BeerProgressView
+        android:id="@+id/beerProgressView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:beerColor="#EFA601"
+        app:beerProgress="85"
+        app:bubbleColor="#B67200"
+        app:bubbleCount="82"
+        app:waveAmplitude="18dp"
+        app:waveMax="100" />
+
+</RelativeLayout>

@@ -10,6 +10,15 @@ public class NewBeer {
     private String user;
     private String beerId;
     private String rating;
+    private String notes;
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
 
     public String getRating() {
         return rating;

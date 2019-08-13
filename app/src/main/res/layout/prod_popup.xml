@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".CustomerActivities.BeerLeaderboardActivity">
+    tools:context=".MyBeersActivities.BeerLeaderboardActivity">
 
 
 
@@ -18,12 +18,19 @@
         android:layout_marginBottom="-160dp" />
 
     <TextView
+        android:id="@+id/rev"
         android:layout_width="wrap_content"
         android:layout_height="185dp"
         android:layout_marginLeft="130dp"
         android:layout_marginBottom="20dp"
-        android:padding="16dp"
-        android:text="The pour is hazy and amber in colour with a small white head. Aromas of floral and grass hops with light malts. The taste is mildly bitter. Medium body and soft carbonation." />
+        android:padding="16dp" />
 
+    <RatingBar
+
+        android:id="@+id/rb"
+        android:numStars="5"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
