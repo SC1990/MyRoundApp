@@ -41,13 +41,14 @@
     </RelativeLayout>
 
     <TextView
+
         android:id="@+id/rname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="59dp"
+        android:layout_marginTop="69dp"
         android:textColor="@android:color/black"
         android:textSize="30dp"
-        android:text="retailer"/>
+        android:text="Thank you for your Order!                 Here is a summary:"/>
 
     <TextView
         android:id="@+id/time_date"
@@ -55,16 +56,39 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="199dp"
         android:textColor="@android:color/black"
-        android:textSize="20dp" />
+        android:textSize="15dp" />
+
+    <ImageView
+
+        android:layout_centerInParent="true"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:layout_alignTop="@+id/order"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="190dp"
+        android:layout_marginTop="0dp"
+        android:src="@drawable/company_logo" />
+
+    <TextView
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="220dp"
+        android:layout_marginTop="340dp"
+        android:text="Pedro's Beers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/order"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/order"
-        android:layout_below="@+id/rel"
         android:layout_above="@+id/home_btn"
-        android:layout_marginTop="100dp"
-        android:layout_marginBottom="140dp">
+        android:layout_below="@+id/rel"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="116dp"
+        android:layout_marginBottom="124dp"
+        android:visibility="invisible">
 
     </androidx.recyclerview.widget.RecyclerView>
 

@@ -75,7 +75,7 @@ public class RetailerSalesOverviewActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
 
-                        Toast.makeText(RetailerSalesOverviewActivity.this, String.valueOf(dataSnapshot.getChildrenCount()), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(RetailerSalesOverviewActivity.this, String.valueOf(dataSnapshot.getChildrenCount()), Toast.LENGTH_SHORT).show();
 
                         for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren()){
                             if(dataSnapshot1.child("rId").equals(RetailerDetails.retailerId)){

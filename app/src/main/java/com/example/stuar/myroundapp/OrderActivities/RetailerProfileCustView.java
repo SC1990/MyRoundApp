@@ -265,6 +265,7 @@ public class RetailerProfileCustView extends AppCompatActivity implements Naviga
                                 intent.putExtra("pId", model.getpId());
                                 intent.putExtra("image", model.getpImage());
                                 startActivity(intent);
+                                finish();
                             }
                         });
                     }
@@ -338,7 +339,7 @@ public class RetailerProfileCustView extends AppCompatActivity implements Naviga
         switch (item.getItemId())
         {
             case R.id.action_cart:
-                startActivity(new Intent(getApplicationContext(), CartActivity.class));
+                startActivity(new Intent(RetailerProfileCustView.this, CartActivity.class));
                 break;
 
             case R.id.search_products_icon:

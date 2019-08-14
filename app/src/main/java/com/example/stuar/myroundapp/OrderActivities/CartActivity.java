@@ -169,7 +169,7 @@ public class CartActivity extends AppCompatActivity {
     }
 
     private void checkOrderStatus(){
-        DatabaseReference databaseReference;
+        /*DatabaseReference databaseReference;
         databaseReference = FirebaseDatabase.getInstance().getReference()
                 .child("Orders")
                 .child(RememberMe.currentOnlineUser.getPhone());
@@ -205,6 +205,6 @@ public class CartActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });
+        });*/
     }
 }

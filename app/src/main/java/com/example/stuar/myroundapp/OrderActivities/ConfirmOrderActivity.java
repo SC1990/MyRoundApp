@@ -119,7 +119,7 @@ public class ConfirmOrderActivity extends AppCompatActivity {
         ordersMap.put("rId", RetailerDetails.retailerId);
         ordersMap.put("date", saveCurrentDate);
         ordersMap.put("time", saveCurrentTime);
-        ordersMap.put("status", "CustomerOrder Placed");
+        //ordersMap.put("status", "CustomerOrder Placed");
         ordersMap.put("payment_type", "Cash");
 
         orderRef.updateChildren(ordersMap).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -127,7 +127,7 @@ public class ConfirmOrderActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
 
                 if(task.isSuccessful()){
-                    Toast.makeText(getApplicationContext(), "CustomerOrder Placed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Customer Order Placed", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(ConfirmOrderActivity.this, CustomerOrderActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);

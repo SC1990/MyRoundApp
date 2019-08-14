@@ -4,6 +4,7 @@ import android.content.Intent;
 
 import com.example.stuar.myroundapp.Other.MainPageActivity;
 import com.example.stuar.myroundapp.Other.MyDetails;
+import com.example.stuar.myroundapp.Other.RetailerSalesActivities.RetailerSalesOverviewActivity;
 import com.example.stuar.myroundapp.R;
 import com.example.stuar.myroundapp.Other.RetailerSalesActivities.PreSalesAnalysis;
 import com.google.android.material.navigation.NavigationView;
@@ -134,7 +135,7 @@ public class RetailerHome extends AppCompatActivity implements NavigationView.On
     public void onSalesBtnClick(View view) {
         if(view.getId() == R.id.sales_btn){
 
-            startActivity(new Intent(RetailerHome.this, PreSalesAnalysis.class));
+            startActivity(new Intent(RetailerHome.this, RetailerSalesOverviewActivity.class));
 
         }
     }

@@ -172,7 +172,7 @@ public class CardPaymentActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
-                                        Toast.makeText(getApplicationContext(), "CustomerOrder Placed", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(), "Order Placed Successfully", Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(CardPaymentActivity.this, CustomerOrderActivity.class);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);

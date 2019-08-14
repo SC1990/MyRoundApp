@@ -6,17 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".OrderActivities.ConfirmOrderActivity">
 
-    <TextView
+    <androidx.appcompat.widget.Toolbar
+        app:title="Please Confirm Your Order"
+        android:background="@drawable/toolbar_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/txt"
-        android:text="Confirm Order"
-        android:textSize="18dp"
-        android:textColor="@android:color/black"
-        android:textStyle="bold"
+        android:layout_height="wrap_content">
 
-        android:textAlignment="center"
-        />
+    </androidx.appcompat.widget.Toolbar>
 
     <EditText
         android:id="@+id/order_name"
@@ -84,6 +80,7 @@
         android:layout_height="wrap_content"
         android:text="Pay by card"
         android:textSize="20dp"
+        android:layout_marginTop="16dp"
         android:layout_marginLeft="20dp"
         />
 

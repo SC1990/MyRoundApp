@@ -7,6 +7,14 @@
     tools:context=".OrderActivities.CardPaymentActivity"
     >
 
+    <androidx.appcompat.widget.Toolbar
+        stripe:title="Powered by Stripe"
+        android:background="@drawable/toolbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </androidx.appcompat.widget.Toolbar>
+
     <com.stripe.android.view.CardMultilineWidget
         android:id="@+id/card_input_widget"
         android:layout_width="320dp"

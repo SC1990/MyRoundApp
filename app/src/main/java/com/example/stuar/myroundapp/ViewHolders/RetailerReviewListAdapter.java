@@ -44,7 +44,7 @@ public class RetailerReviewListAdapter extends RecyclerView.Adapter<RetailerRevi
         holder.reviewTxt = (TextView) view.findViewById(R.id.review_text);
         holder.stars = view.findViewById(R.id.review_stars);
 
-        holder.stars.setBackgroundColor(Color.RED);
+
 
         //current retailer
         Review review = reviewList.get(position);
@@ -53,7 +53,7 @@ public class RetailerReviewListAdapter extends RecyclerView.Adapter<RetailerRevi
         holder.userEmail.setText(review.getName());
         holder.dateTV.setText(review.getTime_date());
         holder.reviewTxt.setText(review.getText());
-        holder.stars.setNumStars(review.getStars());
+        holder.stars.setRating(review.getStars());
 
 
     }

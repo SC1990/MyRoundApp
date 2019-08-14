@@ -30,14 +30,14 @@ public class CustomerOrderActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        rname = findViewById(R.id.rname);
+       // rname = findViewById(R.id.rname);
         timeDate = findViewById(R.id.time_date);
         discount = findViewById(R.id.discount2);
         subtotal = findViewById(R.id.subtotal2);
         dFee = findViewById(R.id.delivery_fee2);
         total = findViewById(R.id.order_total2);
 
-        rname.setText(RememberMe.rName);
+        //rname.setText(RememberMe.rName);
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd 'at' HH:mm:ss");
         String currentDateandTime = sdf.format(new Date());
@@ -45,8 +45,8 @@ public class CustomerOrderActivity extends AppCompatActivity {
 
         discount.setText("€0");
 
-        total.setText(String.valueOf(RememberMe.total));
-        subtotal.setText(String.valueOf(RememberMe.total - 2.50));
+        total.setText("€" +String.valueOf(RememberMe.total));
+        subtotal.setText("€" + String.valueOf(RememberMe.total - 2.50));
         dFee.setText("€2.50");
 
     }
